@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>How MCP servers authenticate: the basics of OAuth 2.1 and API keys | mcpnavi</title>
+    
+    <meta name="description" content="An introduction to authentication for MCP servers: OAuth 2.1, API keys and no authentication, the authorization rules of specification 2026-07-28 (Protected Resource Metadata, PKCE, Client ID Metadata Documents), and the connection flow.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="How MCP servers authenticate: the basics of OAuth 2.1 and API keys">
+    <meta property="og:description" content="An introduction to authentication for MCP servers: OAuth 2.1, API keys and no authentication, the authorization rules of specification 2026-07-28 (Protected Resource Metadata, PKCE, Client ID Metadata Documents), and the connection flow.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/">
+    <meta property="og:type" content="article">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How MCP servers authenticate: the basics of OAuth 2.1 and API keys",
+      "description": "An introduction to authentication for MCP servers: OAuth 2.1, API keys and no authentication, the authorization rules of specification 2026-07-28 (Protected Resource Metadata, PKCE, Client ID Metadata Documents), and the connection flow.",
+      "url": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "author": {
+        "@type": "Person",
+        "name": "Iqbal Abdullah",
+        "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mcpnavi",
+        "url": "https://mcpnavi.jp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Authentication for MCP servers: the basics of OAuth and API keys"
+        }
+      ]
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/blog/technical/mcp-authorization-basics/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <a href="/en/blog/">Blog</a> › <a href="/en/blog/technical/">Technical</a> › <span class="text-ink">Authentication for MCP servers: the basics of OAuth and API keys</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/blog/technical/mcp-authorization-basics/" hreflang="ja" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Read in 日本語</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h1 class="page-title mt-3">Authentication for MCP servers: the basics of OAuth and API keys</h1>
+        <p class="page-lead">An MCP server checks who is connecting before it returns data. This article covers the kinds of authentication, how specification 2026-07-28 uses OAuth 2.1, the flow of a connection, and what to check before you connect.</p>
+        <p class="post-byline"><a href="/en/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+<span>Iqbal Abdullah</span></a></p>
+    </header>
+    
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">Contents</h2>
+                <ol class="mt-3">
+                    <li><a href="#why-a-server-needs-authentication" class="outline-link">Why a server needs authentication</a></li>
+                    <li><a href="#the-kinds-of-authentication" class="outline-link">The kinds of authentication</a></li>
+                    <li><a href="#how-the-mcp-specification-uses-oauth" class="outline-link">How the MCP specification uses OAuth</a></li>
+                    <li><a href="#the-flow-of-an-oauth-connection" class="outline-link">The flow of an OAuth connection</a></li>
+                    <li><a href="#how-the-specification-has-changed" class="outline-link">How the specification has changed</a></li>
+                    <li><a href="#what-to-check-before-you-connect" class="outline-link">What to check before you connect</a></li>
+                    <li><a href="#summary" class="outline-link">Summary</a></li>
+                    <li><a href="#sources" class="outline-link">Sources</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>An MCP server is a plugin that adds features to an AI application. Once it is connected, the AI can read the data behind the server and carry out actions. So the server needs to know who is connecting and what that party is allowed to do.</p>
+<p>This article explains the kinds of authentication an MCP server can use. It then explains how the MCP specification (2026-07-28) uses OAuth. For MCP itself, read <a href="/en/blog/technical/introduction-to-mcp/">Introduction to MCP</a>.</p>
+<h2 id="why-a-server-needs-authentication">Why a server needs authentication</h2>
+<p>Take the MCP server of an accounting service. It returns a user's journal entries. If it answered without checking who is asking, it would return other people's data too.</p>
+<p>A server checks two things.</p>
+<ul>
+<li><strong>Authentication</strong>: who is connecting</li>
+<li><strong>Authorization</strong>: which data and which actions that party may use</li>
+</ul>
+<p>The MCP specification defines this on a page named "Authorization". mcpnavi lists the method of each service in the "Authentication" field.</p>
+<h2 id="the-kinds-of-authentication">The kinds of authentication</h2>
+<p>The "Authentication" field on mcpnavi has four values.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OAuth 2.1</td>
+<td>The user logs in with a browser and grants access, and the client receives an access token. The MCP specification defines this method</td>
+</tr>
+<tr>
+<td>API key</td>
+<td>The provider issues a string (a key). The user sets it in the client, and the client sends it with each request</td>
+</tr>
+<tr>
+<td>None</td>
+<td>The server can be connected to without authentication</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>No public page states the method</td>
+</tr>
+</tbody>
+</table>
+<p>The authorization page of the MCP specification defines a method based on OAuth 2.1. It does not say how to pass an API key. The way to set an API key differs for each service, so read the provider's documentation.</p>
+<p>OAuth 2.1 is a framework that lets an application obtain limited access to a protected resource. The user does not give a password to the client. The client receives an access token with a fixed range of access, called its scope.</p>
+<h2 id="how-the-mcp-specification-uses-oauth">How the MCP specification uses OAuth</h2>
+<p>In the MCP specification, authorization is optional. When an implementation supports it, the rules depend on the transport.</p>
+<ul>
+<li><strong>HTTP-based transports</strong> (such as Streamable HTTP): the implementation should follow the authorization part of the specification.</li>
+<li><strong>stdio</strong>: the implementation does not follow that part, and retrieves credentials from the environment instead. A stdio server runs on the user's own computer.</li>
+</ul>
+<p>Over HTTP, there are three roles.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCP server</td>
+<td>An OAuth 2.1 "resource server". It accepts requests that carry an access token</td>
+</tr>
+<tr>
+<td>MCP client</td>
+<td>An OAuth 2.1 "client". It sends requests on behalf of the user</td>
+</tr>
+<tr>
+<td>Authorization server</td>
+<td>It interacts with the user and issues access tokens. It may be hosted with the MCP server, or run by a separate entity</td>
+</tr>
+</tbody>
+</table>
+<p>The specification asks the following of these three.</p>
+<p><strong>Publish where the authorization server is.</strong> An MCP server implements OAuth 2.0 Protected Resource Metadata (RFC 9728). This is a document that states where the server's authorization server is. The client reads it to find the authorization server. The server gives the URL of the document in the header of an HTTP 401 response, or serves the document at a well-known URI. This example uses the header:</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
+<span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">Bearer resource_metadata="https://mcp.example.com/.well-known/oauth-protected-resource",</span>
+                         <span class="l">scope="files:read"</span>
+</code></pre></div>
+
+<p><strong>Identify the client.</strong> Before the authorization flow starts, the client obtains a client ID. There are three ways.</p>
+<ol>
+<li>Pre-registration: used when the client and the authorization server already have a relationship.</li>
+<li>Client ID Metadata Documents: the client publishes its own details (its name, its redirect URIs and so on) at an HTTPS URL, and uses that URL as its client ID. This is the way for a client and a server with no earlier relationship. The specification recommends that clients and authorization servers support it.</li>
+<li>Dynamic Client Registration (RFC 7591): deprecated in specification 2026-07-28. It stays for authorization servers that do not support Client ID Metadata Documents.</li>
+</ol>
+<p><strong>Use PKCE.</strong> With PKCE, a party that intercepts an authorization code cannot exchange it for a token. An MCP client must implement PKCE. If the authorization server's metadata does not show PKCE support, the client must refuse to proceed.</p>
+<p><strong>Bind a token to one server.</strong> The client names the MCP server that the token is for, with the <code>resource</code> parameter (RFC 8707). An MCP server accepts only tokens that were issued for it. When an MCP server calls another API, it must not pass on the token it received from the client.</p>
+<p><strong>Send the token in a header.</strong> The client sends the access token in the <code>Authorization: Bearer &lt;access-token&gt;</code> header. It adds this header to every HTTP request. An access token must not appear in the URL query string.</p>
+<p>There are rules for the connection too. Every authorization server endpoint is served over HTTPS. Every redirect URI is either <code>localhost</code> or uses HTTPS.</p>
+<h2 id="the-flow-of-an-oauth-connection">The flow of an OAuth connection</h2>
+<p>When a user connects an MCP server for the first time, the client works in this order.</p>
+<ol>
+<li>The client sends a request to the MCP server without a token.</li>
+<li>The MCP server returns HTTP 401. The <code>WWW-Authenticate</code> header holds the URL of the Protected Resource Metadata.</li>
+<li>The client fetches that document and reads where the authorization server is. If the header holds no URL, the client fetches the document from the well-known URI.</li>
+<li>The client fetches the authorization server's metadata. It reads the endpoints and confirms PKCE support.</li>
+<li>The client opens a browser and shows the authorization server's page.</li>
+<li>The user logs in, reads what is shown, and grants access.</li>
+<li>The authorization server returns an authorization code to the client.</li>
+<li>The client exchanges the authorization code for an access token.</li>
+<li>The client sends a request to the MCP server with the access token.</li>
+</ol>
+<p>The user acts only in step 6. The client does the rest by itself.</p>
+<p>A client may need more access later. In that case the server returns HTTP 403 with the scopes it needs. The client adds those scopes and runs the authorization again. The specification recommends that a client request only the scopes it needs.</p>
+<h2 id="how-the-specification-has-changed">How the specification has changed</h2>
+<p>Each revision has added to or changed the authorization rules.</p>
+<table>
+<thead>
+<tr>
+<th>Revision</th>
+<th>Main changes to authorization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-03-26</td>
+<td>Adds an authorization framework based on OAuth 2.1</td>
+</tr>
+<tr>
+<td>2025-06-18</td>
+<td>Classifies MCP servers as OAuth resource servers and adds Protected Resource Metadata. Requires clients to implement Resource Indicators (RFC 8707)</td>
+</tr>
+<tr>
+<td>2025-11-25</td>
+<td>Adds OpenID Connect Discovery 1.0 to authorization server discovery. Adds Client ID Metadata Documents as the recommended registration mechanism. Adds incremental scope consent through <code>WWW-Authenticate</code></td>
+</tr>
+<tr>
+<td>2026-07-28</td>
+<td>Deprecates Dynamic Client Registration (RFC 7591). Requires a client to compare <code>iss</code> with the recorded issuer when the authorization response includes it. Clarifies that client credentials are bound to the authorization server that issued them</td>
+</tr>
+</tbody>
+</table>
+<p>Specification 2026-07-28 also set a policy for deprecated features. A deprecated feature stays in the specification for at least twelve months.</p>
+<h2 id="what-to-check-before-you-connect">What to check before you connect</h2>
+<p>Once you know the authentication method, you know what to check before you connect.</p>
+<ul>
+<li><strong>OAuth 2.1</strong>: In the Client ID Metadata Documents flow, the authorization server shows the client's name on the consent page. Read what is shown before you grant access.</li>
+<li><strong>API key</strong>: Read the provider's documentation to find which permissions the key has. Do not put the key in a shared file or a repository.</li>
+<li><strong>No</strong>: The server can be connected to without authentication. The server does not tell one caller from another.</li>
+</ul>
+<p>On token storage, the specification requires both clients and servers to store tokens in a protected way. For the details it points to the OAuth 2.1 best practices. It also recommends that authorization servers issue short-lived access tokens.</p>
+<p>The authentication method alone is not enough to decide. Check these fields too.</p>
+<ul>
+<li><strong>Provider</strong>: who provides the server (Provider, Type, Japanese entity)</li>
+<li><strong>Hosting</strong>: who runs the server. A server that the provider runs is reached over HTTP, so the OAuth rules above apply. With a stdio server that runs on the user's computer, the credentials are kept in the user's environment.</li>
+</ul>
+<p>mcpnavi reads these fields from public pages and lists them with the date they were last checked. A field that no public page states is shown as "Unknown". <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>An MCP server's authentication is one of three kinds: OAuth 2.1, API key, or None. When no public page states it, the value is "Unknown".</li>
+<li>The MCP specification defines authorization based on OAuth 2.1 for HTTP connections. With stdio, credentials come from the environment.</li>
+<li>An MCP server states where its authorization server is with Protected Resource Metadata. The client uses PKCE and binds each token to one server.</li>
+<li>Specification 2026-07-28 deprecated Dynamic Client Registration. Client ID Metadata Documents are the recommended way.</li>
+</ul>
+<p>To find MCP services, use the <a href="/en/servers/">list of MCP services</a>. Each service page lists Authentication, Provider and Hosting.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">Authorization</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/authorization-server-discovery">Authorization Server Discovery</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/client-registration">Client Registration</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations">Authorization Security Considerations</a> (MCP specification, 2026-07-28)</li>
+<li>Key changes of each revision: <a href="https://modelcontextprotocol.io/specification/2025-03-26/changelog">2025-03-26</a>, <a href="https://modelcontextprotocol.io/specification/2025-06-18/changelog">2025-06-18</a>, <a href="https://modelcontextprotocol.io/specification/2025-11-25/changelog">2025-11-25</a>, <a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">2026-07-28</a> (MCP specification)</li>
+<li><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13">The OAuth 2.1 Authorization Framework (draft-ietf-oauth-v2-1-13)</a> (IETF, 2025-05-28)</li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc9728">RFC 9728: OAuth 2.0 Protected Resource Metadata</a> (IETF, 2025-04)</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">Last updated: <time datetime="2026-09-23">2026-09-23</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="Adjacent posts">
+    <div><a href="/en/blog/technical/remote-and-local-mcp-servers/" rel="prev" class="card-link block h-full px-6 py-5"><span class="text-muted">Newer post</span><br><span class="font-medium">Remote and local MCP servers: what the difference is</span></a></div>
+    <div class="sm:text-right"><a href="/en/blog/technical/introduction-to-mcp/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">Older post</span><br><span class="font-medium">Introduction to MCP: the history of the Model Context Protocol and how it works</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">Related posts</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">Technical</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/remote-and-local-mcp-servers/">Remote and local MCP servers: what the difference is</a></h3>
+        <p class="post-card-intro">A provider runs a remote MCP server, and you connect to it by URL. You run a local MCP server on your own computer. This article covers hosting versus transport, what the user does, and how credentials are handled.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">Technical</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/introduction-to-mcp/">Introduction to MCP: the history of the Model Context Protocol and how it works</a></h3>
+        <p class="post-card-intro">MCP (Model Context Protocol) is a common standard that connects AI applications to outside data and tools. This article covers why it was created, its history from 2024 to specification 2026-07-28, and how it works.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

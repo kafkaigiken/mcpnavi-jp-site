@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>Terraform MCP Server (HashiCorp) | MCP search and comparison | mcpnavi</title>
+    
+    <meta name="description" content="Terraform MCP Server: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio, Streamable HTTP.Authentication: None.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/servers/terraform-mcp-server/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="Terraform MCP Server (HashiCorp) | MCP search and comparison">
+    <meta property="og:description" content="Terraform MCP Server: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio, Streamable HTTP.Authentication: None.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/servers/terraform-mcp-server/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/servers/terraform-mcp-server/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/servers/terraform-mcp-server/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/terraform-mcp-server/">
+    
+    
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Terraform MCP Server",
+  "description": "HashiCorp's official server for provider and module docs in the Terraform Registry.",
+  "url": "https://mcpnavi.jp/en/servers/terraform-mcp-server/",
+  "category": [
+    "Developer tools",
+    "Productivity",
+    "Infrastructure and IaC"
+  ],
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Hosting",
+      "value": "Run it yourself"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Transport",
+      "value": "stdio, Streamable HTTP"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Authentication",
+      "value": "None"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "HTTPS required",
+      "value": "Unknown"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Pricing model",
+      "value": "Unknown"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Free tier",
+      "value": "Unknown"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Japanese documentation",
+      "value": "Unknown"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Japanese support",
+      "value": "Unknown"
+    }
+  ],
+  "brand": {
+    "@type": "Organization",
+    "name": "HashiCorp",
+    "url": "https://mcpnavi.jp/en/providers/hashicorp/"
+  }
+}</script>
+
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/servers/terraform-mcp-server/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <a href="/en/categories/dev-tools/">Developer tools</a> › <a href="/en/categories/productivity/">Productivity</a> › <a href="/en/categories/infrastructure/">Infrastructure and IaC</a>
+    › <span class="text-ink">Terraform MCP Server</span>
+</nav>
+
+<header class="mt-4 border-b border-rule pb-8">
+    <h1 class="page-title">Terraform MCP Server</h1>
+    <p class="mt-2 text-sm text-muted">
+        Provider: <a href="/en/providers/hashicorp/">HashiCorp</a>
+
+    </p>
+    <p class="page-lead">HashiCorp&#x27;s official server for provider and module docs in the Terraform Registry.</p>
+    <dl class="mt-5 grid gap-y-1 text-sm sm:grid-cols-[8rem_1fr]">
+        <dt class="text-muted">Category</dt><dd><a href="/en/categories/dev-tools/">Developer tools</a>、<a href="/en/categories/productivity/">Productivity</a>、<a href="/en/categories/infrastructure/">Infrastructure and IaC</a></dd>
+        
+        <dt class="text-muted">Repository</dt><dd><a href="https://github.com/hashicorp/terraform-mcp-server" rel="noopener">https://github.com/hashicorp/terraform-mcp-server</a></dd>
+        <dt class="text-muted">Documentation</dt><dd><a href="https://developer.hashicorp.com/terraform/mcp-server" rel="noopener">https://developer.hashicorp.com/terraform/mcp-server</a></dd>
+        <dt class="text-muted">Last checked</dt><dd>2026-09-13</dd>
+    </dl>
+    <p class="notice mt-5 inline-block">Everything shown here was read on the last-checked date. <a href="/en/criteria/">About the data</a></p>
+</header>
+
+
+<section class="mt-10" aria-labelledby="connection-heading">
+    
+    <h2 id="connection-heading" class="section-title">Connection and authentication</h2>
+    <div class="sheet-frame mt-4">
+<table class="sheet">
+    <caption class="sr-only">Connection and authentication</caption>
+    <thead>
+        <tr>
+            <th scope="col" class="sheet-label">Field</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr data-field="hosting">
+            <th scope="row">Hosting</th>
+            <td class="min-w-[8rem]"><span class="value-labels"><span class="value-label">Run it yourself</span></span>
+</td>
+        </tr>
+        
+        <tr data-field="auth_method">
+            <th scope="row">Authentication</th>
+            <td class="min-w-[8rem]">None
+</td>
+        </tr>
+        
+        <tr data-field="transport">
+            <th scope="row">Transport</th>
+            <td class="min-w-[8rem]"><span class="value-labels"><span class="value-label">stdio</span><span class="sr-only">, </span><span class="value-label">Streamable HTTP</span></span>
+</td>
+        </tr>
+        
+        <tr data-field="tls_only">
+            <th scope="row">HTTPS required</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+    
+</section>
+
+<section class="mt-12" aria-labelledby="identity-heading">
+    
+    <h2 id="identity-heading" class="section-title">Provider</h2>
+    <div class="sheet-frame mt-4">
+<table class="sheet">
+    <caption class="sr-only">Provider</caption>
+    <thead>
+        <tr>
+            <th scope="col" class="sheet-label">Field</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr data-field="provider_name">
+            <th scope="row">Provider</th>
+            <td class="min-w-[8rem]"><a href="/en/providers/hashicorp/">HashiCorp</a>
+</td>
+        </tr>
+        
+        <tr data-field="provider_homepage">
+            <th scope="row">Website</th>
+            <td class="min-w-[8rem]"><a href="https://hashicorp.com" rel="noopener">HashiCorp | An IBM Company</a>
+</td>
+        </tr>
+        
+        <tr data-field="provider_type">
+            <th scope="row">Type</th>
+            <td class="min-w-[8rem]">Company
+</td>
+        </tr>
+        
+        <tr data-field="has_jp_entity">
+            <th scope="row">Japanese entity</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+    
+</section>
+
+<section class="mt-12" aria-labelledby="capability-heading">
+    
+    <div class="flex flex-wrap items-baseline gap-3">
+        <h2 id="capability-heading" class="section-title">Tools</h2>
+        <span class="text-sm text-muted">6</span>
+    </div>
+    
+    <p class="mt-1 text-sm text-muted">Descriptions are the server's own text.</p>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Tool</th><th scope="col">Description</th></tr></thead>
+        <tbody>
+            
+            <tr><th scope="row"><code class="break-all font-mono text-xs">search_providers</code></th><td>Search for Terraform providers in the Terraform Registry.</td></tr>
+            
+            <tr><th scope="row"><code class="break-all font-mono text-xs">get_provider_details</code></th><td>Fetch documentation for a Terraform provider resource, data source or function.</td></tr>
+            
+            <tr><th scope="row"><code class="break-all font-mono text-xs">search_modules</code></th><td>Search for Terraform modules in the Terraform Registry.</td></tr>
+            
+            <tr><th scope="row"><code class="break-all font-mono text-xs">get_module_details</code></th><td>Fetch detailed documentation for a Terraform module.</td></tr>
+            
+            <tr><th scope="row"><code class="break-all font-mono text-xs">search_policies</code></th><td>Search for Sentinel policies in the Terraform Registry.</td></tr>
+            
+            <tr><th scope="row"><code class="break-all font-mono text-xs">get_policy_details</code></th><td>Fetch detailed documentation for a Sentinel policy.</td></tr>
+            
+        </tbody>
+    </table>
+    </div>
+    
+    
+</section>
+
+<section class="mt-12" aria-labelledby="pricing-heading">
+    
+    <h2 id="pricing-heading" class="section-title">Pricing</h2>
+    <div class="sheet-frame mt-4">
+<table class="sheet">
+    <caption class="sr-only">Pricing</caption>
+    <thead>
+        <tr>
+            <th scope="col" class="sheet-label">Field</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr data-field="pricing_model">
+            <th scope="row">Pricing model</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+        <tr data-field="free_tier">
+            <th scope="row">Free tier</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+    
+</section>
+
+<section class="mt-12" aria-labelledby="japanese-heading">
+    
+    <h2 id="japanese-heading" class="section-title">Japanese support</h2>
+    <div class="sheet-frame mt-4">
+<table class="sheet">
+    <caption class="sr-only">Japanese support</caption>
+    <thead>
+        <tr>
+            <th scope="col" class="sheet-label">Field</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr data-field="jp_docs">
+            <th scope="row">Japanese documentation</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+        <tr data-field="jp_support">
+            <th scope="row">Japanese support</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+    
+</section>
+
+<section class="mt-12" aria-labelledby="operations-heading">
+    
+    <h2 id="operations-heading" class="section-title">Operations</h2>
+    <div class="sheet-frame mt-4">
+<table class="sheet">
+    <caption class="sr-only">Operations</caption>
+    <thead>
+        <tr>
+            <th scope="col" class="sheet-label">Field</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr data-field="version">
+            <th scope="row">Version</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+        <tr data-field="last_updated">
+            <th scope="row">Last updated</th>
+            <td class="min-w-[8rem]">2026-09-11
+</td>
+        </tr>
+        
+        <tr data-field="last_probe_status">
+            <th scope="row">Status</th>
+            <td class="min-w-[8rem]"><span class="value-unknown">Unknown</span>
+</td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+    
+</section>
+
+
+<section class="mt-12" aria-labelledby="install-heading">
+    <h2 id="install-heading" class="section-title">Setup</h2>
+    
+    
+    <p class="mt-1 text-sm text-muted">Paste this into your MCP client's configuration file. Adjust paths and environment variables for your environment.</p>
+    <div class="mt-3 flex items-baseline justify-end">
+        <button type="button" class="btn btn-sm no-print" aria-live="polite"
+                data-copy-target="install-snippet"
+                data-copy-idle="Copy config"
+                data-copy-done="Copied"
+                data-copy-failed="Could not copy">Copy config</button>
+    </div>
+    <pre id="install-snippet" class="code-block mt-2"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;terraform-mcp-server&quot;: {
+      &quot;command&quot;: &quot;docker&quot;,
+      &quot;args&quot;: [
+        &quot;run&quot;,
+        &quot;-i&quot;,
+        &quot;--rm&quot;,
+        &quot;hashicorp/terraform-mcp-server&quot;
+      ]
+    }
+  }
+}</code></pre>
+    
+</section>
+
+<section class="mt-12" aria-labelledby="compare-heading">
+    <h2 id="compare-heading" class="section-title">Comparison</h2>
+    
+    <p class="mt-1 text-sm text-muted">Services in the same category, aligned on the same fields.</p>
+    <div class="mt-4">
+
+<div class="sheet-frame">
+<table class="sheet">
+    <thead>
+        <tr>
+            <th scope="col" class="sheet-label">Field</th>
+            
+            <th scope="col" class="min-w-[10rem] whitespace-normal">
+                <a href="/en/servers/terraform-mcp-server/" class="font-bold">Terraform MCP Server</a>
+            </th>
+            
+            <th scope="col" class="min-w-[10rem] whitespace-normal">
+                <a href="/en/servers/amed-research-db/" class="font-bold">AMED Research DB</a>
+            </th>
+            
+            <th scope="col" class="min-w-[10rem] whitespace-normal">
+                <a href="/en/servers/apify-mcp-server/" class="font-bold">Apify MCP Server</a>
+            </th>
+            
+            <th scope="col" class="min-w-[10rem] whitespace-normal">
+                <a href="/en/servers/chrome-devtools-mcp/" class="font-bold">Chrome DevTools MCP</a>
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr data-field="provider_name">
+            <th scope="row">Provider</th>
+            
+            <td><a href="/en/providers/hashicorp/">HashiCorp</a>
+</td>
+            
+            <td><a href="/en/providers/inutano/">inutano</a>
+</td>
+            
+            <td><a href="/en/providers/apify/">Apify</a>
+</td>
+            
+            <td><a href="/en/providers/google/">Google</a>
+</td>
+            
+        </tr>
+        
+        <tr data-field="provider_type">
+            <th scope="row">Type</th>
+            
+            <td>Company
+</td>
+            
+            <td>Individual
+</td>
+            
+            <td>Company
+</td>
+            
+            <td>Company
+</td>
+            
+        </tr>
+        
+        <tr data-field="has_jp_entity">
+            <th scope="row">Japanese entity</th>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td>Not applicable (individual)
+</td>
+            
+            <td>No
+</td>
+            
+            <td><a href="https://store.google.com/intl/ja_jp/about/device-terms/" rel="noopener">Yes</a>
+</td>
+            
+        </tr>
+        
+        <tr data-field="hosting">
+            <th scope="row">Hosting</th>
+            
+            <td><span class="value-labels"><span class="value-label">Run it yourself</span></span>
+</td>
+            
+            <td><span class="value-labels"><span class="value-label">Run it yourself</span></span>
+</td>
+            
+            <td><span class="value-labels"><span class="value-label">Connect by URL</span><span class="sr-only">, </span><span class="value-label">Run it yourself</span></span>
+</td>
+            
+            <td><span class="value-labels"><span class="value-label">Run it yourself</span></span>
+</td>
+            
+        </tr>
+        
+        <tr data-field="auth_method">
+            <th scope="row">Authentication</th>
+            
+            <td>None
+</td>
+            
+            <td>None
+</td>
+            
+            <td>API key
+</td>
+            
+            <td>None
+</td>
+            
+        </tr>
+        
+        <tr data-field="transport">
+            <th scope="row">Transport</th>
+            
+            <td><span class="value-labels"><span class="value-label">stdio</span><span class="sr-only">, </span><span class="value-label">Streamable HTTP</span></span>
+</td>
+            
+            <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+            
+            <td><span class="value-labels"><span class="value-label">stdio</span><span class="sr-only">, </span><span class="value-label">Streamable HTTP</span></span>
+</td>
+            
+            <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+            
+        </tr>
+        
+        <tr data-field="tls_only">
+            <th scope="row">HTTPS required</th>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td>Not applicable (stdio only)
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td>Not applicable (stdio only)
+</td>
+            
+        </tr>
+        
+        <tr data-field="pricing_model">
+            <th scope="row">Pricing model</th>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+        </tr>
+        
+        <tr data-field="free_tier">
+            <th scope="row">Free tier</th>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+        </tr>
+        
+        <tr data-field="jp_docs">
+            <th scope="row">Japanese documentation</th>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+        </tr>
+        
+        <tr data-field="jp_support">
+            <th scope="row">Japanese support</th>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+            <td><span class="value-unknown">Unknown</span>
+</td>
+            
+        </tr>
+        
+        <tr data-row="checked-date">
+            <th scope="row">Last checked</th>
+            
+            <td class="text-muted">2026-09-13</td>
+            
+            <td class="text-muted">2026-09-13</td>
+            
+            <td class="text-muted">2026-09-20</td>
+            
+            <td class="text-muted">2026-09-19</td>
+            
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+    
+</section>
+
+<section class="mt-14 border-t border-rule pt-8 text-sm" aria-labelledby="listing-heading">
+    <h2 id="listing-heading" class="section-title">About this listing</h2>
+    <dl class="mt-4 grid gap-y-1 sm:grid-cols-[10rem_1fr]">
+        <dt class="text-muted">How it is checked</dt>
+        <dd><a href="/en/criteria/">About the data</a></dd>
+        <dt class="text-muted">Report an error</dt>
+        <dd><a href="mailto:info@mcpnavi.jp?subject=Terraform%20MCP%20Server">info@mcpnavi.jp</a> Send the field name and the supporting source to this address.</dd>
+    </dl>
+</section>
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    <script src="/static/js/copy-button.js" defer></script>
+</body>
+</html>

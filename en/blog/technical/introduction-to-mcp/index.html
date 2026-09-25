@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>What is MCP? The history of the Model Context Protocol and how it works | mcpnavi</title>
+    
+    <meta name="description" content="An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="What is MCP? The history of the Model Context Protocol and how it works">
+    <meta property="og:description" content="An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
+    <meta property="og:type" content="article">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What is MCP? The history of the Model Context Protocol and how it works",
+      "description": "An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.",
+      "url": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/",
+      "datePublished": "2026-09-20",
+      "dateModified": "2026-09-20",
+      "author": {
+        "@type": "Person",
+        "name": "Iqbal Abdullah",
+        "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mcpnavi",
+        "url": "https://mcpnavi.jp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Introduction to MCP: the history of the Model Context Protocol and how it works"
+        }
+      ]
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/blog/technical/introduction-to-mcp/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <a href="/en/blog/">Blog</a> › <a href="/en/blog/technical/">Technical</a> › <span class="text-ink">Introduction to MCP: the history of the Model Context Protocol and how it works</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/blog/technical/introduction-to-mcp/" hreflang="ja" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Read in 日本語</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h1 class="page-title mt-3">Introduction to MCP: the history of the Model Context Protocol and how it works</h1>
+        <p class="page-lead">MCP (Model Context Protocol) is a common standard that connects AI applications to outside data and tools. This article covers why it was created, its history from 2024 to specification 2026-07-28, and how it works.</p>
+        <p class="post-byline"><a href="/en/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+<span>Iqbal Abdullah</span></a></p>
+    </header>
+    
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">Contents</h2>
+                <ol class="mt-3">
+                    <li><a href="#what-mcp-is" class="outline-link">What MCP is</a></li>
+                    <li><a href="#why-mcp-was-created" class="outline-link">Why MCP was created</a></li>
+                    <li><a href="#the-history-of-mcp" class="outline-link">The history of MCP</a></li>
+                    <li><a href="#how-it-works" class="outline-link">How it works</a></li>
+                    <li><a href="#what-changed-in-2026-07-28" class="outline-link">What changed in 2026-07-28</a></li>
+                    <li><a href="#what-to-check-before-you-connect" class="outline-link">What to check before you connect</a></li>
+                    <li><a href="#summary" class="outline-link">Summary</a></li>
+                    <li><a href="#sources" class="outline-link">Sources</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>MCP (Model Context Protocol) is a common standard for connecting AI applications to outside data and tools. It was published in November 2024. ChatGPT, Claude, Visual Studio Code, Cursor and others support it today.</p>
+<p>This article explains why MCP was created, what has happened since its release, and how it works. You do not need to know how to program. Two JSON examples appear; you can skip them and still follow the article.</p>
+<h2 id="what-mcp-is">What MCP is</h2>
+<p>MCP is an open standard for connecting outside services to AI applications such as ChatGPT and Claude. A browser gains features when you add a plugin. In the same way, an AI application that connects to an MCP server gains data it can read and actions it can take.</p>
+<p>For example:</p>
+<ul>
+<li>The AI reads journal entries from an accounting service and builds a monthly summary.</li>
+<li>You query a company database from a chat window.</li>
+<li>The AI checks a calendar and proposes dates for a meeting.</li>
+</ul>
+<p>The official documentation describes MCP as "a USB-C port for AI applications". USB-C gave devices one way to connect. MCP gives AI applications and outside systems one way to connect.</p>
+<h2 id="why-mcp-was-created">Why MCP was created</h2>
+<p>A large language model (LLM) can only answer from the data it was trained on. Today's sales figures are not in the model. Neither are your company's documents. To be useful at work, a model needs a connection to outside data and tools.</p>
+<p>Before MCP, each connection was built separately, for each application and each service. With 5 AI applications and 20 services, that is up to 100 connections to build. Each one needed a fix whenever either side changed.</p>
+<p>Anthropic described the situation in its launch announcement:</p>
+<blockquote>
+<p>Even the most sophisticated models are constrained by their isolation from data—trapped behind information silos and legacy systems. Every new data source requires its own custom implementation, making truly connected systems difficult to scale.</p>
+</blockquote>
+<p>MCP turns those connections into one standard. A service provider publishes one MCP server. An AI application developer builds one MCP client. After that, any combination can connect. In the example above, the work drops from 100 connections to 5 clients and 20 servers.</p>
+<p>The idea has a model. The MCP specification says it takes inspiration from the Language Server Protocol (LSP). LSP removed the need to build support for each programming language in each editor. MCP applies the same approach to AI applications and tools.</p>
+<h2 id="the-history-of-mcp">The history of MCP</h2>
+<p>These are the main events from the release until now. A specification revision is named by the date of its last backwards-incompatible change.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-11-25</td>
+<td>Anthropic publishes MCP as open source</td>
+</tr>
+<tr>
+<td>2025-03-26</td>
+<td>Specification 2025-03-26 is published. OpenAI announces support the same day</td>
+</tr>
+<tr>
+<td>2025-04-09</td>
+<td>Google DeepMind says Gemini will support MCP</td>
+</tr>
+<tr>
+<td>2025-05-19</td>
+<td>Microsoft and GitHub join the MCP steering committee</td>
+</tr>
+<tr>
+<td>2025-06-18</td>
+<td>Specification 2025-06-18 is published</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>The official MCP Registry is announced</td>
+</tr>
+<tr>
+<td>2025-11-25</td>
+<td>First anniversary. Specification 2025-11-25 is published</td>
+</tr>
+<tr>
+<td>2025-12-09</td>
+<td>Anthropic donates MCP to a foundation under the Linux Foundation</td>
+</tr>
+<tr>
+<td>2026-07-28</td>
+<td>Specification 2026-07-28 is published. The protocol becomes stateless</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2024-the-release">2024: the release</h3>
+<p>On November 25, 2024, Anthropic published MCP as open source. The release had three parts: the specification and SDKs, local MCP server support in the Claude Desktop apps, and a repository of server implementations. Servers for Google Drive, Slack, GitHub, Git, Postgres and Puppeteer were available from the start. Block and Apollo were named as early adopters. Zed, Replit, Codeium and Sourcegraph were named among the development tools.</p>
+<p>What Claude Desktop supported at that point was local servers, which run on the user's own computer.</p>
+<h3 id="2025-adoption-and-remote-connections">2025: adoption, and remote connections</h3>
+<p>The revision of March 26, 2025 added two major features. One is Streamable HTTP, a transport for connections over the internet. The other is an authorization framework based on OAuth 2.1. Together they made the "remote MCP server" practical: a server that the provider runs, and that a user connects to with only a URL.</p>
+<p>On the same day, OpenAI announced support for MCP. The Agents SDK supported it first, with the ChatGPT desktop app and the Responses API to follow. A company had adopted a standard made by its competitor, and MCP moved from one company's standard to an industry standard. On April 9, the CEO of Google DeepMind said that the Gemini models and SDK would support MCP. On May 19, at the Build developer conference, Microsoft and GitHub announced that they were joining the MCP steering committee.</p>
+<p>The revision of June 18 let tools return structured data. It also added elicitation, which lets a server ask the user for more information. In September the official MCP Registry was announced. It is an index where public MCP servers are registered and found. By November it held close to two thousand entries.</p>
+<p>On November 25, the first anniversary, specification 2025-11-25 was published. It added experimental tasks for long-running work, and an extensions framework for features that sit outside the core specification.</p>
+<p>On December 9, Anthropic donated MCP to the Agentic AI Foundation (AAIF). The AAIF is a new fund under the Linux Foundation, co-founded by Anthropic, Block and OpenAI. Google, Microsoft, AWS, Cloudflare and Bloomberg support it. At that date, Anthropic reported more than 10,000 active public MCP servers and more than 97 million monthly SDK downloads across Python and TypeScript. MCP no longer belongs to one company. A neutral body manages it.</p>
+<h3 id="2026-the-stateless-protocol">2026: the stateless protocol</h3>
+<p>Specification 2026-07-28, published on July 28, 2026, is the largest revision since remote connections arrived. The protocol became stateless. The section "What changed in 2026-07-28" below explains it.</p>
+<p>According to the official blog, the main SDKs are now downloaded close to half a billion times a month.</p>
+<h2 id="how-it-works">How it works</h2>
+<h3 id="the-three-participants">The three participants</h3>
+<p>MCP has three participants: the host, the client and the server.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Role</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>The AI application that the user works in</td>
+<td>Claude Desktop, Visual Studio Code</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>A component inside the host that handles the connection to one server</td>
+<td>Built into the host</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>A program that provides data and tools</td>
+<td>The MCP server of an accounting service</td>
+</tr>
+</tbody>
+</table>
+<p>The host creates one client for each server it connects to. Connect three servers, and the host holds three clients. A user sees only the host and the servers, and never deals with a client directly.</p>
+<h3 id="the-three-things-a-server-provides">The three things a server provides</h3>
+<p>A server can provide three kinds of things to an AI application.</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>What it is</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tools</td>
+<td>Functions that the AI model can execute</td>
+<td>Search invoices, add a calendar event</td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>Data for the AI to read</td>
+<td>The contents of a file, a database schema</td>
+</tr>
+<tr>
+<td>Prompts</td>
+<td>Reusable instruction templates</td>
+<td>The steps to "summarise this month's expenses"</td>
+</tr>
+</tbody>
+</table>
+<p>Of the three, mcpnavi lists the tools of each service, in the "Tools" field.</p>
+<h3 id="the-two-transports">The two transports</h3>
+<p>A client and a server connect in one of two ways.</p>
+<ul>
+<li><strong>stdio</strong>: The server runs on the user's own computer and communicates over standard input and output. Nothing crosses the network. The user installs the server.</li>
+<li><strong>Streamable HTTP</strong>: The two sides communicate over HTTP. A user can connect over the internet to a server that the provider runs. OAuth is the recommended way to authorize.</li>
+</ul>
+<p>The transport only decides the wire format. A user can also run a Streamable HTTP server in their own environment. Who runs the server is a separate fact. mcpnavi lists the two separately: the first as "Transport", the second as "Hosting".</p>
+<h3 id="what-the-messages-look-like">What the messages look like</h3>
+<p>The client and the server exchange messages in a format called JSON-RPC 2.0. The flow is short.</p>
+<ol>
+<li>The client sends <code>tools/list</code> and receives the list of tools the server has.</li>
+<li>The host gives the list of tools to the AI model.</li>
+<li>The AI model picks a tool to match the user's request.</li>
+<li>The client sends <code>tools/call</code>. The server runs the tool and returns the result.</li>
+<li>The AI model writes its answer from the result.</li>
+</ol>
+<p>To call a weather tool, the client sends a message like this one (shortened):</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tools/call"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weather_current"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tokyo"</span><span class="p">,</span><span class="w"> </span><span class="nt">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The server returns the result:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"resultType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current weather in Tokyo: 24°C, clear"</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The list of tools holds a name, a description and an input definition (JSON Schema) for each tool. The AI model reads the description and decides which tool to use, and when. API documentation is written for people. A tool description is read by the AI model itself.</p>
+<h2 id="what-changed-in-2026-07-28">What changed in 2026-07-28</h2>
+<p>In the specifications up to 2025, a client first sent an <code>initialize</code> message to the server to set up the connection. The server kept state for each connection, called a session.</p>
+<p>Specification 2026-07-28 removed that step. The client now sends the protocol version and its own capabilities with every request. The server handles each request on its own. A client can ask which versions and capabilities a server supports with <code>server/discover</code>.</p>
+<p>This makes a server easier for a provider to run. A server that keeps no session can sit behind an ordinary load balancer, in any number of copies. The official blog says the change answers developers who wanted better reliability and scalability for their servers.</p>
+<p>Tools, resources and prompts work as before. The specification also describes how to connect with servers and clients built for 2025-11-25 and earlier. Some features, such as Roots, Sampling and Logging, are now "deprecated". They stay in the specification, and become eligible for removal in the first revision released on or after 2027-07-28.</p>
+<h2 id="what-to-check-before-you-connect">What to check before you connect</h2>
+<p>Once an MCP server is connected, the AI can read data and carry out actions. The specification asks implementers to follow these principles:</p>
+<ul>
+<li><strong>User consent and control</strong>: Users understand and agree to all data access and all operations.</li>
+<li><strong>Data privacy</strong>: A host does not pass user data to a server without the user's consent.</li>
+<li><strong>Tools</strong>: A tool can run arbitrary code, so treat it with caution. A host obtains the user's consent before it calls a tool.</li>
+</ul>
+<p>The specification also says that the protocol itself cannot enforce these principles. The user decides which server to connect.</p>
+<p>These facts help with that decision:</p>
+<ul>
+<li>Who provides the service (Provider, Type, Japanese entity)</li>
+<li>Who runs the server (Hosting)</li>
+<li>How it authenticates (Authentication)</li>
+<li>Which tools it provides (Tools)</li>
+<li>When it was last updated (Last updated)</li>
+</ul>
+<p>mcpnavi reads these fields for each service from public pages and lists them with the date they were last checked. A field that no public page states is shown as "Unknown". <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>MCP is a common standard that connects AI applications to outside data and tools.</li>
+<li>Anthropic published it in November 2024. OpenAI, Google and Microsoft adopted it in 2025. A foundation under the Linux Foundation has managed it since December 2025.</li>
+<li>It has three participants: host, client and server. A server provides tools, resources and prompts.</li>
+<li>It has two transports: stdio and Streamable HTTP.</li>
+<li>In specification 2026-07-28 the protocol became stateless, which makes servers easier to run.</li>
+</ul>
+<p>To find MCP services, use the <a href="/en/servers/">list of MCP services</a>. <a href="/en/servers/filter/remote/">This filter</a> shows the services you can connect to with only a URL.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.anthropic.com/news/model-context-protocol">Introducing the Model Context Protocol</a> (Anthropic, 2024-11-25)</li>
+<li><a href="https://modelcontextprotocol.io/docs/getting-started/intro">What is the Model Context Protocol (MCP)?</a> (MCP documentation)</li>
+<li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Architecture overview</a> (MCP documentation)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28">Specification 2026-07-28</a> and its <a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">key changes</a> (MCP specification)</li>
+<li>Key changes of earlier revisions: <a href="https://modelcontextprotocol.io/specification/2025-03-26/changelog">2025-03-26</a>, <a href="https://modelcontextprotocol.io/specification/2025-06-18/changelog">2025-06-18</a></li>
+<li><a href="https://techcrunch.com/2025/03/26/openai-adopts-rival-anthropics-standard-for-connecting-ai-models-to-data/">OpenAI adopts rival Anthropic's standard for connecting AI models to data</a> (TechCrunch, 2025-03-26)</li>
+<li><a href="https://techcrunch.com/2025/04/09/google-says-itll-embrace-anthropics-standard-for-connecting-ai-models-to-data/">Google to embrace Anthropic's standard for connecting AI models to data</a> (TechCrunch, 2025-04-09)</li>
+<li><a href="https://techcrunch.com/2025/05/19/github-microsoft-embrace-anthropics-spec-for-connecting-ai-models-to-data-sources/">GitHub, Microsoft embrace Anthropic's spec for connecting AI models to data sources</a> (TechCrunch, 2025-05-19)</li>
+<li><a href="https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/">One Year of MCP: November 2025 Spec Release</a> (MCP blog, 2025-11-25)</li>
+<li><a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation">Donating the Model Context Protocol and establishing the Agentic AI Foundation</a> (Anthropic, 2025-12-09)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/deprecated">Deprecated Features</a> (MCP specification)</li>
+<li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">The 2026-07-28 Specification</a> (MCP blog, 2026-07-28)</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">Last updated: <time datetime="2026-09-20">2026-09-20</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="Adjacent posts">
+    <div><a href="/en/blog/technical/mcp-authorization-basics/" rel="prev" class="card-link block h-full px-6 py-5"><span class="text-muted">Newer post</span><br><span class="font-medium">Authentication for MCP servers: the basics of OAuth and API keys</span></a></div>
+    <div class="sm:text-right"></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">Related posts</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">Technical</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/remote-and-local-mcp-servers/">Remote and local MCP servers: what the difference is</a></h3>
+        <p class="post-card-intro">A provider runs a remote MCP server, and you connect to it by URL. You run a local MCP server on your own computer. This article covers hosting versus transport, what the user does, and how credentials are handled.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">Technical</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-authorization-basics/">Authentication for MCP servers: the basics of OAuth and API keys</a></h3>
+        <p class="post-card-intro">An MCP server checks who is connecting before it returns data. This article covers the kinds of authentication, how specification 2026-07-28 uses OAuth 2.1, the flow of a connection, and what to check before you connect.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

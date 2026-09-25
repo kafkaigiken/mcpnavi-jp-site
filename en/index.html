@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>MCP services: connect your AI agent to data and tools | mcpnavi</title>
+    
+    <meta name="description" content="A directory of MCP services that connect AI agents like ChatGPT and Claude to data and tools. Every service lists compatible agents and connection methods. All data is read from public pages, and every service shows the date it was last checked.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="MCP services: connect your AI agent to data and tools">
+    <meta property="og:description" content="A directory of MCP services that connect AI agents like ChatGPT and Claude to data and tools. Every service lists compatible agents and connection methods. All data is read from public pages, and every service shows the date it was last checked.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/">
+    
+    
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+<section class="pb-12 pt-4 md:pb-16 md:pt-12">
+    <h1 class="max-w-4xl text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">Connect ChatGPT and Claude to more data and tools.</h1>
+    <p class="mt-5 max-w-2xl text-lg text-muted">An MCP service is a plugin that extends your AI agent with company data, SaaS, and developer tools. On mcpnavi, you can see which services work with ChatGPT, Claude, and other agents, and how to connect them.</p>
+
+    <div class="mt-8 max-w-2xl">
+
+<form action="/en/servers/" method="get" role="search" data-search data-static="true" data-search-index="/en/servers/search-index.json">
+    <div class="search-box">
+        <span class="pl-3 text-muted">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span>
+        <label for="q" class="sr-only">Search by service name or purpose</label>
+        <input id="q" name="q" type="search" value="" placeholder="Search by service name or purpose">
+        <button type="submit" class="btn btn-primary">Search
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</button>
+    </div>
+</form>
+</div>
+
+    <dl class="mt-10 flex flex-wrap items-end gap-x-10 gap-y-6">
+        <div data-figure="listed" class="border-l-4 border-link pl-4">
+            <dt class="text-sm text-muted">Listed</dt>
+            <dd class="text-5xl font-bold leading-none tracking-tight md:text-6xl">241<span class="text-xl font-normal ml-1">services</span></dd>
+        </div>
+        <div data-figure="jp_ready" class="border-l border-rule pl-4">
+            <dt class="text-sm text-muted">Japanese support</dt>
+            <dd class="text-2xl font-bold leading-none">134<span class="text-sm font-normal ml-1">services</span></dd>
+        </div>
+    </dl>
+</section>
+
+<section id="categories" class="scroll-mt-24 py-10" aria-labelledby="categories-heading">
+    <h2 id="categories-heading" class="section-title">Categories</h2>
+    
+
+<ul class="mt-6 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-3">
+    
+    
+    <li>
+        <a href="/en/categories/dev-tools/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Developer tools</span>
+            <span class="text-muted">36 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/version-control/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Version control</span>
+            <span class="text-muted">5 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/databases/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Databases</span>
+            <span class="text-muted">17 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/cloud/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Cloud platforms</span>
+            <span class="text-muted">16 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/web-search/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Search and web fetch</span>
+            <span class="text-muted">12 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/files-storage/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Files and storage</span>
+            <span class="text-muted">7 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/communication/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Communication</span>
+            <span class="text-muted">6 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/project-management/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Project management</span>
+            <span class="text-muted">14 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/knowledge/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Documents and knowledge</span>
+            <span class="text-muted">46 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/browser-automation/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Browser automation</span>
+            <span class="text-muted">5 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/observability/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Monitoring and observability</span>
+            <span class="text-muted">4 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/security/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Security</span>
+            <span class="text-muted">8 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/payments/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Payments and finance</span>
+            <span class="text-muted">13 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/crm-sales/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">CRM and sales</span>
+            <span class="text-muted">4 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/marketing-seo/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Marketing and SEO</span>
+            <span class="text-muted">4 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/design/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Design</span>
+            <span class="text-muted">6 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/data-analytics/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Data analytics</span>
+            <span class="text-muted">45 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/ai-ml/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">AI and machine learning</span>
+            <span class="text-muted">23 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/productivity/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Productivity</span>
+            <span class="text-muted">17 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/maps-location/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Maps and location</span>
+            <span class="text-muted">27 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/media/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Media</span>
+            <span class="text-muted">9 servers</span>
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a href="/en/categories/infrastructure/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
+            <span class="font-medium">Infrastructure and IaC</span>
+            <span class="text-muted">5 servers</span>
+        </a>
+    </li>
+    
+    
+</ul>
+
+</section>
+
+
+<section id="tags" class="scroll-mt-24 py-10" aria-labelledby="tags-heading">
+    <h2 id="tags-heading" class="section-title">Browse by tag</h2>
+    
+
+
+<ul class="mt-6 flex flex-wrap gap-2">
+    
+    
+    <li><a href="/en/servers/tag/official/" class="chip">official<span class="chip-count">55</span></a></li>
+    
+    <li><a href="/en/servers/tag/law/" class="chip">law<span class="chip-count">24</span></a></li>
+    
+    <li><a href="/en/servers/tag/egov/" class="chip">egov<span class="chip-count">19</span></a></li>
+    
+    <li><a href="/en/servers/tag/government/" class="chip">government<span class="chip-count">15</span></a></li>
+    
+    <li><a href="/en/servers/tag/local/" class="chip">local<span class="chip-count">13</span></a></li>
+    
+    <li><a href="/en/servers/tag/reference/" class="chip">reference<span class="chip-count">13</span></a></li>
+    
+    <li><a href="/en/servers/tag/database/" class="chip">database<span class="chip-count">11</span></a></li>
+    
+    <li><a href="/en/servers/tag/company/" class="chip">company<span class="chip-count">10</span></a></li>
+    
+    <li><a href="/en/servers/tag/finance/" class="chip">finance<span class="chip-count">10</span></a></li>
+    
+    <li><a href="/en/servers/tag/japanese/" class="chip">japanese<span class="chip-count">9</span></a></li>
+    
+    <li><a href="/en/servers/tag/search/" class="chip">search<span class="chip-count">9</span></a></li>
+    
+    <li><a href="/en/servers/tag/opendata/" class="chip">opendata<span class="chip-count">8</span></a></li>
+    
+</ul>
+
+</section>
+
+
+<section class="py-10" aria-labelledby="recent-heading">
+    <h2 id="recent-heading" class="section-title">Recently added and updated</h2>
+    <div class="sheet-frame mt-6">
+    <table class="sheet">
+        <thead>
+            <tr>
+                <th scope="col">Service name</th>
+                <th scope="col">Provider</th>
+                <th scope="col">Transport</th>
+                <th scope="col">Pricing model</th>
+                <th scope="col">Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/xiaozhi-esp32/">xiaozhi-esp32</a></td>
+                <td><a href="/en/providers/78/">78</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/unity-mcp/">Unity MCP</a></td>
+                <td><a href="/en/providers/coplaydev/">CoplayDev</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/blender-mcp/">Blender MCP</a></td>
+                <td><a href="/en/providers/ahujasid/">ahujasid</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/zapier-mcp/">Zapier MCP</a></td>
+                <td><a href="/en/providers/zapier/">Zapier</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">Streamable HTTP</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/hugging-face-mcp-server/">Hugging Face MCP Server</a></td>
+                <td><a href="/en/providers/hugging-face/">Hugging Face</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">Streamable HTTP</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/n8n-mcp/">n8n MCP</a></td>
+                <td><a href="/en/providers/czlonkowski/">czlonkowski</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/antv-chart-mcp/">AntV Chart MCP</a></td>
+                <td><a href="/en/providers/antv/">AntV</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td class="font-medium"><a href="/en/servers/excel-mcp-server/">Excel MCP Server</a></td>
+                <td><a href="/en/providers/haris-musa/">haris-musa</a>
+</td>
+                <td><span class="value-labels"><span class="value-label">stdio</span></span>
+</td>
+                <td><span class="value-unknown">Unknown</span>
+</td>
+                <td class="whitespace-nowrap">2026-09-25</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+    <p class="mt-6"><a href="/en/servers/" class="btn">See all services</a></p>
+</section>
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

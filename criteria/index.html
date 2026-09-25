@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>掲載されているデータについて | mcpnavi</title>
+    
+    <meta name="description" content="mcpnavi に掲載されているデータについて説明します。データをどこから取得し、いつ確認したか、各項目の意味と確認方法を公開しています。">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/criteria/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
+    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:url" content="https://mcpnavi.jp/criteria/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/criteria/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/criteria/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/criteria/">
+    
+    
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">本文へ移動</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+        </a>
+        <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link">ブログ</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="ダークモード">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">ja</span><span class="sr-only">言語</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><span class="nav-link" aria-current="true">日本語</span></li>
+        
+        <li><a href="/en/criteria/" lang="en" hreflang="en" class="nav-link">英語</a></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">mcpnaviに掲載する
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="メニュー">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="サイト内" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link">ブログ</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm w-full">mcpnaviに掲載する</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+<h1 class="page-title">掲載されているデータについて</h1>
+<p class="page-lead">mcpnavi は、掲載している内容のひとつひとつに「どこから取得し、いつ確認したか」を付けています。このページでは、その取得方法と、各項目の意味と確認方法を公開します。</p>
+
+<section class="mt-10" aria-labelledby="source-heading">
+    <h2 id="source-heading" class="section-title">情報の取得方法</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">表示</th><th scope="col">意味</th></tr></thead>
+        <tbody>
+            <tr>
+                <th scope="row">掲載情報と情報確認日</th>
+                <td>サーバー本体、GitHub、npm、PyPI、公式サイトの公開ページから取得した情報です。取得した日付を、サービスごとに情報確認日として表示します。</td>
+            </tr>
+            <tr>
+                <th scope="row"><span class="value-unknown">不明</span></th>
+                <td>公開ページから情報を読み取れなかった項目です。まだ確認していない、または公開されていないという事実で、空欄にはしません。</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <p class="mt-4 max-w-3xl text-sm text-muted">情報確認日より後に提供者が仕様や料金を変えている場合があります。導入前に公式サイトで確認してください。</p>
+</section>
+
+<section class="mt-12" aria-labelledby="scope-heading">
+    <div class="card p-6">
+        <h2 id="scope-heading" class="section-title">掲載が意味しないこと</h2>
+        <ul class="mt-4 space-y-3">
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>情報確認日より後に提供者が仕様や規約を変えていないこと。</span></li>
+
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>サーバーのソースコードに脆弱性がないこと。コード監査は行っていません。</span></li>
+
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>特定の業務や法令要件に適合すること。適合判断は導入する組織が行います。</span></li>
+
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>提供者との契約条件。契約は提供者と直接結びます。</span></li>
+
+        </ul>
+    </div>
+</section>
+
+
+<section class="mt-12" aria-labelledby="group-identity">
+    <h2 id="group-identity" class="section-title">提供元</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">項目</th><th scope="col">意味</th><th scope="col">確認方法</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-provider_name" class="scroll-mt-24">
+                <th scope="row">提供元</th>
+                <td>このサーバーを開発・配布している組織または個人の名前です。名前から提供元のページへ移動でき、同じ提供元のMCPサービスを一覧できます。</td>
+                <td>GitHub、npm、PyPI の公開情報から取得します。</td>
+            </tr>
+            
+            <tr id="field-provider_homepage" class="scroll-mt-24">
+                <th scope="row">公式サイト</th>
+                <td>提供元が運営する公式サイトです。リンクの文言は、そのページのタイトルです。</td>
+                <td>公式ドキュメントとリポジトリから公式サイトのURLを読み取り、ページのタイトルを取得します。</td>
+            </tr>
+            
+            <tr id="field-provider_type" class="scroll-mt-24">
+                <th scope="row">種別</th>
+                <td>提供元が法人、個人、OSSプロジェクト、官公庁のどれであるかです。</td>
+                <td>GitHub のアカウント種別、公式サイトの運営者情報、パッケージの公開者情報から判定します。読み取れない場合は不明とします。</td>
+            </tr>
+            
+            <tr id="field-has_jp_entity" class="scroll-mt-24">
+                <th scope="row">国内法人</th>
+                <td>日本国内に契約や請求の窓口となる法人があるかどうかです。「あり」の場合は会社案内ページへのリンクを付けます。</td>
+                <td>公式サイトの会社概要ページから判定します。見つからない場合は不明とします。<br>種別が個人の場合は「対象外（個人）」と表示します。<br>種別が官公庁の場合は「対象外（官公庁）」と表示します。</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-connection">
+    <h2 id="group-connection" class="section-title">接続と認証</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">項目</th><th scope="col">意味</th><th scope="col">確認方法</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-hosting" class="scroll-mt-24">
+                <th scope="row">提供形態</th>
+                <td>サーバーをだれが動かすかです。「URLで接続」は提供者が動かしているサーバーに、クライアントからURLを指定して接続する形です。やり取りの内容は提供者のサーバーを通ります。「自分で動かす」は手元のPCや自分のサーバーでプログラムを動かす形で、プログラムを動かせないクライアントからは使えません。クライアントから接続できるかどうかは、接続方式と認証方式にも左右されます。</td>
+                <td>公式ドキュメントとリポジトリの README に、提供者が動かしている接続URLの記載があるか、自分で動かす手順の記載があるかで判定します。どちらも見つからない場合は不明とします。</td>
+            </tr>
+            
+            <tr id="field-auth_method" class="scroll-mt-24">
+                <th scope="row">認証方式</th>
+                <td>クライアントがサーバーに接続するときの認証方式です。OAuth 2.1 はMCP仕様が定める方式で、権限の範囲と有効期限を管理できます。</td>
+                <td>クローラーがサーバーの初期化応答と公式ドキュメントから判定します。</td>
+            </tr>
+            
+            <tr id="field-transport" class="scroll-mt-24">
+                <th scope="row">接続方式</th>
+                <td>クライアントとサーバーが通信する方式です。stdio は、クライアントが手元のPCでサーバーのプログラムを起動して通信します。Streamable HTTP は、URLを指定して接続します。接続先は提供者が動かすサーバーの場合と、自分で動かすサーバーの場合があり、どちらであるかは「提供形態」に表示します。</td>
+                <td>クローラーがパッケージの設定例と公開エンドポイントから判定します。</td>
+            </tr>
+            
+            <tr id="field-tls_only" class="scroll-mt-24">
+                <th scope="row">HTTPS必須</th>
+                <td>リモート接続が暗号化された HTTPS に限定されているかどうかです。stdio 専用のサーバーでは対象外です。</td>
+                <td>クローラーが公開エンドポイントへ HTTP と HTTPS で接続し、HTTP が拒否されるかを確認します。<br>接続方式がstdioのみの場合は「対象外（stdio のみ）」と表示します。</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-capability">
+    <h2 id="group-capability" class="section-title">機能</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">項目</th><th scope="col">意味</th><th scope="col">確認方法</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-tools" class="scroll-mt-24">
+                <th scope="row">提供ツール</th>
+                <td>サーバーがクライアントに公開しているツールの名前と説明です。説明文はサーバーが返す原文です。</td>
+                <td>クローラーがサーバーに接続し、tools/list の応答をそのまま記録します。</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-operations">
+    <h2 id="group-operations" class="section-title">運用状況</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">項目</th><th scope="col">意味</th><th scope="col">確認方法</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-version" class="scroll-mt-24">
+                <th scope="row">バージョン</th>
+                <td>確認時点の最新リリースのバージョンです。</td>
+                <td>クローラーが npm、PyPI、GitHub リリースから取得します。</td>
+            </tr>
+            
+            <tr id="field-last_updated" class="scroll-mt-24">
+                <th scope="row">最終更新日</th>
+                <td>最新リリースまたは最後のコミットの日付です。保守が続いているかの目安になります。</td>
+                <td>クローラーが npm、PyPI、GitHub から取得します。</td>
+            </tr>
+            
+            <tr id="field-last_probe_status" class="scroll-mt-24">
+                <th scope="row">接続状態</th>
+                <td>最後にクローラーが接続したときの結果です。</td>
+                <td>クローラーが定期的にサーバーへ接続し、初期化が成功するかを記録します。</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-pricing">
+    <h2 id="group-pricing" class="section-title">料金</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">項目</th><th scope="col">意味</th><th scope="col">確認方法</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-pricing_model" class="scroll-mt-24">
+                <th scope="row">料金体系</th>
+                <td>利用に費用がかかるかどうかと、かかる場合の課金の仕組みです。</td>
+                <td>公式サイトの料金ページから判定します。料金ページがない場合は不明とします。</td>
+            </tr>
+            
+            <tr id="field-free_tier" class="scroll-mt-24">
+                <th scope="row">無料枠</th>
+                <td>費用をかけずに試せる範囲があるかどうかです。</td>
+                <td>公式サイトの料金ページから判定します。</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-japanese">
+    <h2 id="group-japanese" class="section-title">日本語対応</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">項目</th><th scope="col">意味</th><th scope="col">確認方法</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-jp_docs" class="scroll-mt-24">
+                <th scope="row">日本語ドキュメント</th>
+                <td>導入手順と仕様の日本語版が公式に提供されているかどうかです。</td>
+                <td>公式ドキュメントまたはリポジトリの README が日本語で書かれているか、日本語版へのリンクがあるかで判定します。見つからない場合は不明とします。</td>
+            </tr>
+            
+            <tr id="field-jp_support" class="scroll-mt-24">
+                <th scope="row">日本語サポート</th>
+                <td>問い合わせページまたはサポートページが日本語で用意されているかどうかです。</td>
+                <td>公式サイトに日本語の問い合わせページまたはサポートページがあれば「あり」とします。問い合わせページがほかの言語だけの場合は「なし」、問い合わせページが見つからない場合は「不明」とします。</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+
+<section class="mt-14 border-t border-rule pt-8 text-sm" aria-labelledby="report-heading">
+    <h2 id="report-heading" class="section-title">誤りを見つけたとき</h2>
+    <p class="mt-3 max-w-3xl">項目名と根拠となる資料を info@mcpnavi.jp 宛にお送りください。確認のうえ、情報を更新します。</p>
+</section>
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">ディレクトリ</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link">ブログ</a>
+<a href="/criteria/" class="nav-link" aria-current="page">掲載されているデータについて</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="nav-link">mcpnaviに掲載する</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/legal/terms-of-service/" class="nav-link">利用規約</a>
+                <span>運営: 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

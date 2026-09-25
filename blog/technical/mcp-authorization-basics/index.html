@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>MCPサーバーの認証方式とは？OAuth 2.1とAPIキーの基本 | mcpnavi</title>
+    
+    <meta name="description" content="MCPサーバーの認証方式の入門記事です。OAuth 2.1、APIキー、なしの違い、MCP仕様2026-07-28版が定める認可の仕組み（Protected Resource Metadata、PKCE、Client ID Metadata Documents）、接続の流れを説明します。">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="MCPサーバーの認証方式とは？OAuth 2.1とAPIキーの基本">
+    <meta property="og:description" content="MCPサーバーの認証方式の入門記事です。OAuth 2.1、APIキー、なしの違い、MCP仕様2026-07-28版が定める認可の仕組み（Protected Resource Metadata、PKCE、Client ID Metadata Documents）、接続の流れを説明します。">
+    <meta property="og:url" content="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
+    <meta property="og:type" content="article">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "MCPサーバーの認証方式とは？OAuth 2.1とAPIキーの基本",
+      "description": "MCPサーバーの認証方式の入門記事です。OAuth 2.1、APIキー、なしの違い、MCP仕様2026-07-28版が定める認可の仕組み（Protected Resource Metadata、PKCE、Client ID Metadata Documents）、接続の流れを説明します。",
+      "url": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "author": {
+        "@type": "Person",
+        "name": "イクバル・アバドゥラ",
+        "url": "https://mcpnavi.jp/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mcpnavi",
+        "url": "https://mcpnavi.jp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ブログ",
+          "item": "https://mcpnavi.jp/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "技術解説",
+          "item": "https://mcpnavi.jp/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MCPサーバーの認証方式：OAuthとAPIキーの基本"
+        }
+      ]
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">本文へ移動</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+        </a>
+        <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="ダークモード">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">ja</span><span class="sr-only">言語</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><span class="nav-link" aria-current="true">日本語</span></li>
+        
+        <li><a href="/en/blog/technical/mcp-authorization-basics/" lang="en" hreflang="en" class="nav-link">英語</a></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">mcpnaviに掲載する
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="メニュー">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="サイト内" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm w-full">mcpnaviに掲載する</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">MCPサーバーの認証方式：OAuthとAPIキーの基本</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/en/blog/technical/mcp-authorization-basics/" hreflang="en" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Englishで読む</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h1 class="page-title mt-3">MCPサーバーの認証方式：OAuthとAPIキーの基本</h1>
+        <p class="page-lead">MCPサーバーは、接続してきた相手を確かめてからデータを返します。認証方式の種類、MCP仕様（2026-07-28版）が定めるOAuth 2.1の使い方、接続の流れ、接続前に確認することを説明します。</p>
+        <p class="post-byline"><a href="/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+<span>イクバル・アバドゥラ</span></a></p>
+    </header>
+    
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">目次</h2>
+                <ol class="mt-3">
+                    <li><a href="#認証が必要な理由" class="outline-link">認証が必要な理由</a></li>
+                    <li><a href="#認証方式の種類" class="outline-link">認証方式の種類</a></li>
+                    <li><a href="#mcp仕様が定めるoauthの使い方" class="outline-link">MCP仕様が定めるOAuthの使い方</a></li>
+                    <li><a href="#oauthで接続する流れ" class="outline-link">OAuthで接続する流れ</a></li>
+                    <li><a href="#仕様の変遷" class="outline-link">仕様の変遷</a></li>
+                    <li><a href="#接続前に確認すること" class="outline-link">接続前に確認すること</a></li>
+                    <li><a href="#まとめ" class="outline-link">まとめ</a></li>
+                    <li><a href="#出典" class="outline-link">出典</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>MCPサーバーは、AIアプリケーションに機能を足すプラグインです。つなぐと、AIはサーバーの先にあるデータを読み、操作を実行できます。そのためサーバーは、接続してきた相手がだれで、何を許されているかを知る必要があります。</p>
+<p>この記事では、MCPサーバーの認証方式の種類を説明します。続いて、MCP仕様（2026-07-28版）が定めるOAuthの使い方を説明します。MCPそのものの説明は<a href="/blog/technical/introduction-to-mcp/">MCP入門</a>にあります。</p>
+<h2 id="認証が必要な理由">認証が必要な理由</h2>
+<p>会計サービスのMCPサーバーを例にします。このサーバーは、利用者の仕訳データを返します。相手を確かめずに応答すると、ほかの人のデータまで返してしまいます。</p>
+<p>サーバーが確かめることは2つあります。</p>
+<ul>
+<li><strong>認証</strong>：接続してきた相手がだれか</li>
+<li><strong>認可</strong>：その相手に、どのデータと操作を許すか</li>
+</ul>
+<p>MCP仕様は、この仕組みを「Authorization（認可）」というページで定めています。mcpnaviは、サービスごとの方式を「認証方式」の欄に掲載しています。</p>
+<h2 id="認証方式の種類">認証方式の種類</h2>
+<p>mcpnaviの「認証方式」の欄には、次の4つの値があります。</p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OAuth 2.1</td>
+<td>利用者がブラウザでログインしてアクセスを許可し、クライアントがアクセストークンを受け取る方式。MCP仕様が定めている</td>
+</tr>
+<tr>
+<td>APIキー</td>
+<td>提供元が発行する文字列（キー）をクライアントに設定し、リクエストと一緒に送る方式</td>
+</tr>
+<tr>
+<td>なし</td>
+<td>認証をせずに接続できる</td>
+</tr>
+<tr>
+<td>不明</td>
+<td>方式を書いた公開ページが見つからない</td>
+</tr>
+</tbody>
+</table>
+<p>MCP仕様の認可のページが定めているのは、OAuth 2.1にもとづく方式です。APIキーの渡し方は書かれていません。APIキーの設定方法はサービスごとに異なるため、提供元のドキュメントで確認します。</p>
+<p>OAuth 2.1は、アプリケーションが保護されたリソースへの限定的なアクセスを得るための枠組みです。利用者はパスワードをクライアントに渡しません。クライアントが受け取るのは、範囲（スコープ）の決まったアクセストークンです。</p>
+<h2 id="mcp仕様が定めるoauthの使い方">MCP仕様が定めるOAuthの使い方</h2>
+<p>MCP仕様では、認可の実装は任意です。実装する場合の扱いは、接続方式によって分かれます。</p>
+<ul>
+<li><strong>HTTPを使う接続方式</strong>（Streamable HTTPなど）：仕様の認可の定めに従うことが推奨されています。</li>
+<li><strong>stdio</strong>：仕様の認可の定めには従わず、認証情報を環境から取得します。stdioのサーバーは、利用者のPCで動くサーバーです。</li>
+</ul>
+<p>HTTPの場合、登場する役割は3つです。</p>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCPサーバー</td>
+<td>OAuth 2.1の「リソースサーバー」。アクセストークンの付いたリクエストを受け付ける</td>
+</tr>
+<tr>
+<td>MCPクライアント</td>
+<td>OAuth 2.1の「クライアント」。利用者の代わりにリクエストを送る</td>
+</tr>
+<tr>
+<td>認可サーバー</td>
+<td>利用者とやり取りし、アクセストークンを発行する。MCPサーバーと同じ場所にあっても、別の組織が運営していてもよい</td>
+</tr>
+</tbody>
+</table>
+<p>仕様は、この3者に次のことを求めています。</p>
+<p><strong>認可サーバーの場所を公開する。</strong> MCPサーバーは「OAuth 2.0 Protected Resource Metadata」（RFC 9728）を実装します。これは、自分の認可サーバーがどこにあるかを書いた文書です。クライアントはこの文書を読んで、認可サーバーを見つけます。文書のURLは、HTTP 401の応答のヘッダーか、決まった場所（well-known URI）で知らせます。次は、ヘッダーで知らせる例です。</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
+<span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">Bearer resource_metadata="https://mcp.example.com/.well-known/oauth-protected-resource",</span>
+                         <span class="l">scope="files:read"</span>
+</code></pre></div>
+
+<p><strong>クライアントを識別する。</strong> クライアントは、認可の流れを始める前にクライアントIDを用意します。方法は3つあります。</p>
+<ol>
+<li>事前登録：クライアントと認可サーバーに、すでに関係がある場合に使います。</li>
+<li>Client ID Metadata Documents：クライアントが自分の情報（名前、リダイレクト先など）をHTTPSのURLで公開し、そのURLをクライアントIDとして使います。事前の関係がない場合の方法で、仕様はこの対応を推奨しています。</li>
+<li>動的クライアント登録（RFC 7591）：2026-07-28版で非推奨になりました。Client ID Metadata Documentsに対応していない認可サーバーのために残されています。</li>
+</ol>
+<p><strong>PKCEを使う。</strong> PKCEは、認可コードを横取りされても、トークンに交換できないようにする仕組みです。MCPクライアントにはPKCEの実装が必須です。認可サーバーがPKCEに対応していることをメタデータで確認できない場合、クライアントは処理を中止します。</p>
+<p><strong>トークンを1つのサーバー専用にする。</strong> クライアントは、どのMCPサーバーで使うトークンかを<code>resource</code>パラメーター（RFC 8707）で指定します。MCPサーバーは、自分のために発行されたトークンだけを受け付けます。MCPサーバーが別のAPIを呼ぶ場合も、クライアントから受け取ったトークンをそのまま渡してはいけません。</p>
+<p><strong>トークンをヘッダーで送る。</strong> クライアントは、アクセストークンを<code>Authorization: Bearer &lt;アクセストークン&gt;</code>ヘッダーで送ります。このヘッダーは、すべてのHTTPリクエストに付けます。URLのクエリ文字列にトークンを入れることは禁止されています。</p>
+<p>通信にも条件があります。認可サーバーのエンドポイントは、すべてHTTPSで提供します。リダイレクト先のURIは、<code>localhost</code>かHTTPSのどちらかです。</p>
+<h2 id="oauthで接続する流れ">OAuthで接続する流れ</h2>
+<p>利用者がMCPサーバーを初めてつなぐとき、クライアントは次の順で動きます。</p>
+<ol>
+<li>クライアントが、トークンを付けずにMCPサーバーへリクエストを送ります。</li>
+<li>MCPサーバーがHTTP 401を返します。<code>WWW-Authenticate</code>ヘッダーに、Protected Resource MetadataのURLが入っています。</li>
+<li>クライアントがその文書を取得し、認可サーバーの場所を読み取ります。ヘッダーにURLがない場合は、well-known URIから取得します。</li>
+<li>クライアントが認可サーバーのメタデータを取得し、エンドポイントとPKCEへの対応を確認します。</li>
+<li>クライアントがブラウザを開き、認可サーバーの画面を表示します。</li>
+<li>利用者がログインし、表示された内容を確認して、アクセスを許可します。</li>
+<li>認可サーバーが、認可コードをクライアントに返します。</li>
+<li>クライアントが、認可コードをアクセストークンに交換します。</li>
+<li>クライアントが、アクセストークンを付けてMCPサーバーへリクエストを送ります。</li>
+</ol>
+<p>利用者が操作するのは6だけです。残りはクライアントが自動で行います。</p>
+<p>あとから別の権限が必要になることがあります。その場合、サーバーはHTTP 403と、必要なスコープを返します。クライアントは、そのスコープを加えて認可をやり直します。仕様は、クライアントに必要なスコープだけを要求することを推奨しています。</p>
+<h2 id="仕様の変遷">仕様の変遷</h2>
+<p>認可の定めは、版ごとに追加と変更が続いています。</p>
+<table>
+<thead>
+<tr>
+<th>版</th>
+<th>認可に関する主な変更</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-03-26</td>
+<td>OAuth 2.1にもとづく認可の枠組みを追加</td>
+</tr>
+<tr>
+<td>2025-06-18</td>
+<td>MCPサーバーをOAuthのリソースサーバーと位置づけ、Protected Resource Metadataを追加。クライアントにResource Indicators（RFC 8707）の実装を必須化</td>
+</tr>
+<tr>
+<td>2025-11-25</td>
+<td>認可サーバーの発見方法にOpenID Connect Discovery 1.0を追加。Client ID Metadata Documentsを推奨の登録方法として追加。<code>WWW-Authenticate</code>による段階的なスコープの同意を追加</td>
+</tr>
+<tr>
+<td>2026-07-28</td>
+<td>動的クライアント登録（RFC 7591）を非推奨に変更。認可応答に<code>iss</code>がある場合、クライアントが発行者と照合することを必須化。クライアントの資格情報を、発行した認可サーバーにひも付けることを明確化</td>
+</tr>
+</tbody>
+</table>
+<p>2026-07-28版は、機能の非推奨についての方針も定めました。非推奨になった機能は、最短でも12か月は仕様に残ります。</p>
+<h2 id="接続前に確認すること">接続前に確認すること</h2>
+<p>認証方式がわかると、接続の前に確かめることが決まります。</p>
+<ul>
+<li><strong>OAuth 2.1の場合</strong>：Client ID Metadata Documentsを使う流れでは、認可サーバーが同意画面にクライアントの名前を表示します。表示された内容を読んでから許可します。</li>
+<li><strong>APIキーの場合</strong>：キーにどの権限があるかを、提供元のドキュメントで確認します。キーを、共有するファイルやリポジトリに含めないでください。</li>
+<li><strong>なしの場合</strong>：認証をせずに接続できます。サーバーは、接続してきた相手を区別しません。</li>
+</ul>
+<p>トークンの保管について、仕様はクライアントとサーバーの両方に、保護された形で保管することを求めています。具体的な方法は、OAuth 2.1のベストプラクティスに従うとしています。仕様は認可サーバーに、有効期間の短いアクセストークンを発行することも推奨しています。</p>
+<p>認証方式だけでは判断できません。次の欄もあわせて確認します。</p>
+<ul>
+<li><strong>提供元</strong>：サーバーを提供しているのはだれか（提供元、種別、国内法人）</li>
+<li><strong>提供形態</strong>：サーバーを動かすのはだれか。提供元が運営するサーバーにはHTTPで接続するため、上のOAuthの定めが関係します。利用者のPCで動かすstdioのサーバーでは、認証情報を利用者の環境に置きます。</li>
+</ul>
+<p>mcpnaviは、これらの項目を公開ページから読み取り、情報確認日とともに掲載しています。公開ページに書かれていない項目は「不明」と表示します。項目の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li>MCPサーバーの認証方式は、OAuth 2.1、APIキー、なしの3つに分けられます。公開ページからわからないものは「不明」です。</li>
+<li>MCP仕様が定めているのは、HTTPで接続する場合のOAuth 2.1にもとづく認可です。stdioの場合は、認証情報を環境から取得します。</li>
+<li>MCPサーバーはProtected Resource Metadataで認可サーバーの場所を知らせます。クライアントはPKCEを使い、トークンを1つのサーバー専用にします。</li>
+<li>2026-07-28版で、動的クライアント登録は非推奨になりました。推奨はClient ID Metadata Documentsです。</li>
+</ul>
+<p>MCPサービスを探すには、<a href="/servers/">MCPサービス一覧</a>を使います。各サービスのページに、認証方式、提供元、提供形態を掲載しています。</p>
+<h2 id="出典">出典</h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">Authorization</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/authorization-server-discovery">Authorization Server Discovery</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/client-registration">Client Registration</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations">Authorization Security Considerations</a>（MCP公式仕様、2026-07-28版）</li>
+<li>各版の変更点：<a href="https://modelcontextprotocol.io/specification/2025-03-26/changelog">2025-03-26</a>、<a href="https://modelcontextprotocol.io/specification/2025-06-18/changelog">2025-06-18</a>、<a href="https://modelcontextprotocol.io/specification/2025-11-25/changelog">2025-11-25</a>、<a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">2026-07-28</a>（MCP公式仕様）</li>
+<li><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13">The OAuth 2.1 Authorization Framework（draft-ietf-oauth-v2-1-13）</a>（IETF、2025-05-28）</li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc9728">RFC 9728: OAuth 2.0 Protected Resource Metadata</a>（IETF、2025-04）</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">最終更新: <time datetime="2026-09-23">2026-09-23</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="前後の記事">
+    <div><a href="/blog/technical/remote-and-local-mcp-servers/" rel="prev" class="card-link block h-full px-6 py-5"><span class="text-muted">新しい記事</span><br><span class="font-medium">リモートMCPサーバーとローカルMCPサーバーの違い</span></a></div>
+    <div class="sm:text-right"><a href="/blog/technical/introduction-to-mcp/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">古い記事</span><br><span class="font-medium">MCP入門：Model Context Protocolの歴史と仕組み</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">関連記事</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">技術解説</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a></h3>
+        <p class="post-card-intro">リモートMCPサーバーは提供元が動かし、URLで接続します。ローカルMCPサーバーは利用者が手元のPCで動かします。提供形態と接続方式の違い、利用者がすること、認証情報の扱いを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">技術解説</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/introduction-to-mcp/">MCP入門：Model Context Protocolの歴史と仕組み</a></h3>
+        <p class="post-card-intro">MCP（Model Context Protocol）は、AIアプリケーションを外部のデータやツールにつなぐ共通規格です。生まれた理由、2024年の公開から2026-07-28版までの経緯、基本の仕組みを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">ディレクトリ</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+<a href="/criteria/" class="nav-link">掲載されているデータについて</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="nav-link">mcpnaviに掲載する</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/legal/terms-of-service/" class="nav-link">利用規約</a>
+                <span>運営: 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>About the data | mcpnavi</title>
+    
+    <meta name="description" content="About the data on mcpnavi: which public pages it is read from, when it was last checked, and what each field means and how it is checked.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/criteria/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="MCP services: connect your AI agent to data and tools">
+    <meta property="og:description" content="A directory of MCP services that connect AI agents like ChatGPT and Claude to data and tools. Every service lists compatible agents and connection methods. All data is read from public pages, and every service shows the date it was last checked.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/criteria/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/criteria/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/criteria/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/criteria/">
+    
+    
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/criteria/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+<h1 class="page-title">About the data</h1>
+<p class="page-lead">Every value mcpnavi shows carries where it was read from and when it was checked. This page explains how values are read, and what each field means and how it is checked.</p>
+
+<section class="mt-10" aria-labelledby="source-heading">
+    <h2 id="source-heading" class="section-title">How the information is read</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Shown as</th><th scope="col">Meaning</th></tr></thead>
+        <tbody>
+            <tr>
+                <th scope="row">Listed information and last-checked date</th>
+                <td>Information read from the server itself, GitHub, npm, PyPI or the official site. The date it was read is shown once per service as the last-checked date.</td>
+            </tr>
+            <tr>
+                <th scope="row"><span class="value-unknown">Unknown</span></th>
+                <td>A field whose information could not be read from a public page. It means not yet checked or not published, and it is never left blank.</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <p class="mt-4 max-w-3xl text-sm text-muted">The provider may have changed the specification or pricing after the last-checked date. Confirm on the official site before adopting.</p>
+</section>
+
+<section class="mt-12" aria-labelledby="scope-heading">
+    <div class="card p-6">
+        <h2 id="scope-heading" class="section-title">What a listing does not mean</h2>
+        <ul class="mt-4 space-y-3">
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>That the provider has not changed the specification or terms since the last-checked date.</span></li>
+
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>That the server's source code has no vulnerabilities. No code audit is done.</span></li>
+
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>That it fits a particular business or legal requirement. The adopting organisation decides that.</span></li>
+
+            
+<li class="flex gap-3"><span class="mt-1 text-muted">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+</span><span>The contract terms with the provider. Contracts are made directly with the provider.</span></li>
+
+        </ul>
+    </div>
+</section>
+
+
+<section class="mt-12" aria-labelledby="group-identity">
+    <h2 id="group-identity" class="section-title">Provider</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Field</th><th scope="col">Meaning</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-provider_name" class="scroll-mt-24">
+                <th scope="row">Provider</th>
+                <td>The organisation or person that develops and distributes this server. The name links to the provider page, which lists every MCP service from the same provider.</td>
+                <td>Read from the public GitHub, npm or PyPI pages.</td>
+            </tr>
+            
+            <tr id="field-provider_homepage" class="scroll-mt-24">
+                <th scope="row">Website</th>
+                <td>The official website the provider runs. The link text is the title of that page.</td>
+                <td>The site&#x27;s URL is read from the official documentation and the repository, and the page&#x27;s title is fetched.</td>
+            </tr>
+            
+            <tr id="field-provider_type" class="scroll-mt-24">
+                <th scope="row">Type</th>
+                <td>Whether the provider is a company, an individual, an open-source project or a government body.</td>
+                <td>Read from the GitHub account type, the operator information on the official site and the publisher of the package. Unknown when none of them states it.</td>
+            </tr>
+            
+            <tr id="field-has_jp_entity" class="scroll-mt-24">
+                <th scope="row">Japanese entity</th>
+                <td>Whether a company in Japan can sign the contract and issue the invoice. &quot;Yes&quot; links to the company page.</td>
+                <td>Read from the company page on the official site. Unknown when none is found.<br>When Type is Individual, this shows as "Not applicable (individual)".<br>When Type is Government body, this shows as "Not applicable (government body)".</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-connection">
+    <h2 id="group-connection" class="section-title">Connection and authentication</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Field</th><th scope="col">Meaning</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-hosting" class="scroll-mt-24">
+                <th scope="row">Hosting</th>
+                <td>Who runs the server. &quot;Connect by URL&quot; means the provider runs the server and the client connects to it with a URL. What the client sends and receives passes through the provider&#x27;s server. &quot;Run it yourself&quot; means you run the program on your own computer or your own server, so a client that cannot run programs cannot use it. Whether a client can connect also depends on the transport and the authentication method.</td>
+                <td>Read from the official documentation and the repository README: whether they state an endpoint URL the provider runs, and whether they give steps to run the server yourself. If neither is found, the value is Unknown.</td>
+            </tr>
+            
+            <tr id="field-auth_method" class="scroll-mt-24">
+                <th scope="row">Authentication</th>
+                <td>How a client authenticates to the server. OAuth 2.1 is the method the MCP specification defines; it scopes permissions and expires tokens.</td>
+                <td>The crawler reads the server&#x27;s initialize response and the official documentation.</td>
+            </tr>
+            
+            <tr id="field-transport" class="scroll-mt-24">
+                <th scope="row">Transport</th>
+                <td>How the client and the server talk to each other. With stdio, the client starts the server program on your own computer. With Streamable HTTP, the client connects to a URL. That URL can be a server the provider runs or a server you run yourself; &quot;Hosting&quot; states which.</td>
+                <td>The crawler reads the package&#x27;s configuration examples and the public endpoint.</td>
+            </tr>
+            
+            <tr id="field-tls_only" class="scroll-mt-24">
+                <th scope="row">HTTPS required</th>
+                <td>Whether remote connections are limited to encrypted HTTPS. Not applicable to stdio-only servers.</td>
+                <td>The crawler connects to the public endpoint over HTTP and HTTPS and checks that plain HTTP is refused.<br>When Transport is stdio only, this shows as "Not applicable (stdio only)".</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-capability">
+    <h2 id="group-capability" class="section-title">Capability</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Field</th><th scope="col">Meaning</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-tools" class="scroll-mt-24">
+                <th scope="row">Tools</th>
+                <td>The names and descriptions of the tools the server exposes to clients. Descriptions are the server&#x27;s own text.</td>
+                <td>The crawler connects to the server and records the tools/list response as is.</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-operations">
+    <h2 id="group-operations" class="section-title">Operations</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Field</th><th scope="col">Meaning</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-version" class="scroll-mt-24">
+                <th scope="row">Version</th>
+                <td>The latest release version at the time of checking.</td>
+                <td>The crawler takes this from npm, PyPI or GitHub releases.</td>
+            </tr>
+            
+            <tr id="field-last_updated" class="scroll-mt-24">
+                <th scope="row">Last updated</th>
+                <td>The date of the latest release or last commit. A guide to whether the server is still maintained.</td>
+                <td>The crawler takes this from npm, PyPI or GitHub.</td>
+            </tr>
+            
+            <tr id="field-last_probe_status" class="scroll-mt-24">
+                <th scope="row">Status</th>
+                <td>The result of the crawler&#x27;s last connection.</td>
+                <td>The crawler connects to the server on a schedule and records whether initialization succeeds.</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-pricing">
+    <h2 id="group-pricing" class="section-title">Pricing</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Field</th><th scope="col">Meaning</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-pricing_model" class="scroll-mt-24">
+                <th scope="row">Pricing model</th>
+                <td>Whether use costs money and, if so, how it is charged.</td>
+                <td>Read from the pricing page on the official site. Unknown when there is no pricing page.</td>
+            </tr>
+            
+            <tr id="field-free_tier" class="scroll-mt-24">
+                <th scope="row">Free tier</th>
+                <td>Whether there is a range of use that costs nothing.</td>
+                <td>Read from the pricing page on the official site.</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<section class="mt-12" aria-labelledby="group-japanese">
+    <h2 id="group-japanese" class="section-title">Japanese support</h2>
+    <div class="sheet-frame mt-4">
+    <table class="sheet">
+        <thead><tr><th scope="col" class="sheet-label">Field</th><th scope="col">Meaning</th><th scope="col">How it is checked</th></tr></thead>
+        <tbody>
+            
+            <tr id="field-jp_docs" class="scroll-mt-24">
+                <th scope="row">Japanese documentation</th>
+                <td>Whether official Japanese setup and reference documentation exists.</td>
+                <td>Read from whether the official documentation or the repository README is written in Japanese, or links to a Japanese version. Unknown when neither is found.</td>
+            </tr>
+            
+            <tr id="field-jp_support" class="scroll-mt-24">
+                <th scope="row">Japanese support</th>
+                <td>Whether the contact page or the support page is available in Japanese.</td>
+                <td>&quot;Yes&quot; when the official site has a contact page or a support page in Japanese. &quot;No&quot; when the contact page is only in another language. &quot;Unknown&quot; when no contact page is found.</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+</section>
+
+
+<section class="mt-14 border-t border-rule pt-8 text-sm" aria-labelledby="report-heading">
+    <h2 id="report-heading" class="section-title">Found an error?</h2>
+    <p class="mt-3 max-w-3xl">Send the field name and the supporting source to info@mcpnavi.jp. We check it and update the information.</p>
+</section>
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link">Blog</a>
+<a href="/en/criteria/" class="nav-link" aria-current="page">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

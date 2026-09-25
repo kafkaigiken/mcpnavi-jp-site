@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>Remote vs local MCP servers: hosting, transport and credentials | mcpnavi</title>
+    
+    <meta name="description" content="The difference between a remote and a local MCP server: who runs the server (hosting), the wire format (stdio or Streamable HTTP), what the user does in each case, how credentials are handled, and the transports in specification 2026-07-28.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="Remote vs local MCP servers: hosting, transport and credentials">
+    <meta property="og:description" content="The difference between a remote and a local MCP server: who runs the server (hosting), the wire format (stdio or Streamable HTTP), what the user does in each case, how credentials are handled, and the transports in specification 2026-07-28.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/">
+    <meta property="og:type" content="article">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/">
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Remote vs local MCP servers: hosting, transport and credentials",
+      "description": "The difference between a remote and a local MCP server: who runs the server (hosting), the wire format (stdio or Streamable HTTP), what the user does in each case, how credentials are handled, and the transports in specification 2026-07-28.",
+      "url": "https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/",
+      "datePublished": "2026-09-25",
+      "dateModified": "2026-09-25",
+      "author": {
+        "@type": "Person",
+        "name": "Iqbal Abdullah",
+        "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mcpnavi",
+        "url": "https://mcpnavi.jp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Remote and local MCP servers: what the difference is"
+        }
+      ]
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/blog/technical/remote-and-local-mcp-servers/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <a href="/en/blog/">Blog</a> › <a href="/en/blog/technical/">Technical</a> › <span class="text-ink">Remote and local MCP servers: what the difference is</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/blog/technical/remote-and-local-mcp-servers/" hreflang="ja" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Read in 日本語</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h1 class="page-title mt-3">Remote and local MCP servers: what the difference is</h1>
+        <p class="page-lead">A provider runs a remote MCP server, and you connect to it by URL. You run a local MCP server on your own computer. This article covers hosting versus transport, what the user does, and how credentials are handled.</p>
+        <p class="post-byline"><a href="/en/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+<span>Iqbal Abdullah</span></a></p>
+    </header>
+    
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">Contents</h2>
+                <ol class="mt-3">
+                    <li><a href="#what-remote-and-local-mean" class="outline-link">What remote and local mean</a></li>
+                    <li><a href="#hosting-and-transport-are-two-separate-facts" class="outline-link">Hosting and transport are two separate facts</a></li>
+                    <li><a href="#what-the-user-does" class="outline-link">What the user does</a></li>
+                    <li><a href="#how-credentials-are-handled" class="outline-link">How credentials are handled</a></li>
+                    <li><a href="#the-transports-in-specification-2026-07-28" class="outline-link">The transports in specification 2026-07-28</a></li>
+                    <li><a href="#how-to-read-these-fields-on-mcpnavi" class="outline-link">How to read these fields on mcpnavi</a></li>
+                    <li><a href="#summary" class="outline-link">Summary</a></li>
+                    <li><a href="#sources" class="outline-link">Sources</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>Descriptions of MCP servers often use the words "remote" and "local". Remote means you connect by URL to a server that the provider runs. Local means you run the server program on your own computer.</p>
+<p>This article explains the difference for a reader who is choosing a service. For MCP itself, read the <a href="/en/blog/technical/introduction-to-mcp/">introduction to MCP</a>.</p>
+<h2 id="what-remote-and-local-mean">What remote and local mean</h2>
+<p>An MCP server is a program that works like a plugin: it adds features to an AI application. The official documentation says the term "MCP server" covers this program wherever it runs. It then gives two common names, by where the server runs.</p>
+<ul>
+<li><strong>Local MCP server</strong>: a server that runs on the same machine as the client. The documentation's example is the filesystem server, which works with files. The client launches the server and communicates over stdio.</li>
+<li><strong>Remote MCP server</strong>: a server that runs in the provider's environment. The documentation's example is the Sentry MCP server. It runs on the Sentry platform and communicates over Streamable HTTP.</li>
+</ul>
+<p>According to the documentation, a local server that uses stdio typically serves a single client. A remote server that uses Streamable HTTP typically serves many clients.</p>
+<h2 id="hosting-and-transport-are-two-separate-facts">Hosting and transport are two separate facts</h2>
+<p>The question "remote or local?" mixes two facts.</p>
+<ol>
+<li><strong>Who runs the server</strong>: the provider, or the user</li>
+<li><strong>How the client and the server communicate</strong>: stdio, or Streamable HTTP</li>
+</ol>
+<p>mcpnavi lists them separately. The first is "Hosting". The second is "Transport".</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it states</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hosting</td>
+<td>Who runs the server</td>
+<td>Connect by URL, Run it yourself, Unknown</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>The wire format</td>
+<td>stdio, Streamable HTTP, SSE (legacy)</td>
+</tr>
+</tbody>
+</table>
+<p>They are separate because more than one combination exists.</p>
+<table>
+<thead>
+<tr>
+<th>Hosting</th>
+<th>Transport</th>
+<th>What it looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect by URL</td>
+<td>Streamable HTTP</td>
+<td>You give the client the URL of a server that the provider runs</td>
+</tr>
+<tr>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>The client launches the program on your own computer</td>
+</tr>
+<tr>
+<td>Run it yourself</td>
+<td>Streamable HTTP</td>
+<td>You run the program on your own computer or server, and connect to its URL</td>
+</tr>
+</tbody>
+</table>
+<p>Because of the third row, "Streamable HTTP" does not mean "the provider runs it". The specification also has text that assumes this case. It is a note about running a Streamable HTTP server locally. It asks the server to bind only to localhost (127.0.0.1).</p>
+<p>Some providers offer both forms. For those services, mcpnavi shows both "Connect by URL" and "Run it yourself".</p>
+<h2 id="what-the-user-does">What the user does</h2>
+<h3 id="when-hosting-is-connect-by-url">When Hosting is "Connect by URL"</h3>
+<p>The provider runs the server. You register the server's URL in the client. You install no program.</p>
+<p>According to the specification, a Streamable HTTP server provides a single HTTP endpoint. It is called the MCP endpoint. It is a URL such as <code>https://example.com/mcp</code>. The client sends each message to this URL as its own HTTP POST.</p>
+<p>The content of the exchange passes through the provider's server.</p>
+<h3 id="when-hosting-is-run-it-yourself">When Hosting is "Run it yourself"</h3>
+<p>You run the program on your own computer or your own server. With stdio, the steps are:</p>
+<ol>
+<li>Follow the provider's instructions and prepare an environment that can run the program.</li>
+<li>Register the command that starts the program in the client's settings.</li>
+<li>The client launches the server as a subprocess.</li>
+<li>The client and the server exchange messages over standard input and standard output.</li>
+</ol>
+<p>Steps 3 and 4 are the behaviour the specification defines. The documentation describes stdio this way: processes on the same machine communicate directly, so there is no network overhead.</p>
+<p>What stays off the network is the communication between the client and the server. The documentation also lists API calls as an example of what a tool does. A tool on a local server may still call an outside API.</p>
+<p>A client that cannot run a program cannot use a service that is "Run it yourself" only. Whether a client can connect depends on Hosting, and also on Transport and Authentication.</p>
+<h2 id="how-credentials-are-handled">How credentials are handled</h2>
+<p>The handling of the information that identifies the user to the server (an API key or a token) depends on the transport. In the specification, authorization is optional. For implementations that support it, the specification gives a different rule for each transport.</p>
+<p><strong>With Streamable HTTP</strong>, the recommendation is to follow the specification's authorization flow, which is based on OAuth 2.1. The flow is:</p>
+<ol>
+<li>The client opens a browser, and the user approves the connection on the authorization server's page.</li>
+<li>The authorization server issues an access token to the client.</li>
+<li>The client sends the token in the <code>Authorization</code> header of every request.</li>
+</ol>
+<p>The specification says a token must not be placed in the URL query string. According to the documentation, Streamable HTTP also supports standard HTTP authentication methods: bearer tokens, API keys and custom headers. It then recommends OAuth as the way to obtain tokens.</p>
+<p><strong>With stdio</strong>, the recommendation is not to follow that authorization flow, and to retrieve credentials from the environment instead. There is no approval step in a browser. The server program reads the credentials placed in the environment it runs in.</p>
+<p>mcpnavi lists each service's method as "Authentication" (OAuth 2.1, API key, None, Unknown).</p>
+<h2 id="the-transports-in-specification-2026-07-28">The transports in specification 2026-07-28</h2>
+<p>The current specification, 2026-07-28, defines two standard transports.</p>
+<ul>
+<li><strong>stdio</strong>: The client exchanges messages with a subprocess it launched, over the standard streams. Messages are delimited by newlines.</li>
+<li><strong>Streamable HTTP</strong>: Each message is an HTTP POST to a single MCP endpoint. The reply arrives as one JSON object or as an SSE stream that belongs to that request.</li>
+</ul>
+<p>According to the specification, the meaning of the messages is identical on every transport. A transport defines how messages are framed and delivered. Custom transports are also allowed.</p>
+<p>Specification 2026-07-28 also changed how Streamable HTTP behaves. The stream opened with GET and the protocol-level sessions were removed.</p>
+<p>HTTP+SSE is the transport from specification 2024-11-05. Specification 2025-03-26 replaced it with Streamable HTTP, and it has been "deprecated" since then. The specification says new implementations should not adopt it and existing ones should migrate to Streamable HTTP. It is eligible for removal in a future revision. mcpnavi shows this transport as "SSE (legacy)".</p>
+<h2 id="how-to-read-these-fields-on-mcpnavi">How to read these fields on mcpnavi</h2>
+<p>mcpnavi lists these facts for each service.</p>
+<ul>
+<li><strong>Hosting</strong>: mcpnavi reads the official documentation and the repository README. A connection URL that the provider runs means "Connect by URL". Instructions for running the program mean "Run it yourself". A connection URL that points at your own computer (localhost) also means "Run it yourself".</li>
+<li><strong>Transport</strong>: every transport the service supports, out of stdio, Streamable HTTP and SSE (legacy).</li>
+<li><strong>Connection URL</strong>: the URL that the provider publishes for connections. It appears under "Setup" on the service's detail page.</li>
+<li><strong>HTTPS required</strong>: a service whose only transport is stdio shows "Not applicable (stdio only)".</li>
+</ul>
+<p>A field that no public page states is shown as "Unknown". mcpnavi does not fill in a value by guessing. <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
+<p>The <a href="/en/servers/">list of MCP services</a> has a filter named "Connects with a URL alone". It shows only <a href="/en/servers/filter/remote/">the services whose Hosting includes "Connect by URL"</a>.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>"Remote" is a server that the provider runs. "Local" is a server that the user runs on their own computer.</li>
+<li>Who runs the server (Hosting) and how it communicates (Transport) are separate facts. A user can also run a Streamable HTTP server.</li>
+<li>With "Connect by URL", you register a URL in the client. With "Run it yourself", you prepare the program and register the command that starts it.</li>
+<li>The handling of credentials depends on the transport. OAuth is recommended with Streamable HTTP. With stdio, credentials come from the environment.</li>
+<li>Specification 2026-07-28 has two standard transports: stdio and Streamable HTTP. HTTP+SSE is deprecated.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Architecture overview</a> (MCP documentation)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">Transports: Overview</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/stdio">Transports: stdio</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http">Transports: Streamable HTTP</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">Authorization</a> (MCP specification, 2026-07-28)</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/deprecated">Deprecated Features</a> (MCP specification, 2026-07-28)</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">Last updated: <time datetime="2026-09-25">2026-09-25</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="Adjacent posts">
+    <div></div>
+    <div class="sm:text-right"><a href="/en/blog/technical/mcp-authorization-basics/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">Older post</span><br><span class="font-medium">Authentication for MCP servers: the basics of OAuth and API keys</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">Related posts</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">Technical</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-authorization-basics/">Authentication for MCP servers: the basics of OAuth and API keys</a></h3>
+        <p class="post-card-intro">An MCP server checks who is connecting before it returns data. This article covers the kinds of authentication, how specification 2026-07-28 uses OAuth 2.1, the flow of a connection, and what to check before you connect.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">Technical</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/introduction-to-mcp/">Introduction to MCP: the history of the Model Context Protocol and how it works</a></h3>
+        <p class="post-card-intro">MCP (Model Context Protocol) is a common standard that connects AI applications to outside data and tools. This article covers why it was created, its history from 2024 to specification 2026-07-28, and how it works.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

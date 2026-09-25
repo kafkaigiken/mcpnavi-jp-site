@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>リモートMCPサーバーとローカルMCPサーバーの違い（提供形態と接続方式） | mcpnavi</title>
+    
+    <meta name="description" content="リモートMCPサーバーとローカルMCPサーバーの違いを説明します。サーバーを誰が動かすか（提供形態）と通信の形式（接続方式：stdio、Streamable HTTP）、利用者がすること、認証情報の扱い、2026-07-28版の接続方式を取り上げます。">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="リモートMCPサーバーとローカルMCPサーバーの違い（提供形態と接続方式）">
+    <meta property="og:description" content="リモートMCPサーバーとローカルMCPサーバーの違いを説明します。サーバーを誰が動かすか（提供形態）と通信の形式（接続方式：stdio、Streamable HTTP）、利用者がすること、認証情報の扱い、2026-07-28版の接続方式を取り上げます。">
+    <meta property="og:url" content="https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/">
+    <meta property="og:type" content="article">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/">
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "リモートMCPサーバーとローカルMCPサーバーの違い（提供形態と接続方式）",
+      "description": "リモートMCPサーバーとローカルMCPサーバーの違いを説明します。サーバーを誰が動かすか（提供形態）と通信の形式（接続方式：stdio、Streamable HTTP）、利用者がすること、認証情報の扱い、2026-07-28版の接続方式を取り上げます。",
+      "url": "https://mcpnavi.jp/blog/technical/remote-and-local-mcp-servers/",
+      "datePublished": "2026-09-25",
+      "dateModified": "2026-09-25",
+      "author": {
+        "@type": "Person",
+        "name": "イクバル・アバドゥラ",
+        "url": "https://mcpnavi.jp/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mcpnavi",
+        "url": "https://mcpnavi.jp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ブログ",
+          "item": "https://mcpnavi.jp/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "技術解説",
+          "item": "https://mcpnavi.jp/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "リモートMCPサーバーとローカルMCPサーバーの違い"
+        }
+      ]
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">本文へ移動</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+        </a>
+        <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="ダークモード">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">ja</span><span class="sr-only">言語</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><span class="nav-link" aria-current="true">日本語</span></li>
+        
+        <li><a href="/en/blog/technical/remote-and-local-mcp-servers/" lang="en" hreflang="en" class="nav-link">英語</a></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">mcpnaviに掲載する
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="メニュー">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="サイト内" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm w-full">mcpnaviに掲載する</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">リモートMCPサーバーとローカルMCPサーバーの違い</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/en/blog/technical/remote-and-local-mcp-servers/" hreflang="en" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Englishで読む</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h1 class="page-title mt-3">リモートMCPサーバーとローカルMCPサーバーの違い</h1>
+        <p class="page-lead">リモートMCPサーバーは提供元が動かし、URLで接続します。ローカルMCPサーバーは利用者が手元のPCで動かします。提供形態と接続方式の違い、利用者がすること、認証情報の扱いを説明します。</p>
+        <p class="post-byline"><a href="/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+<span>イクバル・アバドゥラ</span></a></p>
+    </header>
+    
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">目次</h2>
+                <ol class="mt-3">
+                    <li><a href="#リモートとローカルの意味" class="outline-link">リモートとローカルの意味</a></li>
+                    <li><a href="#提供形態と接続方式は別の情報" class="outline-link">提供形態と接続方式は別の情報</a></li>
+                    <li><a href="#利用者がすること" class="outline-link">利用者がすること</a></li>
+                    <li><a href="#認証情報の扱い" class="outline-link">認証情報の扱い</a></li>
+                    <li><a href="#2026-07-28版の接続方式" class="outline-link">2026-07-28版の接続方式</a></li>
+                    <li><a href="#mcpnaviでの見方" class="outline-link">mcpnaviでの見方</a></li>
+                    <li><a href="#まとめ" class="outline-link">まとめ</a></li>
+                    <li><a href="#出典" class="outline-link">出典</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>MCPサーバーの説明には、「リモート」と「ローカル」という言葉がよく出てきます。リモートは、提供元が動かしているサーバーにURLで接続する形です。ローカルは、利用者が手元のPCでサーバーのプログラムを動かす形です。</p>
+<p>この記事では、2つの違いを、サービスを選ぶ立場から説明します。MCPそのものの説明は、<a href="/blog/technical/introduction-to-mcp/">MCP入門</a>にあります。</p>
+<h2 id="リモートとローカルの意味">リモートとローカルの意味</h2>
+<p>MCPサーバーは、AIアプリケーションに機能を足すプラグインにあたるプログラムです。公式ドキュメントは、このプログラムがどこで動いていても「MCPサーバー」と呼ぶと説明しています。そのうえで、動く場所によって2つの呼び方を紹介しています。</p>
+<ul>
+<li><strong>ローカルのMCPサーバー</strong>：クライアントと同じPCで動くサーバーです。公式ドキュメントは、ファイルを扱うfilesystemサーバーを例に挙げています。クライアントがこのサーバーを起動し、stdioで通信します。</li>
+<li><strong>リモートのMCPサーバー</strong>：提供元の環境で動くサーバーです。公式ドキュメントは、SentryのMCPサーバーを例に挙げています。Sentryのプラットフォーム上で動き、Streamable HTTPで通信します。</li>
+</ul>
+<p>公式ドキュメントによると、stdioを使うローカルのサーバーは、通常1つのクライアントだけを相手にします。Streamable HTTPを使うリモートのサーバーは、通常多数のクライアントを相手にします。</p>
+<h2 id="提供形態と接続方式は別の情報">提供形態と接続方式は別の情報</h2>
+<p>「リモートか、ローカルか」という問いには、2つの情報が混ざっています。</p>
+<ol>
+<li><strong>サーバーを誰が動かすか</strong>：提供元か、利用者か</li>
+<li><strong>クライアントとサーバーがどう通信するか</strong>：stdioか、Streamable HTTPか</li>
+</ol>
+<p>mcpnaviは、1つ目を「提供形態」、2つ目を「接続方式」として、分けて掲載しています。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>表している情報</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提供形態</td>
+<td>サーバーを誰が動かすか</td>
+<td>URLで接続、自分で動かす、不明</td>
+</tr>
+<tr>
+<td>接続方式</td>
+<td>通信の形式</td>
+<td>stdio、Streamable HTTP、SSE（旧方式）</td>
+</tr>
+</tbody>
+</table>
+<p>2つを分ける理由は、組み合わせが1通りではないからです。</p>
+<table>
+<thead>
+<tr>
+<th>提供形態</th>
+<th>接続方式</th>
+<th>どのような形か</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URLで接続</td>
+<td>Streamable HTTP</td>
+<td>提供元が動かすサーバーに、URLを指定して接続する</td>
+</tr>
+<tr>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>クライアントが手元のPCでプログラムを起動する</td>
+</tr>
+<tr>
+<td>自分で動かす</td>
+<td>Streamable HTTP</td>
+<td>利用者が自分のPCやサーバーでプログラムを動かし、そのURLに接続する</td>
+</tr>
+</tbody>
+</table>
+<p>3つ目の形があるため、「Streamable HTTPなら提供元が動かしている」とは言えません。仕様書にも、この形を前提にした記述があります。Streamable HTTPのサーバーをローカルで動かすときの注意です。待ち受けるアドレスを、localhost（127.0.0.1）だけにするよう求めています。</p>
+<p>提供元が2つの形を両方用意しているサービスもあります。mcpnaviは、その場合「URLで接続」と「自分で動かす」の両方を表示します。</p>
+<h2 id="利用者がすること">利用者がすること</h2>
+<h3 id="提供形態がurlで接続の場合">提供形態が「URLで接続」の場合</h3>
+<p>提供元がサーバーを動かしています。利用者は、サーバーのURLをクライアントに登録します。プログラムのインストールは不要です。</p>
+<p>仕様書によると、Streamable HTTPのサーバーはHTTPの窓口を1つ用意します。この窓口を「MCPエンドポイント」と呼びます。<code>https://example.com/mcp</code>のようなURLです。クライアントは、メッセージを1つずつ、このURLにHTTP POSTで送ります。</p>
+<p>やり取りの内容は、提供元のサーバーを通ります。</p>
+<h3 id="提供形態が自分で動かすの場合">提供形態が「自分で動かす」の場合</h3>
+<p>利用者が、手元のPCや自分のサーバーでプログラムを動かします。stdioの場合の手順は、次のとおりです。</p>
+<ol>
+<li>提供元の手順に沿って、プログラムを動かせる環境を用意します。</li>
+<li>プログラムを起動するコマンドを、クライアントの設定に登録します。</li>
+<li>クライアントが、サーバーを子プロセスとして起動します。</li>
+<li>クライアントとサーバーが、標準入力と標準出力でメッセージをやり取りします。</li>
+</ol>
+<p>手順の3と4は、仕様書が定めている動作です。公式ドキュメントは、stdioを次のように説明しています。同じPCの中のプロセス同士が直接通信するため、ネットワークの負荷がかかりません。</p>
+<p>ネットワークを通らないのは、クライアントとサーバーの間の通信です。公式ドキュメントは、ツールの例としてAPI呼び出しも挙げています。ローカルのサーバーでも、ツールが外部のAPIを呼び出す場合があります。</p>
+<p>プログラムを動かせないクライアントからは、「自分で動かす」だけのサービスを使えません。クライアントから接続できるかどうかは、提供形態に加えて、接続方式と認証方式にも左右されます。</p>
+<h2 id="認証情報の扱い">認証情報の扱い</h2>
+<p>サーバーが利用者を確認するための情報（APIキーやトークン）の扱いは、接続方式によって変わります。仕様書では、認可の仕組みを実装するかどうかは任意です。実装する場合の方針を、接続方式ごとに分けて書いています。</p>
+<p><strong>Streamable HTTPの場合</strong>は、OAuth 2.1にもとづく認可の仕様に従うことが推奨されています。流れは次のとおりです。</p>
+<ol>
+<li>クライアントがブラウザを開き、利用者が認可サーバーの画面で接続を許可します。</li>
+<li>認可サーバーが、クライアントにアクセストークンを発行します。</li>
+<li>クライアントが、リクエストのたびにトークンを<code>Authorization</code>ヘッダーに入れて送ります。</li>
+</ol>
+<p>仕様書は、トークンをURLのクエリ文字列に入れてはならないと定めています。公式ドキュメントによると、Streamable HTTPでは一般的なHTTPの認証も使えます。ベアラートークン、APIキー、独自のヘッダーです。そのうえで、トークンの取得にはOAuthを使うことを推奨しています。</p>
+<p><strong>stdioの場合</strong>は、この認可の仕様に従わず、認証情報を環境から取得することが推奨されています。ブラウザで許可する流れはありません。サーバーのプログラムは、自分が動いている環境に置かれた認証情報を読み取ります。</p>
+<p>mcpnaviは、サービスごとの方式を「認証方式」（OAuth 2.1、APIキー、なし、不明）として掲載しています。</p>
+<h2 id="2026-07-28版の接続方式">2026-07-28版の接続方式</h2>
+<p>現在の仕様である2026-07-28版は、標準の接続方式を2つ定めています。</p>
+<ul>
+<li><strong>stdio</strong>：クライアントが起動した子プロセスと、標準入出力でやり取りします。メッセージは改行で区切ります。</li>
+<li><strong>Streamable HTTP</strong>：メッセージごとに、1つのMCPエンドポイントへHTTP POSTを送ります。応答は、1つのJSONか、そのリクエスト専用のSSEストリームで返ります。</li>
+</ul>
+<p>仕様書によると、メッセージの意味はどの接続方式でも同じです。接続方式が決めるのは、メッセージの区切り方と届け方です。独自の接続方式を実装することも認められています。</p>
+<p>2026-07-28版では、Streamable HTTPの動作も変わりました。GETで開くストリームと、プロトコルのセッションがなくなりました。</p>
+<p>HTTP+SSEは、2024-11-05版の接続方式です。2025-03-26版でStreamable HTTPに置き換えられ、それ以来「非推奨」です。仕様書は、新しい実装では採用せず、既存の実装はStreamable HTTPに移行するよう求めています。将来の版で削除される可能性があります。mcpnaviは、この方式を「SSE（旧方式）」と表示します。</p>
+<h2 id="mcpnaviでの見方">mcpnaviでの見方</h2>
+<p>mcpnaviは、サービスごとに次の情報を掲載しています。</p>
+<ul>
+<li><strong>提供形態</strong>：公式ドキュメントとリポジトリのREADMEを確認します。提供元が動かしている接続URLの記載があれば「URLで接続」です。自分で動かす手順の記載があれば「自分で動かす」です。接続URLが手元のPC（localhost）を指している場合も「自分で動かす」です。</li>
+<li><strong>接続方式</strong>：stdio、Streamable HTTP、SSE（旧方式）のうち、対応しているものをすべて表示します。</li>
+<li><strong>接続URL</strong>：提供元が公開している接続先のURLです。サービスの詳細ページの「導入手順」に表示します。</li>
+<li><strong>HTTPS必須</strong>：接続方式がstdioだけのサービスでは「対象外（stdio のみ）」と表示します。</li>
+</ul>
+<p>どの公開ページにも記載がない項目は「不明」と表示します。推測で値を入れることはありません。各項目の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
+<p><a href="/servers/">MCPサービス一覧</a>には、「URLだけで接続できる」という絞り込みがあります。<a href="/servers/filter/remote/">提供形態に「URLで接続」を含むサービス</a>だけを表示します。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li>「リモート」は提供元が動かすサーバー、「ローカル」は利用者が手元のPCで動かすサーバーです。</li>
+<li>サーバーを誰が動かすか（提供形態）と、どう通信するか（接続方式）は、別の情報です。Streamable HTTPのサーバーを利用者が動かす形もあります。</li>
+<li>「URLで接続」では、URLをクライアントに登録します。「自分で動かす」では、プログラムを用意し、起動するコマンドをクライアントに登録します。</li>
+<li>認証情報の扱いは、接続方式で変わります。Streamable HTTPではOAuthが推奨され、stdioでは環境から取得します。</li>
+<li>2026-07-28版の標準の接続方式は、stdioとStreamable HTTPの2つです。HTTP+SSEは非推奨です。</li>
+</ul>
+<h2 id="出典">出典</h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Architecture overview</a>（MCP公式ドキュメント）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">Transports: Overview</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/stdio">Transports: stdio</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http">Transports: Streamable HTTP</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">Authorization</a>（MCP公式仕様、2026-07-28版）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/deprecated">Deprecated Features</a>（MCP公式仕様、2026-07-28版）</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">最終更新: <time datetime="2026-09-25">2026-09-25</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="前後の記事">
+    <div></div>
+    <div class="sm:text-right"><a href="/blog/technical/mcp-authorization-basics/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">古い記事</span><br><span class="font-medium">MCPサーバーの認証方式：OAuthとAPIキーの基本</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">関連記事</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">技術解説</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式：OAuthとAPIキーの基本</a></h3>
+        <p class="post-card-intro">MCPサーバーは、接続してきた相手を確かめてからデータを返します。認証方式の種類、MCP仕様（2026-07-28版）が定めるOAuth 2.1の使い方、接続の流れ、接続前に確認することを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">技術解説</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/introduction-to-mcp/">MCP入門：Model Context Protocolの歴史と仕組み</a></h3>
+        <p class="post-card-intro">MCP（Model Context Protocol）は、AIアプリケーションを外部のデータやツールにつなぐ共通規格です。生まれた理由、2024年の公開から2026-07-28版までの経緯、基本の仕組みを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">ディレクトリ</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+<a href="/criteria/" class="nav-link">掲載されているデータについて</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="nav-link">mcpnaviに掲載する</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/legal/terms-of-service/" class="nav-link">利用規約</a>
+                <span>運営: 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>MCPとは？Model Context Protocolの歴史と仕組み（入門） | mcpnavi</title>
+    
+    <meta name="description" content="MCP（Model Context Protocol）の入門記事です。MCPが生まれた理由、2024年11月の公開から2026-07-28版までの歴史、ホスト・クライアント・サーバーの仕組みと2つの接続方式を説明します。">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="MCPとは？Model Context Protocolの歴史と仕組み（入門）">
+    <meta property="og:description" content="MCP（Model Context Protocol）の入門記事です。MCPが生まれた理由、2024年11月の公開から2026-07-28版までの歴史、ホスト・クライアント・サーバーの仕組みと2つの接続方式を説明します。">
+    <meta property="og:url" content="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
+    <meta property="og:type" content="article">
+    
+    <meta name="twitter:card" content="summary">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "MCPとは？Model Context Protocolの歴史と仕組み（入門）",
+      "description": "MCP（Model Context Protocol）の入門記事です。MCPが生まれた理由、2024年11月の公開から2026-07-28版までの歴史、ホスト・クライアント・サーバーの仕組みと2つの接続方式を説明します。",
+      "url": "https://mcpnavi.jp/blog/technical/introduction-to-mcp/",
+      "datePublished": "2026-09-20",
+      "dateModified": "2026-09-20",
+      "author": {
+        "@type": "Person",
+        "name": "イクバル・アバドゥラ",
+        "url": "https://mcpnavi.jp/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "mcpnavi",
+        "url": "https://mcpnavi.jp"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ブログ",
+          "item": "https://mcpnavi.jp/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "技術解説",
+          "item": "https://mcpnavi.jp/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MCP入門：Model Context Protocolの歴史と仕組み"
+        }
+      ]
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">本文へ移動</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+        </a>
+        <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="ダークモード">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">ja</span><span class="sr-only">言語</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><span class="nav-link" aria-current="true">日本語</span></li>
+        
+        <li><a href="/en/blog/technical/introduction-to-mcp/" lang="en" hreflang="en" class="nav-link">英語</a></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">mcpnaviに掲載する
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="メニュー">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="サイト内" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm w-full">mcpnaviに掲載する</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">MCP入門：Model Context Protocolの歴史と仕組み</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/en/blog/technical/introduction-to-mcp/" hreflang="en" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Englishで読む</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h1 class="page-title mt-3">MCP入門：Model Context Protocolの歴史と仕組み</h1>
+        <p class="page-lead">MCP（Model Context Protocol）は、AIアプリケーションを外部のデータやツールにつなぐ共通規格です。生まれた理由、2024年の公開から2026-07-28版までの経緯、基本の仕組みを説明します。</p>
+        <p class="post-byline"><a href="/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+<span>イクバル・アバドゥラ</span></a></p>
+    </header>
+    
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">目次</h2>
+                <ol class="mt-3">
+                    <li><a href="#mcpとは" class="outline-link">MCPとは</a></li>
+                    <li><a href="#mcpが生まれた理由" class="outline-link">MCPが生まれた理由</a></li>
+                    <li><a href="#mcpの歴史" class="outline-link">MCPの歴史</a></li>
+                    <li><a href="#基本の仕組み" class="outline-link">基本の仕組み</a></li>
+                    <li><a href="#2026-07-28版で変わったこと" class="outline-link">2026-07-28版で変わったこと</a></li>
+                    <li><a href="#利用前に確認すること" class="outline-link">利用前に確認すること</a></li>
+                    <li><a href="#まとめ" class="outline-link">まとめ</a></li>
+                    <li><a href="#出典" class="outline-link">出典</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>MCP（Model Context Protocol）は、AIアプリケーションを外部のデータやツールにつなぐための共通規格です。2024年11月に公開され、現在はChatGPT、Claude、Visual Studio Code、Cursorなどが対応しています。</p>
+<p>この記事では、MCPが生まれた理由、公開から現在までの経緯、基本の仕組みを順に説明します。プログラミングの知識がなくても読めるように書いています。JSONの例が2つ出てきますが、読み飛ばしても内容は理解できます。</p>
+<h2 id="mcpとは">MCPとは</h2>
+<p>MCPは、ChatGPTやClaudeなどのAIアプリケーションに、外部のサービスをつなぐためのオープンな規格です。ブラウザは、プラグインを追加すると機能が増えます。AIアプリケーションも同じです。MCPサーバーをつなぐと、AIが扱えるデータと実行できる操作が増えます。</p>
+<p>たとえば、次のようなことができます。</p>
+<ul>
+<li>会計サービスの仕訳データをAIに読ませて、月次の集計を作る</li>
+<li>社内のデータベースに、チャットから問い合わせる</li>
+<li>カレンダーの予定を確認して、会議の候補日を出す</li>
+</ul>
+<p>公式ドキュメントは、MCPを「AIアプリケーションのためのUSB-Cポート」と説明しています。USB-Cが機器の接続方法を1つにそろえたように、MCPはAIアプリケーションと外部システムの接続方法を1つにそろえます。</p>
+<h2 id="mcpが生まれた理由">MCPが生まれた理由</h2>
+<p>大規模言語モデル（LLM）は、学習したデータの範囲でしか答えられません。今日の売上も、社内の文書も、モデルの中にはありません。実務で使うには、モデルを外部のデータやツールにつなぐ必要があります。</p>
+<p>MCPの公開前は、この接続をアプリケーションごと、サービスごとに個別に開発していました。AIアプリケーションが5種類、つなぎたいサービスが20種類あれば、最大で100通りの接続を開発することになります。片方の仕様が変わるたびに、接続の修正も必要でした。</p>
+<p>Anthropicは公開時の発表で、この状況を次のように説明しています。</p>
+<blockquote>
+<p>どれほど高度なモデルも、データから切り離されているという制約を受けています。データは、情報のサイロや古いシステムの中に閉じ込められています。新しいデータソースをつなぐたびに個別の実装が必要になり、つながったシステムを広げていくことが難しくなっています。（mcpnaviによる訳）</p>
+</blockquote>
+<p>MCPは、この接続を1つの規格にまとめます。サービスの提供元はMCPサーバーを1つ公開します。AIアプリケーションの開発元はMCPクライアントを1つ実装します。それだけで、どの組み合わせでも接続できます。先ほどの例なら、開発するものは100通りの接続から、5つのクライアントと20のサーバーに減ります。</p>
+<p>この考え方には手本があります。MCPの仕様書は、Language Server Protocol（LSP）から着想を得たと書いています。LSPは、プログラミング言語の対応をエディタごとに開発しなくて済むようにした規格です。MCPは同じ方法を、AIアプリケーションとツールの接続に当てはめました。</p>
+<h2 id="mcpの歴史">MCPの歴史</h2>
+<p>公開から現在までの主な出来事は、次のとおりです。仕様の版は、互換性のない変更が最後に入った日付で呼びます。</p>
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>出来事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024-11-25</td>
+<td>AnthropicがMCPをオープンソースとして公開</td>
+</tr>
+<tr>
+<td>2025-03-26</td>
+<td>仕様2025-03-26版を公開。同日、OpenAIが対応を発表</td>
+</tr>
+<tr>
+<td>2025-04-09</td>
+<td>Google DeepMindが、GeminiのMCP対応を表明</td>
+</tr>
+<tr>
+<td>2025-05-19</td>
+<td>MicrosoftとGitHubが、MCPの運営委員会に参加</td>
+</tr>
+<tr>
+<td>2025-06-18</td>
+<td>仕様2025-06-18版を公開</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>公式のMCP Registryを発表</td>
+</tr>
+<tr>
+<td>2025-11-25</td>
+<td>公開1周年。仕様2025-11-25版を公開</td>
+</tr>
+<tr>
+<td>2025-12-09</td>
+<td>AnthropicがMCPをLinux Foundation傘下の財団に寄贈</td>
+</tr>
+<tr>
+<td>2026-07-28</td>
+<td>仕様2026-07-28版を公開。プロトコルがステートレスになる</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2024年公開">2024年：公開</h3>
+<p>2024年11月25日、AnthropicがMCPをオープンソースとして公開しました。公開したものは、仕様とSDK、Claude Desktopのローカルサーバー対応、サーバーの実装を集めたリポジトリの3つです。Google Drive、Slack、GitHub、Git、Postgres、Puppeteerのサーバーが最初から用意されていました。初期の導入企業としてBlockとApolloが、開発ツールではZed、Replit、Codeium、Sourcegraphが名前を連ねています。</p>
+<p>このときClaude Desktopが対応したのは、手元のPCで動かすローカルのサーバーでした。</p>
+<h3 id="2025年各社の対応とリモート接続">2025年：各社の対応と、リモート接続</h3>
+<p>2025年3月26日の仕様改定で、2つの大きな機能が入りました。1つは、インターネット越しの接続に使うStreamable HTTPです。もう1つは、OAuth 2.1にもとづく認可の枠組みです。この2つによって、提供元が運用するサーバーにURLだけで接続する「リモートMCPサーバー」が現実的になりました。</p>
+<p>同じ3月26日、OpenAIがMCPへの対応を発表しました。まずAgents SDKが対応し、ChatGPTのデスクトップアプリとResponses APIが続くという内容です。競合する会社が作った規格を採用したことで、MCPは1社の規格から業界の共通規格へと位置づけが変わりました。4月9日にはGoogle DeepMindのCEOが、GeminiのモデルとSDKをMCPに対応させると表明しました。5月19日にはMicrosoftとGitHubが、開発者会議BuildでMCPの運営委員会への参加を発表しました。</p>
+<p>6月18日の仕様改定では、ツールが構造化データを返せるようになりました。サーバーが利用者に追加の入力を求める機能（エリシテーション）も加わりました。9月には公式のMCP Registryが発表されました。公開されているMCPサーバーを登録し、探すための台帳です。11月の時点で、2,000件近くが登録されています。</p>
+<p>11月25日、公開1周年に合わせて仕様2025-11-25版が公開されました。時間のかかる処理を扱うタスク機能が実験的に入り、核となる仕様の外に機能を足す「拡張」の枠組みもできました。</p>
+<p>12月9日、AnthropicはMCPをAgentic AI Foundation（AAIF）に寄贈しました。AAIFはLinux Foundationの傘下に新設された財団で、Anthropic、Block、OpenAIの3社が共同で設立しました。Google、Microsoft、AWS、Cloudflare、Bloombergも支援しています。Anthropicはこのとき、2つの数字を発表しています。公開されているMCPサーバーは1万以上です。PythonとTypeScriptのSDKは、月に9,700万回以上ダウンロードされています。MCPは特定の会社のものではなく、中立な団体が管理する規格になりました。</p>
+<h3 id="2026年ステートレス化">2026年：ステートレス化</h3>
+<p>2026年7月28日に公開された2026-07-28版は、リモート接続が入って以来もっとも大きな改定です。プロトコルが「ステートレス」になりました。内容は「2026-07-28版で変わったこと」の節で説明します。</p>
+<p>公式ブログによると、主要なSDKのダウンロード数は月に5億回近くに達しています。</p>
+<h2 id="基本の仕組み">基本の仕組み</h2>
+<h3 id="3つの登場人物">3つの登場人物</h3>
+<p>MCPには、ホスト、クライアント、サーバーの3つが登場します。</p>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>役割</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ホスト</td>
+<td>利用者が使うAIアプリケーション</td>
+<td>Claude Desktop、Visual Studio Code</td>
+</tr>
+<tr>
+<td>クライアント</td>
+<td>ホストの中にあり、サーバー1つとの接続を受け持つ部品</td>
+<td>ホストが内部に持つ</td>
+</tr>
+<tr>
+<td>サーバー</td>
+<td>データやツールを提供するプログラム</td>
+<td>会計サービスのMCPサーバー</td>
+</tr>
+</tbody>
+</table>
+<p>ホストは、接続するサーバーごとにクライアントを1つ作ります。サーバーを3つつなげば、ホストの中にクライアントが3つできます。利用者から見えるのはホストとサーバーだけで、クライアントを意識することはありません。</p>
+<h3 id="サーバーが提供する3つのもの">サーバーが提供する3つのもの</h3>
+<p>サーバーがAIアプリケーションに提供できるものは、3種類あります。</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>内容</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ツール（Tools）</td>
+<td>AIモデルが実行できる関数</td>
+<td>請求書を検索する、予定を登録する</td>
+</tr>
+<tr>
+<td>リソース（Resources）</td>
+<td>AIに読ませるデータ</td>
+<td>ファイルの内容、データベースの定義</td>
+</tr>
+<tr>
+<td>プロンプト（Prompts）</td>
+<td>定型の指示文</td>
+<td>「この月の経費を要約する」という手順</td>
+</tr>
+</tbody>
+</table>
+<p>mcpnaviは、このうちツールを「提供ツール」の項目として、サービスごとに掲載しています。</p>
+<h3 id="2つの接続方式">2つの接続方式</h3>
+<p>クライアントとサーバーのつなぎ方は、2つあります。</p>
+<ul>
+<li><strong>stdio</strong>：サーバーを手元のPCで動かし、標準入出力でやり取りします。ネットワークを通りません。利用者がサーバーを自分でインストールします。</li>
+<li><strong>Streamable HTTP</strong>：HTTPでやり取りします。提供元が運用するサーバーに、インターネット越しに接続できます。認可にはOAuthを使うことが推奨されています。</li>
+</ul>
+<p>接続方式は、通信の形式を決めるだけです。Streamable HTTPのサーバーを、利用者が自分の環境で動かすこともできます。「サーバーを誰が運用するか」は別の情報です。mcpnaviは、前者を「接続方式」、後者を「提供形態」として、分けて掲載しています。</p>
+<h3 id="やり取りの中身">やり取りの中身</h3>
+<p>クライアントとサーバーは、JSON-RPC 2.0という形式のメッセージをやり取りします。流れは単純です。</p>
+<ol>
+<li>クライアントが<code>tools/list</code>を送り、サーバーが持つツールの一覧を受け取ります。</li>
+<li>ホストが、ツールの一覧をAIモデルに渡します。</li>
+<li>利用者の依頼に応じて、AIモデルが使うツールを選びます。</li>
+<li>クライアントが<code>tools/call</code>を送り、サーバーがツールを実行して結果を返します。</li>
+<li>AIモデルが、結果を使って回答を作ります。</li>
+</ol>
+<p>天気を調べるツールを呼び出す場合、クライアントは次のようなメッセージを送ります（一部を省略しています）。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tools/call"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weather_current"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tokyo"</span><span class="p">,</span><span class="w"> </span><span class="nt">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>サーバーは、結果を次のように返します。</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"resultType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"東京の現在の天気：24℃、晴れ"</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>ツールの一覧には、ツールごとの名前、説明、引数の定義（JSON Schema）が入っています。AIモデルはこの説明を読んで、どのツールをいつ使うかを決めます。人が読むためのAPIドキュメントと違い、ツールの説明はAIモデルが直接読みます。</p>
+<h2 id="2026-07-28版で変わったこと">2026-07-28版で変わったこと</h2>
+<p>2025年までの仕様では、クライアントは最初に<code>initialize</code>というメッセージをサーバーに送り、接続を確立していました。サーバーは、接続ごとの状態（セッション）を保持していました。</p>
+<p>2026-07-28版は、この手順をなくしました。クライアントは、使う仕様の版と自分の機能を、リクエストのたびに送ります。サーバーは、リクエストを1つずつ独立して処理します。サーバーが対応する版と機能は、<code>server/discover</code>で確認できます。</p>
+<p>この変更で、提供元はサーバーを運用しやすくなります。セッションを保持しないサーバーは、一般的なロードバランサーの後ろに何台でも並べられます。公式ブログは、サーバーの信頼性と拡張性を求める開発者の声に応えた変更だと説明しています。</p>
+<p>ツール、リソース、プロンプトの考え方は変わっていません。仕様書には、2025-11-25版以前のサーバーやクライアントと接続するための手順も書かれています。Roots、Sampling、Loggingなどの一部の機能は「非推奨」になりました。非推奨の機能は仕様書に残りますが、2027-07-28以降に公開される版から削除の対象になります。</p>
+<h2 id="利用前に確認すること">利用前に確認すること</h2>
+<p>MCPサーバーをつなぐと、AIはデータを読み、操作を実行できるようになります。仕様書は、実装する側に次の原則を求めています。</p>
+<ul>
+<li><strong>利用者の同意と制御</strong>：データへのアクセスと操作について、利用者が内容を理解し、同意していること</li>
+<li><strong>データのプライバシー</strong>：利用者の同意なしに、ホストがデータをサーバーに渡さないこと</li>
+<li><strong>ツールの扱い</strong>：ツールは任意のコードを実行できるものとして、慎重に扱うこと。ツールを呼び出す前に、利用者の同意を得ること</li>
+</ul>
+<p>仕様書は同時に、プロトコルの側でこの原則を強制することはできないとも書いています。どのサーバーをつなぐかは、利用者が判断します。</p>
+<p>判断の材料になる情報は、次のとおりです。</p>
+<ul>
+<li>誰が提供しているか（提供元、種別、国内法人の有無）</li>
+<li>サーバーを誰が運用するか（提供形態）</li>
+<li>どのように認証するか（認証方式）</li>
+<li>どのツールを提供しているか（提供ツール）</li>
+<li>最後にいつ更新されたか（最終更新日）</li>
+</ul>
+<p>mcpnaviは、これらの項目をサービスごとに公開ページから読み取り、情報確認日とともに掲載しています。読み取れなかった項目は「不明」と表示します。各項目の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li>MCPは、AIアプリケーションと外部のデータやツールをつなぐ共通規格です。</li>
+<li>2024年11月にAnthropicが公開し、2025年にOpenAI、Google、Microsoftが対応しました。2025年12月からは、Linux Foundation傘下の財団が管理しています。</li>
+<li>ホスト、クライアント、サーバーの3つが登場し、サーバーはツール、リソース、プロンプトを提供します。</li>
+<li>接続方式はstdioとStreamable HTTPの2つです。</li>
+<li>2026-07-28版でプロトコルがステートレスになり、サーバーを運用しやすくなりました。</li>
+</ul>
+<p>MCPサービスを探すには、<a href="/servers/">MCPサービス一覧</a>を使います。URLだけで接続できるサービスは、<a href="/servers/filter/remote/">この絞り込み</a>で確認できます。</p>
+<h2 id="出典">出典</h2>
+<ul>
+<li><a href="https://www.anthropic.com/news/model-context-protocol">Introducing the Model Context Protocol</a>（Anthropic、2024-11-25）</li>
+<li><a href="https://modelcontextprotocol.io/docs/getting-started/intro">What is the Model Context Protocol (MCP)?</a>（MCP公式ドキュメント）</li>
+<li><a href="https://modelcontextprotocol.io/docs/learn/architecture">Architecture overview</a>（MCP公式ドキュメント）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28">Specification 2026-07-28</a>と<a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">変更点</a>（MCP公式仕様）</li>
+<li>過去の版の変更点：<a href="https://modelcontextprotocol.io/specification/2025-03-26/changelog">2025-03-26</a>、<a href="https://modelcontextprotocol.io/specification/2025-06-18/changelog">2025-06-18</a></li>
+<li><a href="https://techcrunch.com/2025/03/26/openai-adopts-rival-anthropics-standard-for-connecting-ai-models-to-data/">OpenAI adopts rival Anthropic's standard for connecting AI models to data</a>（TechCrunch、2025-03-26）</li>
+<li><a href="https://techcrunch.com/2025/04/09/google-says-itll-embrace-anthropics-standard-for-connecting-ai-models-to-data/">Google to embrace Anthropic's standard for connecting AI models to data</a>（TechCrunch、2025-04-09）</li>
+<li><a href="https://techcrunch.com/2025/05/19/github-microsoft-embrace-anthropics-spec-for-connecting-ai-models-to-data-sources/">GitHub, Microsoft embrace Anthropic's spec for connecting AI models to data sources</a>（TechCrunch、2025-05-19）</li>
+<li><a href="https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/">One Year of MCP: November 2025 Spec Release</a>（MCP公式ブログ、2025-11-25）</li>
+<li><a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation">Donating the Model Context Protocol and establishing the Agentic AI Foundation</a>（Anthropic、2025-12-09）</li>
+<li><a href="https://modelcontextprotocol.io/specification/2026-07-28/deprecated">Deprecated Features</a>（MCP仕様書）</li>
+<li><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">The 2026-07-28 Specification</a>（MCP公式ブログ、2026-07-28）</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">最終更新: <time datetime="2026-09-20">2026-09-20</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="前後の記事">
+    <div><a href="/blog/technical/mcp-authorization-basics/" rel="prev" class="card-link block h-full px-6 py-5"><span class="text-muted">新しい記事</span><br><span class="font-medium">MCPサーバーの認証方式：OAuthとAPIキーの基本</span></a></div>
+    <div class="sm:text-right"></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">関連記事</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">技術解説</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a></h3>
+        <p class="post-card-intro">リモートMCPサーバーは提供元が動かし、URLで接続します。ローカルMCPサーバーは利用者が手元のPCで動かします。提供形態と接続方式の違い、利用者がすること、認証情報の扱いを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <span class="post-cover-brand">mcpnavi blog</span><span class="post-cover-category">技術解説</span>
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式：OAuthとAPIキーの基本</a></h3>
+        <p class="post-card-intro">MCPサーバーは、接続してきた相手を確かめてからデータを返します。認証方式の種類、MCP仕様（2026-07-28版）が定めるOAuth 2.1の使い方、接続の流れ、接続前に確認することを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">ディレクトリ</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+<a href="/criteria/" class="nav-link">掲載されているデータについて</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="nav-link">mcpnaviに掲載する</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/legal/terms-of-service/" class="nav-link">利用規約</a>
+                <span>運営: 株式会社Kafkai Giken</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>
