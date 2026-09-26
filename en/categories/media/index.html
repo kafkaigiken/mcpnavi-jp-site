@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>MCP services for Media | mcpnavi</title>
-    
     <meta name="description" content="9 MCP services in the Media category, with transport, authentication, pricing model and Japanese support.">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/en/categories/media/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCP services: connect your AI agent to data and tools">
-    <meta property="og:description" content="A directory of MCP services that connect AI agents like ChatGPT and Claude to data and tools. Every service lists compatible agents and connection methods. All data is read from public pages, and every service shows the date it was last checked.">
+    <meta property="og:title" content="MCP services for Media">
+    <meta property="og:description" content="9 MCP services in the Media category, with transport, authentication, pricing model and Japanese support.">
     <meta property="og:url" content="https://mcpnavi.jp/en/categories/media/">
     <meta property="og:type" content="website">
     
@@ -25,64 +24,133 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/media/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/media/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Media",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "AivisSpeech MCP",
-      "url": "https://mcpnavi.jp/en/servers/aivisspeech-mcp/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Brave Search MCP Server",
-      "url": "https://mcpnavi.jp/en/servers/brave-search-mcp-server/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Conte de Fées MCP",
-      "url": "https://mcpnavi.jp/en/servers/conte-de-f-es-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/en/categories/media/",
+      "url": "https://mcpnavi.jp/en/categories/media/",
+      "name": "MCP services for Media",
+      "description": "9 MCP services in the Media category, with transport, authentication, pricing model and Japanese support.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/categories/media/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/categories/media/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "ElevenLabs MCP",
-      "url": "https://mcpnavi.jp/en/servers/elevenlabs-mcp/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/categories/media/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Media"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Japan Ani Search MCP",
-      "url": "https://mcpnavi.jp/en/servers/japan-ani-search-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Polly ja-JP MCP",
-      "url": "https://mcpnavi.jp/en/servers/polly-ja-jp-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "Spotify MCP",
-      "url": "https://mcpnavi.jp/en/servers/spotify-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Yahoo Japan Search MCP",
-      "url": "https://mcpnavi.jp/en/servers/yahoo-japan-search-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "freee Chat MCP Server",
-      "url": "https://mcpnavi.jp/en/servers/freee-chat-mcp-server/"
+      "@type": "ItemList",
+      "name": "Media",
+      "numberOfItems": 9,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "AivisSpeech MCP",
+          "url": "https://mcpnavi.jp/en/servers/aivisspeech-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Brave Search MCP Server",
+          "url": "https://mcpnavi.jp/en/servers/brave-search-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conte de Fées MCP",
+          "url": "https://mcpnavi.jp/en/servers/conte-de-f-es-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "ElevenLabs MCP",
+          "url": "https://mcpnavi.jp/en/servers/elevenlabs-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Japan Ani Search MCP",
+          "url": "https://mcpnavi.jp/en/servers/japan-ani-search-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Polly ja-JP MCP",
+          "url": "https://mcpnavi.jp/en/servers/polly-ja-jp-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Spotify MCP",
+          "url": "https://mcpnavi.jp/en/servers/spotify-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Yahoo Japan Search MCP",
+          "url": "https://mcpnavi.jp/en/servers/yahoo-japan-search-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "freee Chat MCP Server",
+          "url": "https://mcpnavi.jp/en/servers/freee-chat-mcp-server/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/en/categories/media/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/categories/media/"
+      }
     }
   ]
 }</script>
@@ -217,7 +285,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/en/">Home</a> › <span class="text-ink">Media</span></nav>
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <span class="text-ink">Media</span>
+</nav>
+
 <h1 class="page-title mt-4">Media</h1>
 <p class="page-lead">画像、動画、音声を扱うサービスです。</p>
 <p class="mt-2 text-sm text-muted">9 servers</p>

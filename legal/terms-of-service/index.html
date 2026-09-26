@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>利用規約 | mcpnavi</title>
-    
     <meta name="description" content="mcpnaviの利用規約です。掲載情報の取り扱い、外部のMCPサービスとの関係、禁止事項、免責事項、準拠法と管轄を定めています。">
     <meta name="robots" content="index, follow">
     
@@ -26,6 +25,49 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/legal/terms-of-service/">
     
     
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/legal/terms-of-service/",
+      "url": "https://mcpnavi.jp/legal/terms-of-service/",
+      "name": "利用規約",
+      "description": "mcpnaviの利用規約です。掲載情報の取り扱い、外部のMCPサービスとの関係、禁止事項、免責事項、準拠法と管轄を定めています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "datePublished": "2026-09-21",
+      "dateModified": "2026-09-21"
+    }
+  ]
+}</script>
     
 <script data-theme-bootstrap>
 (function () {

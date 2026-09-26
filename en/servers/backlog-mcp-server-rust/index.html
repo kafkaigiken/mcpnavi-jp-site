@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Backlog MCP Server (Rust) (safx) | MCP search and comparison | mcpnavi</title>
-    
     <meta name="description" content="Backlog MCP Server (Rust): hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: API key.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/backlog-mcp-server-rust/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Backlog MCP Server (Rust)",
-  "description": "A Rust implementation of a Backlog server.",
-  "url": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/",
-  "category": [
-    "Project management"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Hosting",
-      "value": "Run it yourself"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "Transport",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "Authentication",
-      "value": "API key"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/",
+      "url": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/",
+      "name": "Backlog MCP Server (Rust) (safx) | MCP search and comparison",
+      "description": "Backlog MCP Server (Rust): hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: API key.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS required",
-      "value": "Not applicable (stdio only)"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Project management",
+          "item": "https://mcpnavi.jp/en/categories/project-management/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Backlog MCP Server (Rust)"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "Pricing model",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Free tier",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese documentation",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese support",
-      "value": "Unknown"
+      "@type": "Product",
+      "name": "Backlog MCP Server (Rust)",
+      "description": "A Rust implementation of a Backlog server.",
+      "url": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/",
+      "category": [
+        "Project management"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Hosting",
+          "value": "Run it yourself"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Transport",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Authentication",
+          "value": "API key"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS required",
+          "value": "Not applicable (stdio only)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pricing model",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Free tier",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese documentation",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese support",
+          "value": "Unknown"
+        }
+      ],
+      "sameAs": [
+        "http://safx-dev.blogspot.com/"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "safx",
+        "url": "https://mcpnavi.jp/en/providers/safx/"
+      },
+      "@id": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/servers/backlog-mcp-server-rust/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "safx",
-    "url": "https://mcpnavi.jp/en/providers/safx/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-     › <a href="/en/categories/project-management/">Project management</a>
-    › <span class="text-ink">Backlog MCP Server (Rust)</span>
+     › <a href="/en/categories/project-management/">Project management</a> › <span class="text-ink">Backlog MCP Server (Rust)</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Backlog MCP Server (Rust)</h1>

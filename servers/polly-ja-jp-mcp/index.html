@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Polly ja-JP MCP（R3 institute（r3-yamauchi）） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="Polly ja-JP MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 自分で動かす。接続方式: stdio。認証方式: APIキー。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,66 +25,153 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/polly-ja-jp-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Polly ja-JP MCP",
-  "description": "Amazon Polly で日本語音声 (Neural, ja-JP) を合成するサーバー。",
-  "url": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/",
-  "category": [
-    "クラウド基盤",
-    "AI・機械学習",
-    "メディア"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "自分で動かす"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "APIキー"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/",
+      "url": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/",
+      "name": "Polly ja-JP MCP（R3 institute（r3-yamauchi）） | MCPサービスの検索・比較",
+      "description": "Polly ja-JP MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 自分で動かす。接続方式: stdio。認証方式: APIキー。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "対象外（stdio のみ）"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "クラウド基盤",
+          "item": "https://mcpnavi.jp/categories/cloud/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI・機械学習",
+          "item": "https://mcpnavi.jp/categories/ai-ml/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "メディア",
+          "item": "https://mcpnavi.jp/categories/media/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Polly ja-JP MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "あり"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "あり"
+      "@type": "Product",
+      "name": "Polly ja-JP MCP",
+      "description": "Amazon Polly で日本語音声 (Neural, ja-JP) を合成するサーバー。",
+      "url": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/",
+      "category": [
+        "クラウド基盤",
+        "AI・機械学習",
+        "メディア"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "自分で動かす"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "APIキー"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "対象外（stdio のみ）"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "あり"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "あり"
+        }
+      ],
+      "sameAs": [
+        "https://www.r3it.com/blog/author/yamauchi"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "R3 institute（r3-yamauchi）",
+        "url": "https://mcpnavi.jp/providers/r3-institute/"
+      },
+      "@id": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "R3 institute（r3-yamauchi）",
-    "url": "https://mcpnavi.jp/providers/r3-institute/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -217,11 +303,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/cloud/">クラウド基盤</a> › <a href="/categories/ai-ml/">AI・機械学習</a> › <a href="/categories/media/">メディア</a>
-    › <span class="text-ink">Polly ja-JP MCP</span>
+     › <a href="/categories/cloud/">クラウド基盤</a> › <a href="/categories/ai-ml/">AI・機械学習</a> › <a href="/categories/media/">メディア</a> › <span class="text-ink">Polly ja-JP MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Polly ja-JP MCP</h1>

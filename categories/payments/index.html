@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>決済・金融のMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="決済・金融に分類されるMCPサービスを13件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/categories/payments/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
-    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:title" content="決済・金融のMCPサービス一覧">
+    <meta property="og:description" content="決済・金融に分類されるMCPサービスを13件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta property="og:url" content="https://mcpnavi.jp/categories/payments/">
     <meta property="og:type" content="website">
     
@@ -25,88 +24,157 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/payments/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/payments/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "決済・金融",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "JP PINT MCP",
-      "url": "https://mcpnavi.jp/servers/jp-pint-mcp/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "JP Payroll MCP",
-      "url": "https://mcpnavi.jp/servers/jp-payroll-mcp/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Japanese Locale MCP",
-      "url": "https://mcpnavi.jp/servers/japanese-locale-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/categories/payments/",
+      "url": "https://mcpnavi.jp/categories/payments/",
+      "name": "決済・金融のMCPサービス一覧",
+      "description": "決済・金融に分類されるMCPサービスを13件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/categories/payments/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/categories/payments/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Koko Call MCP",
-      "url": "https://mcpnavi.jp/servers/koko-call-mcp/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/categories/payments/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "決済・金融"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Money Forward MCP",
-      "url": "https://mcpnavi.jp/servers/money-forward-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "MoneyForward ME MCP",
-      "url": "https://mcpnavi.jp/servers/moneyforward-me-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "PayPay MCP",
-      "url": "https://mcpnavi.jp/servers/paypay-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Stripe MCP",
-      "url": "https://mcpnavi.jp/servers/stripe-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "financial-law MCP",
-      "url": "https://mcpnavi.jp/servers/financial-law-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "name": "freee Chat MCP Server",
-      "url": "https://mcpnavi.jp/servers/freee-chat-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "name": "freee MCP Server",
-      "url": "https://mcpnavi.jp/servers/freee-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "name": "freee MCP Server (wengbin21)",
-      "url": "https://mcpnavi.jp/servers/freee-mcp-server-wengbin21/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
-      "name": "japan-mcp-servers",
-      "url": "https://mcpnavi.jp/servers/japan-mcp-servers/"
+      "@type": "ItemList",
+      "name": "決済・金融",
+      "numberOfItems": 13,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "JP PINT MCP",
+          "url": "https://mcpnavi.jp/servers/jp-pint-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "JP Payroll MCP",
+          "url": "https://mcpnavi.jp/servers/jp-payroll-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Japanese Locale MCP",
+          "url": "https://mcpnavi.jp/servers/japanese-locale-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Koko Call MCP",
+          "url": "https://mcpnavi.jp/servers/koko-call-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Money Forward MCP",
+          "url": "https://mcpnavi.jp/servers/money-forward-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "MoneyForward ME MCP",
+          "url": "https://mcpnavi.jp/servers/moneyforward-me-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "PayPay MCP",
+          "url": "https://mcpnavi.jp/servers/paypay-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Stripe MCP",
+          "url": "https://mcpnavi.jp/servers/stripe-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "financial-law MCP",
+          "url": "https://mcpnavi.jp/servers/financial-law-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "freee Chat MCP Server",
+          "url": "https://mcpnavi.jp/servers/freee-chat-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "freee MCP Server",
+          "url": "https://mcpnavi.jp/servers/freee-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "freee MCP Server (wengbin21)",
+          "url": "https://mcpnavi.jp/servers/freee-mcp-server-wengbin21/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "japan-mcp-servers",
+          "url": "https://mcpnavi.jp/servers/japan-mcp-servers/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/categories/payments/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/categories/payments/"
+      }
     }
   ]
 }</script>
@@ -241,7 +309,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="パンくず" class="breadcrumb"><a href="/">ホーム</a> › <span class="text-ink">決済・金融</span></nav>
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <span class="text-ink">決済・金融</span>
+</nav>
+
 <h1 class="page-title mt-4">決済・金融</h1>
 <p class="page-lead">決済、請求、会計データを扱うサービスです。</p>
 <p class="mt-2 text-sm text-muted">13件</p>

@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>メディアのMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="メディアに分類されるMCPサービスを9件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/categories/media/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
-    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:title" content="メディアのMCPサービス一覧">
+    <meta property="og:description" content="メディアに分類されるMCPサービスを9件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta property="og:url" content="https://mcpnavi.jp/categories/media/">
     <meta property="og:type" content="website">
     
@@ -25,64 +24,133 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/media/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/media/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "メディア",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "AivisSpeech MCP",
-      "url": "https://mcpnavi.jp/servers/aivisspeech-mcp/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Brave Search MCP Server",
-      "url": "https://mcpnavi.jp/servers/brave-search-mcp-server/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Conte de Fées MCP",
-      "url": "https://mcpnavi.jp/servers/conte-de-f-es-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/categories/media/",
+      "url": "https://mcpnavi.jp/categories/media/",
+      "name": "メディアのMCPサービス一覧",
+      "description": "メディアに分類されるMCPサービスを9件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/categories/media/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/categories/media/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "ElevenLabs MCP",
-      "url": "https://mcpnavi.jp/servers/elevenlabs-mcp/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/categories/media/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "メディア"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Japan Ani Search MCP",
-      "url": "https://mcpnavi.jp/servers/japan-ani-search-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Polly ja-JP MCP",
-      "url": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "Spotify MCP",
-      "url": "https://mcpnavi.jp/servers/spotify-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Yahoo Japan Search MCP",
-      "url": "https://mcpnavi.jp/servers/yahoo-japan-search-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "freee Chat MCP Server",
-      "url": "https://mcpnavi.jp/servers/freee-chat-mcp-server/"
+      "@type": "ItemList",
+      "name": "メディア",
+      "numberOfItems": 9,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "AivisSpeech MCP",
+          "url": "https://mcpnavi.jp/servers/aivisspeech-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Brave Search MCP Server",
+          "url": "https://mcpnavi.jp/servers/brave-search-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conte de Fées MCP",
+          "url": "https://mcpnavi.jp/servers/conte-de-f-es-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "ElevenLabs MCP",
+          "url": "https://mcpnavi.jp/servers/elevenlabs-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Japan Ani Search MCP",
+          "url": "https://mcpnavi.jp/servers/japan-ani-search-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Polly ja-JP MCP",
+          "url": "https://mcpnavi.jp/servers/polly-ja-jp-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Spotify MCP",
+          "url": "https://mcpnavi.jp/servers/spotify-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Yahoo Japan Search MCP",
+          "url": "https://mcpnavi.jp/servers/yahoo-japan-search-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "freee Chat MCP Server",
+          "url": "https://mcpnavi.jp/servers/freee-chat-mcp-server/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/categories/media/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/categories/media/"
+      }
     }
   ]
 }</script>
@@ -217,7 +285,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="パンくず" class="breadcrumb"><a href="/">ホーム</a> › <span class="text-ink">メディア</span></nav>
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <span class="text-ink">メディア</span>
+</nav>
+
 <h1 class="page-title mt-4">メディア</h1>
 <p class="page-lead">画像、動画、音声を扱うサービスです。</p>
 <p class="mt-2 text-sm text-muted">9件</p>

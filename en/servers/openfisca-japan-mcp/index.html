@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>OpenFisca Japan MCP (project-inclusive) | MCP search and comparison | mcpnavi</title>
-    
     <meta name="description" content="OpenFisca Japan MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: None.Pricing model: Unknown. Japanese documentation: Yes. Each service shows when it was last checked.">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,136 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/openfisca-japan-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "OpenFisca Japan MCP",
-  "description": "Exposes the OpenFisca-Japan tax and benefit simulation as tools.",
-  "url": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/",
-  "category": [
-    "Documents and knowledge"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Hosting",
-      "value": "Run it yourself"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "Transport",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "Authentication",
-      "value": "None"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/",
+      "url": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/",
+      "name": "OpenFisca Japan MCP (project-inclusive) | MCP search and comparison",
+      "description": "OpenFisca Japan MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: None.Pricing model: Unknown. Japanese documentation: Yes. Each service shows when it was last checked.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS required",
-      "value": "Not applicable (stdio only)"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Documents and knowledge",
+          "item": "https://mcpnavi.jp/en/categories/knowledge/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "OpenFisca Japan MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "Pricing model",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Free tier",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese documentation",
-      "value": "Yes"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese support",
-      "value": "Unknown"
+      "@type": "Product",
+      "name": "OpenFisca Japan MCP",
+      "description": "Exposes the OpenFisca-Japan tax and benefit simulation as tools.",
+      "url": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/",
+      "category": [
+        "Documents and knowledge"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Hosting",
+          "value": "Run it yourself"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Transport",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Authentication",
+          "value": "None"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS required",
+          "value": "Not applicable (stdio only)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pricing model",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Free tier",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese documentation",
+          "value": "Yes"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese support",
+          "value": "Unknown"
+        }
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "project-inclusive",
+        "url": "https://mcpnavi.jp/en/providers/project-inclusive/"
+      },
+      "@id": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/servers/openfisca-japan-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "project-inclusive",
-    "url": "https://mcpnavi.jp/en/providers/project-inclusive/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +286,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-     › <a href="/en/categories/knowledge/">Documents and knowledge</a>
-    › <span class="text-ink">OpenFisca Japan MCP</span>
+     › <a href="/en/categories/knowledge/">Documents and knowledge</a> › <span class="text-ink">OpenFisca Japan MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">OpenFisca Japan MCP</h1>

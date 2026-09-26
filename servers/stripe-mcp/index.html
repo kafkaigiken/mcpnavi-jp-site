@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Stripe MCP（Stripe） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="Stripe MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: URLで接続、自分で動かす。接続方式: Streamable HTTP、stdio。認証方式: OAuth 2.1。料金体系: 不明。日本語ドキュメント: なし。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/stripe-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Stripe MCP",
-  "description": "Stripe の顧客、商品、請求書、決済を扱う公式サーバー。リモートは OAuth。",
-  "url": "https://mcpnavi.jp/servers/stripe-mcp/",
-  "category": [
-    "決済・金融"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "URLで接続、自分で動かす"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "Streamable HTTP、stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "OAuth 2.1"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/stripe-mcp/",
+      "url": "https://mcpnavi.jp/servers/stripe-mcp/",
+      "name": "Stripe MCP（Stripe） | MCPサービスの検索・比較",
+      "description": "Stripe MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: URLで接続、自分で動かす。接続方式: Streamable HTTP、stdio。認証方式: OAuth 2.1。料金体系: 不明。日本語ドキュメント: なし。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/stripe-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/stripe-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "必須"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/stripe-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "決済・金融",
+          "item": "https://mcpnavi.jp/categories/payments/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Stripe MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "なし"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "あり"
+      "@type": "Product",
+      "name": "Stripe MCP",
+      "description": "Stripe の顧客、商品、請求書、決済を扱う公式サーバー。リモートは OAuth。",
+      "url": "https://mcpnavi.jp/servers/stripe-mcp/",
+      "category": [
+        "決済・金融"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "URLで接続、自分で動かす"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "Streamable HTTP、stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "OAuth 2.1"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "必須"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "なし"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "あり"
+        }
+      ],
+      "sameAs": [
+        "https://docs.stripe.com/agents"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "Stripe",
+        "url": "https://mcpnavi.jp/providers/stripe/"
+      },
+      "@id": "https://mcpnavi.jp/servers/stripe-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/stripe-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "Stripe",
-    "url": "https://mcpnavi.jp/providers/stripe/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/payments/">決済・金融</a>
-    › <span class="text-ink">Stripe MCP</span>
+     › <a href="/categories/payments/">決済・金融</a> › <span class="text-ink">Stripe MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Stripe MCP</h1>

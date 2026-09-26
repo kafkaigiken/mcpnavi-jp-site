@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Sentry MCP（Sentry） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="Sentry MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: URLで接続。接続方式: Streamable HTTP。認証方式: OAuth 2.1。料金体系: 不明。日本語ドキュメント: 不明。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/sentry-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Sentry MCP",
-  "description": "Sentry のエラー、Issue、プロジェクトを扱う公式リモートサーバー。",
-  "url": "https://mcpnavi.jp/servers/sentry-mcp/",
-  "category": [
-    "監視・可観測性"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "URLで接続"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "Streamable HTTP"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "OAuth 2.1"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/sentry-mcp/",
+      "url": "https://mcpnavi.jp/servers/sentry-mcp/",
+      "name": "Sentry MCP（Sentry） | MCPサービスの検索・比較",
+      "description": "Sentry MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: URLで接続。接続方式: Streamable HTTP。認証方式: OAuth 2.1。料金体系: 不明。日本語ドキュメント: 不明。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/sentry-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/sentry-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "必須"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/sentry-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "監視・可観測性",
+          "item": "https://mcpnavi.jp/categories/observability/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sentry MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "不明"
+      "@type": "Product",
+      "name": "Sentry MCP",
+      "description": "Sentry のエラー、Issue、プロジェクトを扱う公式リモートサーバー。",
+      "url": "https://mcpnavi.jp/servers/sentry-mcp/",
+      "category": [
+        "監視・可観測性"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "URLで接続"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "Streamable HTTP"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "OAuth 2.1"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "必須"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "不明"
+        }
+      ],
+      "sameAs": [
+        "https://mcp.sentry.dev"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "Sentry",
+        "url": "https://mcpnavi.jp/providers/sentry/"
+      },
+      "@id": "https://mcpnavi.jp/servers/sentry-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/sentry-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "Sentry",
-    "url": "https://mcpnavi.jp/providers/sentry/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/observability/">監視・可観測性</a>
-    › <span class="text-ink">Sentry MCP</span>
+     › <a href="/categories/observability/">監視・可観測性</a> › <span class="text-ink">Sentry MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Sentry MCP</h1>

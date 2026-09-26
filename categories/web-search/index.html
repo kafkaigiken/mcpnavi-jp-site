@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>検索・Web取得のMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="検索・Web取得に分類されるMCPサービスを12件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/categories/web-search/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
-    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:title" content="検索・Web取得のMCPサービス一覧">
+    <meta property="og:description" content="検索・Web取得に分類されるMCPサービスを12件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta property="og:url" content="https://mcpnavi.jp/categories/web-search/">
     <meta property="og:type" content="website">
     
@@ -25,82 +24,151 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/web-search/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/web-search/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "検索・Web取得",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Amenbo",
-      "url": "https://mcpnavi.jp/servers/amenbo/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Apify MCP Server",
-      "url": "https://mcpnavi.jp/servers/apify-mcp-server/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Brave Search MCP Server",
-      "url": "https://mcpnavi.jp/servers/brave-search/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/categories/web-search/",
+      "url": "https://mcpnavi.jp/categories/web-search/",
+      "name": "検索・Web取得のMCPサービス一覧",
+      "description": "検索・Web取得に分類されるMCPサービスを12件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/categories/web-search/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/categories/web-search/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Brave Search MCP Server",
-      "url": "https://mcpnavi.jp/servers/brave-search-mcp-server/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/categories/web-search/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "検索・Web取得"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Exa MCP Server",
-      "url": "https://mcpnavi.jp/servers/exa-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Fetch MCP Server",
-      "url": "https://mcpnavi.jp/servers/fetch/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "Firecrawl MCP Server",
-      "url": "https://mcpnavi.jp/servers/firecrawl-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Norikae MCP",
-      "url": "https://mcpnavi.jp/servers/norikae-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "Tavily MCP Server",
-      "url": "https://mcpnavi.jp/servers/tavily-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "name": "Wikipedia MCP",
-      "url": "https://mcpnavi.jp/servers/wikipedia-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "name": "Yahoo Furigana MCP",
-      "url": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "name": "Yahoo Japan Search MCP",
-      "url": "https://mcpnavi.jp/servers/yahoo-japan-search-mcp/"
+      "@type": "ItemList",
+      "name": "検索・Web取得",
+      "numberOfItems": 12,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Amenbo",
+          "url": "https://mcpnavi.jp/servers/amenbo/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Apify MCP Server",
+          "url": "https://mcpnavi.jp/servers/apify-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Brave Search MCP Server",
+          "url": "https://mcpnavi.jp/servers/brave-search/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Brave Search MCP Server",
+          "url": "https://mcpnavi.jp/servers/brave-search-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Exa MCP Server",
+          "url": "https://mcpnavi.jp/servers/exa-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Fetch MCP Server",
+          "url": "https://mcpnavi.jp/servers/fetch/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Firecrawl MCP Server",
+          "url": "https://mcpnavi.jp/servers/firecrawl-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Norikae MCP",
+          "url": "https://mcpnavi.jp/servers/norikae-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Tavily MCP Server",
+          "url": "https://mcpnavi.jp/servers/tavily-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Wikipedia MCP",
+          "url": "https://mcpnavi.jp/servers/wikipedia-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "Yahoo Furigana MCP",
+          "url": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "Yahoo Japan Search MCP",
+          "url": "https://mcpnavi.jp/servers/yahoo-japan-search-mcp/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/categories/web-search/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/categories/web-search/"
+      }
     }
   ]
 }</script>
@@ -235,7 +303,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="パンくず" class="breadcrumb"><a href="/">ホーム</a> › <span class="text-ink">検索・Web取得</span></nav>
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <span class="text-ink">検索・Web取得</span>
+</nav>
+
 <h1 class="page-title mt-4">検索・Web取得</h1>
 <p class="page-lead">Web 検索と Web ページの取得・抽出を行うサービスです。</p>
 <p class="mt-2 text-sm text-muted">12件</p>

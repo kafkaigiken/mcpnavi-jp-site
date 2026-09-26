@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>MCP services for Infrastructure and IaC | mcpnavi</title>
-    
     <meta name="description" content="5 MCP services in the Infrastructure and IaC category, with transport, authentication, pricing model and Japanese support.">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/en/categories/infrastructure/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCP services: connect your AI agent to data and tools">
-    <meta property="og:description" content="A directory of MCP services that connect AI agents like ChatGPT and Claude to data and tools. Every service lists compatible agents and connection methods. All data is read from public pages, and every service shows the date it was last checked.">
+    <meta property="og:title" content="MCP services for Infrastructure and IaC">
+    <meta property="og:description" content="5 MCP services in the Infrastructure and IaC category, with transport, authentication, pricing model and Japanese support.">
     <meta property="og:url" content="https://mcpnavi.jp/en/categories/infrastructure/">
     <meta property="og:type" content="website">
     
@@ -25,40 +24,109 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/infrastructure/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/infrastructure/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Infrastructure and IaC",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Docker MCP Gateway",
-      "url": "https://mcpnavi.jp/en/servers/docker-mcp-gateway/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Kubernetes MCP Server",
-      "url": "https://mcpnavi.jp/en/servers/kubernetes-mcp-server/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Pagoda MCP Server",
-      "url": "https://mcpnavi.jp/en/servers/pagoda-mcp-server/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/en/categories/infrastructure/",
+      "url": "https://mcpnavi.jp/en/categories/infrastructure/",
+      "name": "MCP services for Infrastructure and IaC",
+      "description": "5 MCP services in the Infrastructure and IaC category, with transport, authentication, pricing model and Japanese support.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/categories/infrastructure/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/categories/infrastructure/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Terraform MCP Server",
-      "url": "https://mcpnavi.jp/en/servers/terraform-mcp-server/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/categories/infrastructure/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Infrastructure and IaC"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "kintone OAuth MCP (Cloudflare)",
-      "url": "https://mcpnavi.jp/en/servers/kintone-oauth-mcp-cloudflare/"
+      "@type": "ItemList",
+      "name": "Infrastructure and IaC",
+      "numberOfItems": 5,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docker MCP Gateway",
+          "url": "https://mcpnavi.jp/en/servers/docker-mcp-gateway/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Kubernetes MCP Server",
+          "url": "https://mcpnavi.jp/en/servers/kubernetes-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pagoda MCP Server",
+          "url": "https://mcpnavi.jp/en/servers/pagoda-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Terraform MCP Server",
+          "url": "https://mcpnavi.jp/en/servers/terraform-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "kintone OAuth MCP (Cloudflare)",
+          "url": "https://mcpnavi.jp/en/servers/kintone-oauth-mcp-cloudflare/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/en/categories/infrastructure/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/categories/infrastructure/"
+      }
     }
   ]
 }</script>
@@ -193,7 +261,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/en/">Home</a> › <span class="text-ink">Infrastructure and IaC</span></nav>
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <span class="text-ink">Infrastructure and IaC</span>
+</nav>
+
 <h1 class="page-title mt-4">Infrastructure and IaC</h1>
 <p class="page-lead">インフラ構成の記述と適用を扱うサービスです。</p>
 <p class="mt-2 text-sm text-muted">5 servers</p>

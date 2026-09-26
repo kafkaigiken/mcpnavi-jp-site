@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>What is MCP? The history of the Model Context Protocol and how it works | mcpnavi</title>
-    
     <meta name="description" content="An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.">
     <meta name="robots" content="index, follow">
     
@@ -25,14 +24,89 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/",
+      "url": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/",
+      "name": "What is MCP? The history of the Model Context Protocol and how it works",
+      "description": "An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/#article"
+      },
+      "datePublished": "2026-09-20",
+      "dateModified": "2026-09-20"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Introduction to MCP: the history of the Model Context Protocol and how it works"
+        }
+      ]
+    },
     {
       "@type": "Article",
       "headline": "What is MCP? The history of the Model Context Protocol and how it works",
       "description": "An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.",
       "url": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/",
+      "inLanguage": "en",
       "datePublished": "2026-09-20",
       "dateModified": "2026-09-20",
       "author": {
@@ -41,32 +115,12 @@
         "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "mcpnavi",
-        "url": "https://mcpnavi.jp"
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "@id": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Blog",
-          "item": "https://mcpnavi.jp/en/blog/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Technical",
-          "item": "https://mcpnavi.jp/en/blog/technical/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Introduction to MCP: the history of the Model Context Protocol and how it works"
-        }
-      ]
     }
   ]
 }</script>

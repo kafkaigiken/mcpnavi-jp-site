@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Japan Subsidy Search MCP（easakura） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="Japan Subsidy Search MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 不明。接続方式: Streamable HTTP。認証方式: なし。料金体系: 不明。日本語ドキュメント: 不明。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,136 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/japan-subsidy-search-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Japan Subsidy Search MCP",
-  "description": "公式の jGrants データから、補助金の締切、金額、対象要件を検索するサーバー。",
-  "url": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/",
-  "category": [
-    "データ分析"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "不明"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "Streamable HTTP"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "なし"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/",
+      "url": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/",
+      "name": "Japan Subsidy Search MCP（easakura） | MCPサービスの検索・比較",
+      "description": "Japan Subsidy Search MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 不明。接続方式: Streamable HTTP。認証方式: なし。料金体系: 不明。日本語ドキュメント: 不明。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "不明"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "データ分析",
+          "item": "https://mcpnavi.jp/categories/data-analytics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Japan Subsidy Search MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "不明"
+      "@type": "Product",
+      "name": "Japan Subsidy Search MCP",
+      "description": "公式の jGrants データから、補助金の締切、金額、対象要件を検索するサーバー。",
+      "url": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/",
+      "category": [
+        "データ分析"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "Streamable HTTP"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "なし"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "不明"
+        }
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "easakura",
+        "url": "https://mcpnavi.jp/providers/easakura/"
+      },
+      "@id": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/japan-subsidy-search-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "easakura",
-    "url": "https://mcpnavi.jp/providers/easakura/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +286,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/data-analytics/">データ分析</a>
-    › <span class="text-ink">Japan Subsidy Search MCP</span>
+     › <a href="/categories/data-analytics/">データ分析</a> › <span class="text-ink">Japan Subsidy Search MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Japan Subsidy Search MCP</h1>

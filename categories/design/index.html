@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>デザインのMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="デザインに分類されるMCPサービスを6件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/categories/design/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
-    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:title" content="デザインのMCPサービス一覧">
+    <meta property="og:description" content="デザインに分類されるMCPサービスを6件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta property="og:url" content="https://mcpnavi.jp/categories/design/">
     <meta property="og:type" content="website">
     
@@ -25,46 +24,115 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/design/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/design/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "デザイン",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Blender MCP",
-      "url": "https://mcpnavi.jp/servers/blender-mcp/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Figma Context MCP",
-      "url": "https://mcpnavi.jp/servers/figma-context-mcp/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Japan UX MCP",
-      "url": "https://mcpnavi.jp/servers/japan-ux-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/categories/design/",
+      "url": "https://mcpnavi.jp/categories/design/",
+      "name": "デザインのMCPサービス一覧",
+      "description": "デザインに分類されるMCPサービスを6件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/categories/design/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/categories/design/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Redis MCP Server",
-      "url": "https://mcpnavi.jp/servers/redis-mcp-server/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/categories/design/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "デザイン"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "SmartHR UI MCP Server",
-      "url": "https://mcpnavi.jp/servers/smarthr-ui-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Unity MCP",
-      "url": "https://mcpnavi.jp/servers/unity-mcp/"
+      "@type": "ItemList",
+      "name": "デザイン",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Blender MCP",
+          "url": "https://mcpnavi.jp/servers/blender-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Figma Context MCP",
+          "url": "https://mcpnavi.jp/servers/figma-context-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Japan UX MCP",
+          "url": "https://mcpnavi.jp/servers/japan-ux-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Redis MCP Server",
+          "url": "https://mcpnavi.jp/servers/redis-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "SmartHR UI MCP Server",
+          "url": "https://mcpnavi.jp/servers/smarthr-ui-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Unity MCP",
+          "url": "https://mcpnavi.jp/servers/unity-mcp/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/categories/design/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/categories/design/"
+      }
     }
   ]
 }</script>
@@ -199,7 +267,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="パンくず" class="breadcrumb"><a href="/">ホーム</a> › <span class="text-ink">デザイン</span></nav>
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <span class="text-ink">デザイン</span>
+</nav>
+
 <h1 class="page-title mt-4">デザイン</h1>
 <p class="page-lead">デザインファイルとアセットを扱うサービスです。</p>
 <p class="mt-2 text-sm text-muted">6件</p>

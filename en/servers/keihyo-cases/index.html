@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>景品表示法 事例 MCP (eoylab) | MCP search and comparison | mcpnavi</title>
-    
     <meta name="description" content="景品表示法 事例 MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: None.Pricing model: Unknown. Japanese documentation: Yes. Each service shows when it was last checked.">
     <meta name="robots" content="index, follow">
     
@@ -26,66 +25,150 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/keihyo-cases/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "景品表示法 事例 MCP",
-  "description": "A dataset and server over Japanese advertising-law enforcement actions, with sources.",
-  "url": "https://mcpnavi.jp/en/servers/keihyo-cases/",
-  "category": [
-    "Documents and knowledge",
-    "Marketing and SEO",
-    "AI and machine learning"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Hosting",
-      "value": "Run it yourself"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "Transport",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "Authentication",
-      "value": "None"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/en/servers/keihyo-cases/",
+      "url": "https://mcpnavi.jp/en/servers/keihyo-cases/",
+      "name": "景品表示法 事例 MCP (eoylab) | MCP search and comparison",
+      "description": "景品表示法 事例 MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: None.Pricing model: Unknown. Japanese documentation: Yes. Each service shows when it was last checked.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/servers/keihyo-cases/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/servers/keihyo-cases/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS required",
-      "value": "Not applicable (stdio only)"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/servers/keihyo-cases/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Documents and knowledge",
+          "item": "https://mcpnavi.jp/en/categories/knowledge/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Marketing and SEO",
+          "item": "https://mcpnavi.jp/en/categories/marketing-seo/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "AI and machine learning",
+          "item": "https://mcpnavi.jp/en/categories/ai-ml/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "景品表示法 事例 MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "Pricing model",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Free tier",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese documentation",
-      "value": "Yes"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese support",
-      "value": "Unknown"
+      "@type": "Product",
+      "name": "景品表示法 事例 MCP",
+      "description": "A dataset and server over Japanese advertising-law enforcement actions, with sources.",
+      "url": "https://mcpnavi.jp/en/servers/keihyo-cases/",
+      "category": [
+        "Documents and knowledge",
+        "Marketing and SEO",
+        "AI and machine learning"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Hosting",
+          "value": "Run it yourself"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Transport",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Authentication",
+          "value": "None"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS required",
+          "value": "Not applicable (stdio only)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pricing model",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Free tier",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese documentation",
+          "value": "Yes"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese support",
+          "value": "Unknown"
+        }
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "eoylab",
+        "url": "https://mcpnavi.jp/en/providers/eoylab/"
+      },
+      "@id": "https://mcpnavi.jp/en/servers/keihyo-cases/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/servers/keihyo-cases/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "eoylab",
-    "url": "https://mcpnavi.jp/en/providers/eoylab/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -217,11 +300,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-     › <a href="/en/categories/knowledge/">Documents and knowledge</a> › <a href="/en/categories/marketing-seo/">Marketing and SEO</a> › <a href="/en/categories/ai-ml/">AI and machine learning</a>
-    › <span class="text-ink">景品表示法 事例 MCP</span>
+     › <a href="/en/categories/knowledge/">Documents and knowledge</a> › <a href="/en/categories/marketing-seo/">Marketing and SEO</a> › <a href="/en/categories/ai-ml/">AI and machine learning</a> › <span class="text-ink">景品表示法 事例 MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">景品表示法 事例 MCP</h1>

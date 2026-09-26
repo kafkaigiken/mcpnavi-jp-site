@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>MCPサーバーの認証方式とは？OAuth 2.1とAPIキーの基本 | mcpnavi</title>
-    
     <meta name="description" content="MCPサーバーの認証方式の入門記事です。OAuth 2.1、APIキー、なしの違い、MCP仕様2026-07-28版が定める認可の仕組み（Protected Resource Metadata、PKCE、Client ID Metadata Documents）、接続の流れを説明します。">
     <meta name="robots" content="index, follow">
     
@@ -25,14 +24,89 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/",
+      "url": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/",
+      "name": "MCPサーバーの認証方式とは？OAuth 2.1とAPIキーの基本",
+      "description": "MCPサーバーの認証方式の入門記事です。OAuth 2.1、APIキー、なしの違い、MCP仕様2026-07-28版が定める認可の仕組み（Protected Resource Metadata、PKCE、Client ID Metadata Documents）、接続の流れを説明します。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/#article"
+      },
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ブログ",
+          "item": "https://mcpnavi.jp/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "技術解説",
+          "item": "https://mcpnavi.jp/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "MCPサーバーの認証方式：OAuthとAPIキーの基本"
+        }
+      ]
+    },
     {
       "@type": "Article",
       "headline": "MCPサーバーの認証方式とは？OAuth 2.1とAPIキーの基本",
       "description": "MCPサーバーの認証方式の入門記事です。OAuth 2.1、APIキー、なしの違い、MCP仕様2026-07-28版が定める認可の仕組み（Protected Resource Metadata、PKCE、Client ID Metadata Documents）、接続の流れを説明します。",
       "url": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/",
+      "inLanguage": "ja",
       "datePublished": "2026-09-23",
       "dateModified": "2026-09-23",
       "author": {
@@ -41,32 +115,12 @@
         "url": "https://mcpnavi.jp/authors/iqbal-abdullah/"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "mcpnavi",
-        "url": "https://mcpnavi.jp"
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "@id": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/blog/technical/mcp-authorization-basics/"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "ブログ",
-          "item": "https://mcpnavi.jp/blog/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "技術解説",
-          "item": "https://mcpnavi.jp/blog/technical/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "MCPサーバーの認証方式：OAuthとAPIキーの基本"
-        }
-      ]
     }
   ]
 }</script>

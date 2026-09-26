@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>MCP services for Browser automation | mcpnavi</title>
-    
     <meta name="description" content="5 MCP services in the Browser automation category, with transport, authentication, pricing model and Japanese support.">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/en/categories/browser-automation/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCP services: connect your AI agent to data and tools">
-    <meta property="og:description" content="A directory of MCP services that connect AI agents like ChatGPT and Claude to data and tools. Every service lists compatible agents and connection methods. All data is read from public pages, and every service shows the date it was last checked.">
+    <meta property="og:title" content="MCP services for Browser automation">
+    <meta property="og:description" content="5 MCP services in the Browser automation category, with transport, authentication, pricing model and Japanese support.">
     <meta property="og:url" content="https://mcpnavi.jp/en/categories/browser-automation/">
     <meta property="og:type" content="website">
     
@@ -25,40 +24,109 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/browser-automation/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/browser-automation/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Browser automation",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Browser MCP",
-      "url": "https://mcpnavi.jp/en/servers/browser-mcp/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Browserbase MCP",
-      "url": "https://mcpnavi.jp/en/servers/browserbase-mcp/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Chrome DevTools MCP",
-      "url": "https://mcpnavi.jp/en/servers/chrome-devtools-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/en/categories/browser-automation/",
+      "url": "https://mcpnavi.jp/en/categories/browser-automation/",
+      "name": "MCP services for Browser automation",
+      "description": "5 MCP services in the Browser automation category, with transport, authentication, pricing model and Japanese support.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/categories/browser-automation/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/categories/browser-automation/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Chrome MCP Server",
-      "url": "https://mcpnavi.jp/en/servers/chrome-mcp-server/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/categories/browser-automation/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Browser automation"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Playwright MCP",
-      "url": "https://mcpnavi.jp/en/servers/playwright-mcp/"
+      "@type": "ItemList",
+      "name": "Browser automation",
+      "numberOfItems": 5,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Browser MCP",
+          "url": "https://mcpnavi.jp/en/servers/browser-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Browserbase MCP",
+          "url": "https://mcpnavi.jp/en/servers/browserbase-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chrome DevTools MCP",
+          "url": "https://mcpnavi.jp/en/servers/chrome-devtools-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Chrome MCP Server",
+          "url": "https://mcpnavi.jp/en/servers/chrome-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Playwright MCP",
+          "url": "https://mcpnavi.jp/en/servers/playwright-mcp/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/en/categories/browser-automation/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/categories/browser-automation/"
+      }
     }
   ]
 }</script>
@@ -193,7 +261,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="Breadcrumb" class="breadcrumb"><a href="/en/">Home</a> › <span class="text-ink">Browser automation</span></nav>
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <span class="text-ink">Browser automation</span>
+</nav>
+
 <h1 class="page-title mt-4">Browser automation</h1>
 <p class="page-lead">ブラウザを操作してページの閲覧、入力、検証を行うサービスです。</p>
 <p class="mt-2 text-sm text-muted">5 servers</p>

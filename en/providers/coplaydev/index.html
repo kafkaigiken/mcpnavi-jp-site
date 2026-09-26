@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>MCP services for CoplayDev | mcpnavi</title>
-    
     <meta name="description" content="1 MCP services from CoplayDev. See Type, Japanese entity, and each service&#x27;s hosting, transport, pricing model and Japanese support.">
     <meta name="robots" content="index, follow">
     
@@ -26,16 +25,88 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/providers/coplaydev/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "CoplayDev",
-  "url": "https://mcpnavi.jp/en/providers/coplaydev/",
-  "sameAs": [
-    "https://coplay.dev/"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://mcpnavi.jp/en/providers/coplaydev/",
+      "url": "https://mcpnavi.jp/en/providers/coplaydev/",
+      "name": "MCP services for CoplayDev",
+      "description": "1 MCP services from CoplayDev. See Type, Japanese entity, and each service's hosting, transport, pricing model and Japanese support.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/providers/coplaydev/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/providers/coplaydev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/providers/coplaydev/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "提供元一覧",
+          "item": "https://mcpnavi.jp/en/providers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CoplayDev"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "CoplayDev",
+      "url": "https://mcpnavi.jp/en/providers/coplaydev/",
+      "sameAs": [
+        "https://coplay.dev/"
+      ],
+      "@id": "https://mcpnavi.jp/en/providers/coplaydev/#organization",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/providers/coplaydev/"
+      }
+    }
   ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -167,11 +238,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-    › <a href="/en/providers/">Providers</a>
-    › <span class="text-ink">CoplayDev</span>
+     › <a href="/en/providers/">提供元一覧</a> › <span class="text-ink">CoplayDev</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">CoplayDev</h1>

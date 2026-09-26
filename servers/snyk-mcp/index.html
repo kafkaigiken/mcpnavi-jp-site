@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Snyk MCP（Snyk） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="Snyk MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 自分で動かす。接続方式: stdio。認証方式: APIキー。料金体系: 不明。日本語ドキュメント: 不明。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/snyk-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Snyk MCP",
-  "description": "Snyk の脆弱性検査をエージェントから使うための MCP モード。",
-  "url": "https://mcpnavi.jp/servers/snyk-mcp/",
-  "category": [
-    "セキュリティ"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "自分で動かす"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "APIキー"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/snyk-mcp/",
+      "url": "https://mcpnavi.jp/servers/snyk-mcp/",
+      "name": "Snyk MCP（Snyk） | MCPサービスの検索・比較",
+      "description": "Snyk MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 自分で動かす。接続方式: stdio。認証方式: APIキー。料金体系: 不明。日本語ドキュメント: 不明。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/snyk-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/snyk-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "対象外（stdio のみ）"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/snyk-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "セキュリティ",
+          "item": "https://mcpnavi.jp/categories/security/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Snyk MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "あり"
+      "@type": "Product",
+      "name": "Snyk MCP",
+      "description": "Snyk の脆弱性検査をエージェントから使うための MCP モード。",
+      "url": "https://mcpnavi.jp/servers/snyk-mcp/",
+      "category": [
+        "セキュリティ"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "自分で動かす"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "APIキー"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "対象外（stdio のみ）"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "あり"
+        }
+      ],
+      "sameAs": [
+        "https://snyk.io"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "Snyk",
+        "url": "https://mcpnavi.jp/providers/snyk/"
+      },
+      "@id": "https://mcpnavi.jp/servers/snyk-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/snyk-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "Snyk",
-    "url": "https://mcpnavi.jp/providers/snyk/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/security/">セキュリティ</a>
-    › <span class="text-ink">Snyk MCP</span>
+     › <a href="/categories/security/">セキュリティ</a> › <span class="text-ink">Snyk MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Snyk MCP</h1>

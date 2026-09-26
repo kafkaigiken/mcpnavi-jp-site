@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Iqbal Abdullah | mcpnavi</title>
-    
     <meta name="description" content="The profile of Iqbal Abdullah, CEO of Kafkai Giken, Inc., and the articles he has written for mcpnavi.">
     <meta name="robots" content="index, follow">
     
@@ -25,40 +24,90 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/authors/iqbal-abdullah/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/authors/iqbal-abdullah/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
       "@type": "ProfilePage",
+      "@id": "https://mcpnavi.jp/en/authors/iqbal-abdullah/",
       "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/",
+      "name": "Iqbal Abdullah",
+      "description": "The profile of Iqbal Abdullah, CEO of Kafkai Giken, Inc., and the articles he has written for mcpnavi.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/authors/iqbal-abdullah/#breadcrumb"
+      },
       "mainEntity": {
-        "@type": "Person",
-        "name": "Iqbal Abdullah",
-        "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/",
-        "jobTitle": "CEO, Kafkai Giken, Inc.",
-        "description": "The profile of Iqbal Abdullah, CEO of Kafkai Giken, Inc., and the articles he has written for mcpnavi.",
-        "sameAs": [
-          "https://x.com/iqbalabd",
-          "https://www.linkedin.com/in/iqbalabd",
-          "https://iqbalabdullah.net/"
-        ]
+        "@id": "https://mcpnavi.jp/en/authors/iqbal-abdullah/#person"
       }
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/authors/iqbal-abdullah/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
           "name": "Author",
           "item": "https://mcpnavi.jp/en/authors/"
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 3,
           "name": "Iqbal Abdullah"
         }
       ]
+    },
+    {
+      "@type": "Person",
+      "name": "Iqbal Abdullah",
+      "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/",
+      "jobTitle": "CEO, Kafkai Giken, Inc.",
+      "description": "The profile of Iqbal Abdullah, CEO of Kafkai Giken, Inc., and the articles he has written for mcpnavi.",
+      "sameAs": [
+        "https://x.com/iqbalabd",
+        "https://www.linkedin.com/in/iqbalabd",
+        "https://iqbalabdullah.net/"
+      ],
+      "@id": "https://mcpnavi.jp/en/authors/iqbal-abdullah/#person",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+      }
     }
   ]
 }</script>

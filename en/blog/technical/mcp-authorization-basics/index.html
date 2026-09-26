@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>How MCP servers authenticate: the basics of OAuth 2.1 and API keys | mcpnavi</title>
-    
     <meta name="description" content="An introduction to authentication for MCP servers: OAuth 2.1, API keys and no authentication, the authorization rules of specification 2026-07-28 (Protected Resource Metadata, PKCE, Client ID Metadata Documents), and the connection flow.">
     <meta name="robots" content="index, follow">
     
@@ -25,14 +24,89 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/mcp-authorization-basics/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/",
+      "url": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/",
+      "name": "How MCP servers authenticate: the basics of OAuth 2.1 and API keys",
+      "description": "An introduction to authentication for MCP servers: OAuth 2.1, API keys and no authentication, the authorization rules of specification 2026-07-28 (Protected Resource Metadata, PKCE, Client ID Metadata Documents), and the connection flow.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/#article"
+      },
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Authentication for MCP servers: the basics of OAuth and API keys"
+        }
+      ]
+    },
     {
       "@type": "Article",
       "headline": "How MCP servers authenticate: the basics of OAuth 2.1 and API keys",
       "description": "An introduction to authentication for MCP servers: OAuth 2.1, API keys and no authentication, the authorization rules of specification 2026-07-28 (Protected Resource Metadata, PKCE, Client ID Metadata Documents), and the connection flow.",
       "url": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/",
+      "inLanguage": "en",
       "datePublished": "2026-09-23",
       "dateModified": "2026-09-23",
       "author": {
@@ -41,32 +115,12 @@
         "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "mcpnavi",
-        "url": "https://mcpnavi.jp"
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "@id": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/mcp-authorization-basics/"
       }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Blog",
-          "item": "https://mcpnavi.jp/en/blog/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Technical",
-          "item": "https://mcpnavi.jp/en/blog/technical/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Authentication for MCP servers: the basics of OAuth and API keys"
-        }
-      ]
     }
   ]
 }</script>

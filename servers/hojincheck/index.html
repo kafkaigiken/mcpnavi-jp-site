@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>HojinCheck（ren-iwata） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="HojinCheck の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 不明。接続方式: Streamable HTTP。認証方式: 不明。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/hojincheck/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "HojinCheck",
-  "description": "日本の政府オープンデータを使った法人確認 API をリモートサーバーとして提供。",
-  "url": "https://mcpnavi.jp/servers/hojincheck/",
-  "category": [
-    "データ分析"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "不明"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "Streamable HTTP"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "不明"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/hojincheck/",
+      "url": "https://mcpnavi.jp/servers/hojincheck/",
+      "name": "HojinCheck（ren-iwata） | MCPサービスの検索・比較",
+      "description": "HojinCheck の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 不明。接続方式: Streamable HTTP。認証方式: 不明。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/hojincheck/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/hojincheck/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "不明"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/hojincheck/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "データ分析",
+          "item": "https://mcpnavi.jp/categories/data-analytics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "HojinCheck"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "あり"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "不明"
+      "@type": "Product",
+      "name": "HojinCheck",
+      "description": "日本の政府オープンデータを使った法人確認 API をリモートサーバーとして提供。",
+      "url": "https://mcpnavi.jp/servers/hojincheck/",
+      "category": [
+        "データ分析"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "Streamable HTTP"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "あり"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "不明"
+        }
+      ],
+      "sameAs": [
+        "https://hojincheck.com"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "ren-iwata",
+        "url": "https://mcpnavi.jp/providers/ren-iwata/"
+      },
+      "@id": "https://mcpnavi.jp/servers/hojincheck/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/hojincheck/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "ren-iwata",
-    "url": "https://mcpnavi.jp/providers/ren-iwata/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/data-analytics/">データ分析</a>
-    › <span class="text-ink">HojinCheck</span>
+     › <a href="/categories/data-analytics/">データ分析</a> › <span class="text-ink">HojinCheck</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">HojinCheck</h1>

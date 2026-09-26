@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>家系ラーメン MCP (yamazaki-yuki-23) | MCP search and comparison | mcpnavi</title>
-    
     <meta name="description" content="家系ラーメン MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Unknown. Transport: Streamable HTTP.Authentication: None.Pricing model: Unknown. Japanese documentation: Yes. Each service shows when it was last checked.">
     <meta name="robots" content="index, follow">
     
@@ -26,65 +25,143 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "家系ラーメン MCP",
-  "description": "Finds iekei ramen shops in three modes, running on Cloudflare Workers.",
-  "url": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/",
-  "category": [
-    "Cloud platforms",
-    "Maps and location"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Hosting",
-      "value": "Unknown"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "Transport",
-      "value": "Streamable HTTP"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "Authentication",
-      "value": "None"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/",
+      "url": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/",
+      "name": "家系ラーメン MCP (yamazaki-yuki-23) | MCP search and comparison",
+      "description": "家系ラーメン MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Unknown. Transport: Streamable HTTP.Authentication: None.Pricing model: Unknown. Japanese documentation: Yes. Each service shows when it was last checked.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS required",
-      "value": "Unknown"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cloud platforms",
+          "item": "https://mcpnavi.jp/en/categories/cloud/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Maps and location",
+          "item": "https://mcpnavi.jp/en/categories/maps-location/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "家系ラーメン MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "Pricing model",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Free tier",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese documentation",
-      "value": "Yes"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese support",
-      "value": "Unknown"
+      "@type": "Product",
+      "name": "家系ラーメン MCP",
+      "description": "Finds iekei ramen shops in three modes, running on Cloudflare Workers.",
+      "url": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/",
+      "category": [
+        "Cloud platforms",
+        "Maps and location"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Hosting",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Transport",
+          "value": "Streamable HTTP"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Authentication",
+          "value": "None"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS required",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pricing model",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Free tier",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese documentation",
+          "value": "Yes"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese support",
+          "value": "Unknown"
+        }
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "yamazaki-yuki-23",
+        "url": "https://mcpnavi.jp/en/providers/yamazaki-yuki-23/"
+      },
+      "@id": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/servers/iekei-ramen-mcp-apps/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "yamazaki-yuki-23",
-    "url": "https://mcpnavi.jp/en/providers/yamazaki-yuki-23/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -216,11 +293,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-     › <a href="/en/categories/cloud/">Cloud platforms</a> › <a href="/en/categories/maps-location/">Maps and location</a>
-    › <span class="text-ink">家系ラーメン MCP</span>
+     › <a href="/en/categories/cloud/">Cloud platforms</a> › <a href="/en/categories/maps-location/">Maps and location</a> › <span class="text-ink">家系ラーメン MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">家系ラーメン MCP</h1>

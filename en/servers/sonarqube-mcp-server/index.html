@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>SonarQube MCP Server (SonarSource) | MCP search and comparison | mcpnavi</title>
-    
     <meta name="description" content="SonarQube MCP Server: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: API key.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/sonarqube-mcp-server/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "SonarQube MCP Server",
-  "description": "SonarSource's official server for SonarQube findings and rules.",
-  "url": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/",
-  "category": [
-    "Security"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Hosting",
-      "value": "Run it yourself"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "Transport",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "Authentication",
-      "value": "API key"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/",
+      "url": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/",
+      "name": "SonarQube MCP Server (SonarSource) | MCP search and comparison",
+      "description": "SonarQube MCP Server: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: API key.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS required",
-      "value": "Not applicable (stdio only)"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security",
+          "item": "https://mcpnavi.jp/en/categories/security/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SonarQube MCP Server"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "Pricing model",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Free tier",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese documentation",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese support",
-      "value": "Yes"
+      "@type": "Product",
+      "name": "SonarQube MCP Server",
+      "description": "SonarSource's official server for SonarQube findings and rules.",
+      "url": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/",
+      "category": [
+        "Security"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Hosting",
+          "value": "Run it yourself"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Transport",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Authentication",
+          "value": "API key"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS required",
+          "value": "Not applicable (stdio only)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pricing model",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Free tier",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese documentation",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese support",
+          "value": "Yes"
+        }
+      ],
+      "sameAs": [
+        "https://www.sonarsource.com/products/sonarqube/mcp-server/"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "SonarSource",
+        "url": "https://mcpnavi.jp/en/providers/sonarsource/"
+      },
+      "@id": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/servers/sonarqube-mcp-server/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "SonarSource",
-    "url": "https://mcpnavi.jp/en/providers/sonarsource/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-     › <a href="/en/categories/security/">Security</a>
-    › <span class="text-ink">SonarQube MCP Server</span>
+     › <a href="/en/categories/security/">Security</a> › <span class="text-ink">SonarQube MCP Server</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">SonarQube MCP Server</h1>

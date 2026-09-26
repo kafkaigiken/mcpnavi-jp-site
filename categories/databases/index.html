@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>データベースのMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="データベースに分類されるMCPサービスを17件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/categories/databases/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
-    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:title" content="データベースのMCPサービス一覧">
+    <meta property="og:description" content="データベースに分類されるMCPサービスを17件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta property="og:url" content="https://mcpnavi.jp/categories/databases/">
     <meta property="og:type" content="website">
     
@@ -25,112 +24,181 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/databases/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/databases/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "データベース",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "AMED Research DB",
-      "url": "https://mcpnavi.jp/servers/amed-research-db/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Airtable MCP Server",
-      "url": "https://mcpnavi.jp/servers/airtable-mcp-server/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Chroma MCP",
-      "url": "https://mcpnavi.jp/servers/chroma-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/categories/databases/",
+      "url": "https://mcpnavi.jp/categories/databases/",
+      "name": "データベースのMCPサービス一覧",
+      "description": "データベースに分類されるMCPサービスを17件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/categories/databases/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/categories/databases/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "ClickHouse MCP Server",
-      "url": "https://mcpnavi.jp/servers/clickhouse-mcp-server/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/categories/databases/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "データベース"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Elasticsearch MCP Server",
-      "url": "https://mcpnavi.jp/servers/elasticsearch-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Excel MCP Server",
-      "url": "https://mcpnavi.jp/servers/excel-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "KAKEN MCP Server",
-      "url": "https://mcpnavi.jp/servers/kaken-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "MCP Toolbox for Databases",
-      "url": "https://mcpnavi.jp/servers/mcp-toolbox-for-databases/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "MongoDB MCP Server",
-      "url": "https://mcpnavi.jp/servers/mongodb-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "name": "MotherDuck MCP",
-      "url": "https://mcpnavi.jp/servers/motherduck-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "name": "Neon MCP Server",
-      "url": "https://mcpnavi.jp/servers/neon-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "name": "Postgres MCP Pro",
-      "url": "https://mcpnavi.jp/servers/postgres-mcp-pro/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
-      "name": "Redis MCP Server",
-      "url": "https://mcpnavi.jp/servers/redis-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 14,
-      "name": "Snowflake MCP",
-      "url": "https://mcpnavi.jp/servers/snowflake-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 15,
-      "name": "Supabase MCP Server",
-      "url": "https://mcpnavi.jp/servers/supabase-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 16,
-      "name": "TabeData MCP",
-      "url": "https://mcpnavi.jp/servers/tabedata-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 17,
-      "name": "mcp-jp-fts",
-      "url": "https://mcpnavi.jp/servers/mcp-jp-fts/"
+      "@type": "ItemList",
+      "name": "データベース",
+      "numberOfItems": 17,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "AMED Research DB",
+          "url": "https://mcpnavi.jp/servers/amed-research-db/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Airtable MCP Server",
+          "url": "https://mcpnavi.jp/servers/airtable-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chroma MCP",
+          "url": "https://mcpnavi.jp/servers/chroma-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "ClickHouse MCP Server",
+          "url": "https://mcpnavi.jp/servers/clickhouse-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Elasticsearch MCP Server",
+          "url": "https://mcpnavi.jp/servers/elasticsearch-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Excel MCP Server",
+          "url": "https://mcpnavi.jp/servers/excel-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "KAKEN MCP Server",
+          "url": "https://mcpnavi.jp/servers/kaken-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "MCP Toolbox for Databases",
+          "url": "https://mcpnavi.jp/servers/mcp-toolbox-for-databases/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "MongoDB MCP Server",
+          "url": "https://mcpnavi.jp/servers/mongodb-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "MotherDuck MCP",
+          "url": "https://mcpnavi.jp/servers/motherduck-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "Neon MCP Server",
+          "url": "https://mcpnavi.jp/servers/neon-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "Postgres MCP Pro",
+          "url": "https://mcpnavi.jp/servers/postgres-mcp-pro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "Redis MCP Server",
+          "url": "https://mcpnavi.jp/servers/redis-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "Snowflake MCP",
+          "url": "https://mcpnavi.jp/servers/snowflake-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "Supabase MCP Server",
+          "url": "https://mcpnavi.jp/servers/supabase-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "TabeData MCP",
+          "url": "https://mcpnavi.jp/servers/tabedata-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "mcp-jp-fts",
+          "url": "https://mcpnavi.jp/servers/mcp-jp-fts/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/categories/databases/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/categories/databases/"
+      }
     }
   ]
 }</script>
@@ -265,7 +333,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="パンくず" class="breadcrumb"><a href="/">ホーム</a> › <span class="text-ink">データベース</span></nav>
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <span class="text-ink">データベース</span>
+</nav>
+
 <h1 class="page-title mt-4">データベース</h1>
 <p class="page-lead">SQL や NoSQL のデータベースに問い合わせ、スキーマを操作するサービスです。</p>
 <p class="mt-2 text-sm text-muted">17件</p>

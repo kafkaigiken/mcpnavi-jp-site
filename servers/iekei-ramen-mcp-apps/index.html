@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>家系ラーメン MCP（yamazaki-yuki-23） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="家系ラーメン MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 不明。接続方式: Streamable HTTP。認証方式: なし。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,65 +25,143 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "家系ラーメン MCP",
-  "description": "家系ラーメン店を検索フォーム、現在地、日本地図の 3 モードで探せる MCP アプリ。Cloudflare Workers で動く。",
-  "url": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/",
-  "category": [
-    "クラウド基盤",
-    "地図・位置情報"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "不明"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "Streamable HTTP"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "なし"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/",
+      "url": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/",
+      "name": "家系ラーメン MCP（yamazaki-yuki-23） | MCPサービスの検索・比較",
+      "description": "家系ラーメン MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 不明。接続方式: Streamable HTTP。認証方式: なし。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "不明"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "クラウド基盤",
+          "item": "https://mcpnavi.jp/categories/cloud/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "地図・位置情報",
+          "item": "https://mcpnavi.jp/categories/maps-location/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "家系ラーメン MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "あり"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "不明"
+      "@type": "Product",
+      "name": "家系ラーメン MCP",
+      "description": "家系ラーメン店を検索フォーム、現在地、日本地図の 3 モードで探せる MCP アプリ。Cloudflare Workers で動く。",
+      "url": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/",
+      "category": [
+        "クラウド基盤",
+        "地図・位置情報"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "Streamable HTTP"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "なし"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "あり"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "不明"
+        }
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "yamazaki-yuki-23",
+        "url": "https://mcpnavi.jp/providers/yamazaki-yuki-23/"
+      },
+      "@id": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/iekei-ramen-mcp-apps/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "yamazaki-yuki-23",
-    "url": "https://mcpnavi.jp/providers/yamazaki-yuki-23/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -216,11 +293,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/cloud/">クラウド基盤</a> › <a href="/categories/maps-location/">地図・位置情報</a>
-    › <span class="text-ink">家系ラーメン MCP</span>
+     › <a href="/categories/cloud/">クラウド基盤</a> › <a href="/categories/maps-location/">地図・位置情報</a> › <span class="text-ink">家系ラーメン MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">家系ラーメン MCP</h1>

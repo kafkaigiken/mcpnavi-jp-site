@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>PayPay MCP (mrslbt) | MCP search and comparison | mcpnavi</title>
-    
     <meta name="description" content="PayPay MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: API key.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/paypay-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "PayPay MCP",
-  "description": "PayPay Open Payment API: QR codes, payment status, refunds and cancellations.",
-  "url": "https://mcpnavi.jp/en/servers/paypay-mcp/",
-  "category": [
-    "Payments and finance"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "Hosting",
-      "value": "Run it yourself"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "Transport",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "Authentication",
-      "value": "API key"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/en/servers/paypay-mcp/",
+      "url": "https://mcpnavi.jp/en/servers/paypay-mcp/",
+      "name": "PayPay MCP (mrslbt) | MCP search and comparison",
+      "description": "PayPay MCP: hosting, transport, authentication, pricing model and Japanese support. Hosting: Run it yourself. Transport: stdio.Authentication: API key.Pricing model: Unknown. Japanese documentation: Unknown. Each service shows when it was last checked.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/servers/paypay-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/servers/paypay-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS required",
-      "value": "Not applicable (stdio only)"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/servers/paypay-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Payments and finance",
+          "item": "https://mcpnavi.jp/en/categories/payments/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "PayPay MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "Pricing model",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Free tier",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese documentation",
-      "value": "Unknown"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Japanese support",
-      "value": "Unknown"
+      "@type": "Product",
+      "name": "PayPay MCP",
+      "description": "PayPay Open Payment API: QR codes, payment status, refunds and cancellations.",
+      "url": "https://mcpnavi.jp/en/servers/paypay-mcp/",
+      "category": [
+        "Payments and finance"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Hosting",
+          "value": "Run it yourself"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Transport",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Authentication",
+          "value": "API key"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS required",
+          "value": "Not applicable (stdio only)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pricing model",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Free tier",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese documentation",
+          "value": "Unknown"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Japanese support",
+          "value": "Unknown"
+        }
+      ],
+      "sameAs": [
+        "https://www.npmjs.com/package/paypay-mcp"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "mrslbt",
+        "url": "https://mcpnavi.jp/en/providers/mrslbt/"
+      },
+      "@id": "https://mcpnavi.jp/en/servers/paypay-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/servers/paypay-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "mrslbt",
-    "url": "https://mcpnavi.jp/en/providers/mrslbt/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <a href="/en/">Home</a>
-     › <a href="/en/categories/payments/">Payments and finance</a>
-    › <span class="text-ink">PayPay MCP</span>
+     › <a href="/en/categories/payments/">Payments and finance</a> › <span class="text-ink">PayPay MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">PayPay MCP</h1>

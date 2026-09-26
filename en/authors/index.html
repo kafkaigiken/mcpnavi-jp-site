@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Author | mcpnavi</title>
-    
     <meta name="description" content="The people who write the articles on the mcpnavi blog.">
     <meta name="robots" content="index, follow">
     
@@ -26,6 +25,67 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/authors/">
     
     
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/en/authors/",
+      "url": "https://mcpnavi.jp/en/authors/",
+      "name": "Author",
+      "description": "The people who write the articles on the mcpnavi blog.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/authors/#itemlist"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Author",
+      "numberOfItems": 1,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Iqbal Abdullah",
+          "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/en/authors/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/authors/"
+      }
+    }
+  ]
+}</script>
     
 <script data-theme-bootstrap>
 (function () {

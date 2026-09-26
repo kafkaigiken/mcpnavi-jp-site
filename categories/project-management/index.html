@@ -6,15 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>プロジェクト管理のMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="プロジェクト管理に分類されるMCPサービスを14件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/categories/project-management/">
     
     <meta property="og:site_name" content="mcpnavi">
-    <meta property="og:title" content="MCPサービス一覧：AIエージェントにデータと道具をつなぐ">
-    <meta property="og:description" content="ChatGPTやClaudeなどのAIエージェントに、データや道具をつなぐMCPサービスを探すディレクトリ。各サービスが対応するAIエージェントと接続方法を掲載し、掲載データは公開ページから取得し、サービスごとに情報確認日を表示しています。">
+    <meta property="og:title" content="プロジェクト管理のMCPサービス一覧">
+    <meta property="og:description" content="プロジェクト管理に分類されるMCPサービスを14件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。">
     <meta property="og:url" content="https://mcpnavi.jp/categories/project-management/">
     <meta property="og:type" content="website">
     
@@ -25,94 +24,163 @@
     <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/categories/project-management/">
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/categories/project-management/">
     
+    
     <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "プロジェクト管理",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Asana MCP Server",
-      "url": "https://mcpnavi.jp/servers/asana-mcp-server/"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Atlassian MCP (mcp-atlassian)",
-      "url": "https://mcpnavi.jp/servers/atlassian-mcp-mcp-atlassian/"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Atlassian Rovo MCP Server",
-      "url": "https://mcpnavi.jp/servers/atlassian-rovo-mcp/"
+      "@type": "CollectionPage",
+      "@id": "https://mcpnavi.jp/categories/project-management/",
+      "url": "https://mcpnavi.jp/categories/project-management/",
+      "name": "プロジェクト管理のMCPサービス一覧",
+      "description": "プロジェクト管理に分類されるMCPサービスを14件掲載しています。接続方式、認証方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/categories/project-management/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/categories/project-management/#itemlist"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Backlog MCP Server",
-      "url": "https://mcpnavi.jp/servers/backlog-mcp-server/"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/categories/project-management/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "プロジェクト管理"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Backlog MCP Server (Rust)",
-      "url": "https://mcpnavi.jp/servers/backlog-mcp-server-rust/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Backlog MCP Server (tominaga-h)",
-      "url": "https://mcpnavi.jp/servers/backlog-mcp-server-tominaga-h/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "Linear MCP",
-      "url": "https://mcpnavi.jp/servers/linear-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Remote kintone MCP Server",
-      "url": "https://mcpnavi.jp/servers/remote-kintone-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "Todoist MCP",
-      "url": "https://mcpnavi.jp/servers/todoist-mcp/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "name": "Trello MCP Server",
-      "url": "https://mcpnavi.jp/servers/trello-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "name": "kintone MCP Server",
-      "url": "https://mcpnavi.jp/servers/kintone-mcp-server/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "name": "kintone MCP Server (macrat)",
-      "url": "https://mcpnavi.jp/servers/kintone-mcp-server-macrat/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
-      "name": "kintone MCP Server (非公式)",
-      "url": "https://mcpnavi.jp/servers/kintone-mcp-server-2/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 14,
-      "name": "kintone OAuth MCP (Cloudflare)",
-      "url": "https://mcpnavi.jp/servers/kintone-oauth-mcp-cloudflare/"
+      "@type": "ItemList",
+      "name": "プロジェクト管理",
+      "numberOfItems": 14,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Asana MCP Server",
+          "url": "https://mcpnavi.jp/servers/asana-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Atlassian MCP (mcp-atlassian)",
+          "url": "https://mcpnavi.jp/servers/atlassian-mcp-mcp-atlassian/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Atlassian Rovo MCP Server",
+          "url": "https://mcpnavi.jp/servers/atlassian-rovo-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Backlog MCP Server",
+          "url": "https://mcpnavi.jp/servers/backlog-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Backlog MCP Server (Rust)",
+          "url": "https://mcpnavi.jp/servers/backlog-mcp-server-rust/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Backlog MCP Server (tominaga-h)",
+          "url": "https://mcpnavi.jp/servers/backlog-mcp-server-tominaga-h/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Linear MCP",
+          "url": "https://mcpnavi.jp/servers/linear-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Remote kintone MCP Server",
+          "url": "https://mcpnavi.jp/servers/remote-kintone-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Todoist MCP",
+          "url": "https://mcpnavi.jp/servers/todoist-mcp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Trello MCP Server",
+          "url": "https://mcpnavi.jp/servers/trello-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "kintone MCP Server",
+          "url": "https://mcpnavi.jp/servers/kintone-mcp-server/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "kintone MCP Server (macrat)",
+          "url": "https://mcpnavi.jp/servers/kintone-mcp-server-macrat/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "kintone MCP Server (非公式)",
+          "url": "https://mcpnavi.jp/servers/kintone-mcp-server-2/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "kintone OAuth MCP (Cloudflare)",
+          "url": "https://mcpnavi.jp/servers/kintone-oauth-mcp-cloudflare/"
+        }
+      ],
+      "@id": "https://mcpnavi.jp/categories/project-management/#itemlist",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/categories/project-management/"
+      }
     }
   ]
 }</script>
@@ -247,7 +315,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
-<nav aria-label="パンくず" class="breadcrumb"><a href="/">ホーム</a> › <span class="text-ink">プロジェクト管理</span></nav>
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <span class="text-ink">プロジェクト管理</span>
+</nav>
+
 <h1 class="page-title mt-4">プロジェクト管理</h1>
 <p class="page-lead">タスク、課題、プロジェクトの進行を扱うサービスです。</p>
 <p class="mt-2 text-sm text-muted">14件</p>

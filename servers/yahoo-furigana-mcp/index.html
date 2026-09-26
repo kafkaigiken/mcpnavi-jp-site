@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>Yahoo Furigana MCP（analekt） | MCPサービスの検索・比較 | mcpnavi</title>
-    
     <meta name="description" content="Yahoo Furigana MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 自分で動かす。接続方式: stdio。認証方式: APIキー。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。">
     <meta name="robots" content="index, follow">
     
@@ -26,64 +25,139 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/servers/yahoo-furigana-mcp/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Yahoo Furigana MCP",
-  "description": "Yahoo! JAPAN のふりがな API を使うサーバー。",
-  "url": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/",
-  "category": [
-    "検索・Web取得"
-  ],
-  "additionalProperty": [
+  "@graph": [
     {
-      "@type": "PropertyValue",
-      "name": "提供形態",
-      "value": "自分で動かす"
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
     },
     {
-      "@type": "PropertyValue",
-      "name": "接続方式",
-      "value": "stdio"
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "認証方式",
-      "value": "APIキー"
+      "@type": "ItemPage",
+      "@id": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/",
+      "url": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/",
+      "name": "Yahoo Furigana MCP（analekt） | MCPサービスの検索・比較",
+      "description": "Yahoo Furigana MCP の提供形態、接続方式、認証方式、料金体系、日本語対応。提供形態: 自分で動かす。接続方式: stdio。認証方式: APIキー。料金体系: 不明。日本語ドキュメント: あり。情報確認日を表示しています。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/#product"
+      }
     },
     {
-      "@type": "PropertyValue",
-      "name": "HTTPS必須",
-      "value": "対象外（stdio のみ）"
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "検索・Web取得",
+          "item": "https://mcpnavi.jp/categories/web-search/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Yahoo Furigana MCP"
+        }
+      ]
     },
     {
-      "@type": "PropertyValue",
-      "name": "料金体系",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "無料枠",
-      "value": "不明"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語ドキュメント",
-      "value": "あり"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "日本語サポート",
-      "value": "不明"
+      "@type": "Product",
+      "name": "Yahoo Furigana MCP",
+      "description": "Yahoo! JAPAN のふりがな API を使うサーバー。",
+      "url": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/",
+      "category": [
+        "検索・Web取得"
+      ],
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "提供形態",
+          "value": "自分で動かす"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "接続方式",
+          "value": "stdio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "認証方式",
+          "value": "APIキー"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "HTTPS必須",
+          "value": "対象外（stdio のみ）"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "料金体系",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "無料枠",
+          "value": "不明"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語ドキュメント",
+          "value": "あり"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "日本語サポート",
+          "value": "不明"
+        }
+      ],
+      "sameAs": [
+        "http://analekt.github.io/"
+      ],
+      "brand": {
+        "@type": "Organization",
+        "name": "analekt",
+        "url": "https://mcpnavi.jp/providers/analekt/"
+      },
+      "@id": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/#product",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/servers/yahoo-furigana-mcp/"
+      }
     }
-  ],
-  "brand": {
-    "@type": "Organization",
-    "name": "analekt",
-    "url": "https://mcpnavi.jp/providers/analekt/"
-  }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -215,11 +289,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/categories/web-search/">検索・Web取得</a>
-    › <span class="text-ink">Yahoo Furigana MCP</span>
+     › <a href="/categories/web-search/">検索・Web取得</a> › <span class="text-ink">Yahoo Furigana MCP</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">Yahoo Furigana MCP</h1>

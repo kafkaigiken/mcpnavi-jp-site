@@ -6,7 +6,6 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>KoumeKoubouのMCPサービス一覧 | mcpnavi</title>
-    
     <meta name="description" content="KoumeKoubouが提供するMCPサービスを1件掲載しています。種別、国内法人と、各サービスの提供形態、接続方式、料金体系、日本語対応を確認できます。">
     <meta name="robots" content="index, follow">
     
@@ -26,13 +25,85 @@
     <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/providers/koumekoubou/">
     
     
-<script type="application/ld+json">{
+    <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "KoumeKoubou",
-  "url": "https://mcpnavi.jp/providers/koumekoubou/"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://mcpnavi.jp/providers/koumekoubou/",
+      "url": "https://mcpnavi.jp/providers/koumekoubou/",
+      "name": "KoumeKoubouのMCPサービス一覧",
+      "description": "KoumeKoubouが提供するMCPサービスを1件掲載しています。種別、国内法人と、各サービスの提供形態、接続方式、料金体系、日本語対応を確認できます。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/providers/koumekoubou/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/providers/koumekoubou/#person"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/providers/koumekoubou/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "提供元一覧",
+          "item": "https://mcpnavi.jp/providers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "KoumeKoubou"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "name": "KoumeKoubou",
+      "url": "https://mcpnavi.jp/providers/koumekoubou/",
+      "@id": "https://mcpnavi.jp/providers/koumekoubou/#person",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/providers/koumekoubou/"
+      }
+    }
+  ]
 }</script>
-
     
 <script data-theme-bootstrap>
 (function () {
@@ -164,11 +235,13 @@
 
     <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
         
+
+
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-    › <a href="/providers/">提供元一覧</a>
-    › <span class="text-ink">KoumeKoubou</span>
+     › <a href="/providers/">提供元一覧</a> › <span class="text-ink">KoumeKoubou</span>
 </nav>
+
 
 <header class="mt-4 border-b border-rule pb-8">
     <h1 class="page-title">KoumeKoubou</h1>
