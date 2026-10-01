@@ -3,7 +3,7 @@
 > AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。掲載する情報は公開情報から取得したもので、サービスごとに情報確認日を付けます。
 
 - 運営: 株式会社Kafkai Giken
-- 掲載: 241件
+- 掲載: 242件
 - 原文は日本語です。英語版は https://mcpnavi.jp/en/ にあります。
 
 ## 内容の取得方法
@@ -39,9 +39,9 @@
 - [セキュリティ](https://mcpnavi.jp/categories/security/): 8件
 - [決済・金融](https://mcpnavi.jp/categories/payments/): 13件
 - [CRM・営業](https://mcpnavi.jp/categories/crm-sales/): 4件
-- [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 4件
+- [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 5件
 - [デザイン](https://mcpnavi.jp/categories/design/): 6件
-- [データ分析](https://mcpnavi.jp/categories/data-analytics/): 45件
+- [データ分析](https://mcpnavi.jp/categories/data-analytics/): 46件
 - [AI・機械学習](https://mcpnavi.jp/categories/ai-ml/): 23件
 - [生産性](https://mcpnavi.jp/categories/productivity/): 17件
 - [地図・位置情報](https://mcpnavi.jp/categories/maps-location/): 27件
@@ -165,6 +165,7 @@
 - [Japanese Locale MCP](https://mcpnavi.jp/servers/japanese-locale-mcp/): 和暦、適格請求書、法人番号、郵便番号、ローマ字化など 39 の日本語ロケール API をまとめたサーバー。 — 提供元: [Torify](https://mcpnavi.jp/providers/torify/) / カテゴリ: 決済・金融、生産性、地図・位置情報 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Japanese Text Analyzer](https://mcpnavi.jp/servers/japanese-text-analyzer/): 日本語テキストを形態素解析するサーバー。 — 提供元: [Mistizz](https://mcpnavi.jp/providers/mistizz/) / カテゴリ: 開発ツール / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [KAKEN MCP Server](https://mcpnavi.jp/servers/kaken-mcp-server/): 科学研究費助成事業 (KAKEN) のデータベースを検索するサーバー。 — 提供元: [masa-med-ai](https://mcpnavi.jp/providers/masa-med-ai/) / カテゴリ: データベース / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
+- [Kafkai MCP](https://mcpnavi.jp/servers/kafkai-mcp/): キーワード調査、競合サイト、検索順位、被リンク、Search Console と Google アナリティクスのデータを AI エージェントから読むリモートサーバー。 — 提供元: [株式会社Kafkai Giken](https://mcpnavi.jp/providers/kafkai-giken/) / カテゴリ: マーケティング・SEO、データ分析 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 従量課金 / 日本語ドキュメント: あり / 情報確認日: 2026-10-01
 - [Kids Stay MCP](https://mcpnavi.jp/servers/kids-stay-mcp/): 子供連れで泊まれる日本のホテル 1,900 件を、48 の条件で公式情報から確認したデータで返すサーバー。 — 提供元: [sitebox](https://mcpnavi.jp/providers/sitebox/) / カテゴリ: 開発ツール / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-19
 - [Kokkai Kaigiroku MCP](https://mcpnavi.jp/servers/kokkai-kaigiroku-mcp/): 国立国会図書館の国会会議録 API にアクセスするサーバー。 — 提供元: [egegungordu（日本在住）](https://mcpnavi.jp/providers/egegungordu/) / カテゴリ: ドキュメント・ナレッジ、データ分析 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Kokkai MCP Server](https://mcpnavi.jp/servers/kokkai-mcp-server/): 帝国議会と国会の会議録を検索するサーバー。 — 提供元: [analekt](https://mcpnavi.jp/providers/analekt/) / カテゴリ: データ分析 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
@@ -249,7 +250,6 @@
 - [Yahoo Japan Search MCP](https://mcpnavi.jp/servers/yahoo-japan-search-mcp/): Yahoo! JAPAN の Web、画像、動画、ニュース、リアルタイム投稿、知恵袋を検索するサーバー。 — 提供元: [mouseos](https://mcpnavi.jp/providers/mouseos/) / カテゴリ: 検索・Web取得、メディア / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [Zapier MCP](https://mcpnavi.jp/servers/zapier-mcp/): Zapier 経由で数千のアプリの操作を提供するリモートサーバー。 — 提供元: [Zapier](https://mcpnavi.jp/providers/zapier/) / カテゴリ: 生産性 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Zendesk MCP Server](https://mcpnavi.jp/servers/zendesk-mcp-server/): Zendesk のチケットとヘルプセンター記事を扱うサーバー。 — 提供元: [reminia](https://mcpnavi.jp/providers/reminia/) / カテゴリ: CRM・営業 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
-- [aimieru MCP](https://mcpnavi.jp/servers/aimieru-mcp/): 日本語サイトの AIO、SEO 引用診断を行う aimieru のサーバー。 — 提供元: [Shown06](https://mcpnavi.jp/providers/shown06/) / カテゴリ: マーケティング・SEO / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 
 ここには200件だけを載せています。すべての掲載サービスは https://mcpnavi.jp/servers/ にあります。
 
