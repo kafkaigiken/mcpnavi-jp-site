@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>Japanese law MCP servers: the e-Gov Law API and 24 services | mcpnavi</title>
+    <meta name="description" content="Japanese law MCP servers explained: what the Digital Agency&#x27;s e-Gov Law API Version 2 provides, and the 24 servers on mcpnavi, grouped into general law search and single subjects such as tax and labour law.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="Japanese law MCP servers: the e-Gov Law API and 24 services">
+    <meta property="og:description" content="Japanese law MCP servers explained: what the Digital Agency&#x27;s e-Gov Law API Version 2 provides, and the 24 servers on mcpnavi, grouped into general law search and single subjects such as tax and labour law.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/">
+    
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/",
+      "url": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/",
+      "name": "Japanese law MCP servers: the e-Gov Law API and 24 services",
+      "description": "Japanese law MCP servers explained: what the Digital Agency's e-Gov Law API Version 2 provides, and the 24 servers on mcpnavi, grouped into general law search and single subjects such as tax and labour law.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/#article"
+      },
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Japanese law MCP servers: 24 services that fetch statutes from the e-Gov Law API"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Japanese law MCP servers: the e-Gov Law API and 24 services",
+      "description": "Japanese law MCP servers explained: what the Digital Agency's e-Gov Law API Version 2 provides, and the 24 servers on mcpnavi, grouped into general law search and single subjects such as tax and labour law.",
+      "url": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "author": {
+        "@type": "Person",
+        "name": "Iqbal Abdullah",
+        "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "image": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/cover.webp",
+      "@id": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/"
+      }
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/blog/technical/japanese-law-mcp-servers/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <a href="/en/blog/">Blog</a> › <a href="/en/blog/technical/">Technical</a> › <span class="text-ink">Japanese law MCP servers: 24 services that fetch statutes from the e-Gov Law API</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/blog/technical/japanese-law-mcp-servers/" hreflang="ja" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Read in 日本語</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-10-02">2026-10-02</time></p>
+        <h1 class="page-title mt-3">Japanese law MCP servers: 24 services that fetch statutes from the e-Gov Law API</h1>
+        <p class="page-lead">A Japanese law MCP server lets an AI agent fetch the text of Japanese laws. Most call the Digital Agency&#x27;s e-Gov Law API. This article explains the API and the 24 servers listed on mcpnavi.</p>
+        <p class="post-byline"><a href="/en/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+<span>Iqbal Abdullah</span></a></p>
+    </header>
+    <img src="/en/blog/technical/japanese-law-mcp-servers/cover.webp" alt="" width="1200" height="675" class="mt-8 w-full rounded-2xl border border-rule">
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">Contents</h2>
+                <ol class="mt-3">
+                    <li><a href="#what-a-law-mcp-server-does" class="outline-link">What a law MCP server does</a></li>
+                    <li><a href="#the-e-gov-law-api" class="outline-link">The e-Gov Law API</a></li>
+                    <li><a href="#the-law-mcp-servers-on-mcpnavi" class="outline-link">The law MCP servers on mcpnavi</a></li>
+                    <li><a href="#what-to-check-when-you-choose-a-server" class="outline-link">What to check when you choose a server</a></li>
+                    <li><a href="#before-you-rely-on-the-answers" class="outline-link">Before you rely on the answers</a></li>
+                    <li><a href="#summary" class="outline-link">Summary</a></li>
+                    <li><a href="#sources" class="outline-link">Sources</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>A Japanese law MCP server is a plugin that lets an AI agent search Japanese laws and fetch their articles. Most call the e-Gov Law API, published by Japan's Digital Agency. The AI then answers with text fetched from official data, rather than writing from memory.</p>
+<p>On 2 October 2026, mcpnavi lists 24 Japanese law MCP servers. This article explains how the e-Gov Law API works, then groups the 24 servers into general law and single subjects and gives the hosting, transport and data of each. For MCP itself, read the <a href="/en/blog/technical/introduction-to-mcp/">introduction to MCP</a>.</p>
+<h2 id="what-a-law-mcp-server-does">What a law MCP server does</h2>
+<p>When you connect a law MCP server to an AI application, the AI can fetch legal data during a conversation. For example, when you ask for Article 32 of the Labor Standards Act, the AI calls a tool on the server. The server queries the e-Gov Law API and returns that article.</p>
+<p>Servers differ in what they return. Some search by law name, some return one article at a time, and some return a whole law. Some return amendment history or the text of an article as it stood on a given date. Some also return data from outside e-Gov, such as the circulars (通達) of the National Tax Agency or the Ministry of Health, Labour and Welfare.</p>
+<h2 id="the-e-gov-law-api">The e-Gov Law API</h2>
+<p>The e-Gov Law API lets a program fetch the legal data that e-Gov Law Search (e-Gov法令検索) publishes. The Digital Agency runs it.</p>
+<h3 id="what-version-2-added">What Version 2 added</h3>
+<p>The Digital Agency released Law API Version 2 on 14 March 2025. According to the release notice, Version 2 adds two features to Version 1: searching as of a given date, and fetching the text of an article as of that date. It also adds a search for repealed laws and a download of a law's full text as a file. Version 1 remains available for now.</p>
+<p>The API covers data from 1 April 2017 onwards.</p>
+<h3 id="the-six-apis">The six APIs</h3>
+<p>The specification (Version 2.1.139) defines six APIs.</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>What it returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Law list</td>
+<td>The laws that match the given conditions</td>
+</tr>
+<tr>
+<td>Revision list</td>
+<td>The amendment history of one law</td>
+</tr>
+<tr>
+<td>Law data</td>
+<td>The text of a law</td>
+</tr>
+<tr>
+<td>Attachment</td>
+<td>A file attached to a law, such as an image</td>
+</tr>
+<tr>
+<td>Keyword search</td>
+<td>The articles that contain a given phrase</td>
+</tr>
+<tr>
+<td>Law file</td>
+<td>The text of a law as a file</td>
+</tr>
+</tbody>
+</table>
+<p>Most of the APIs take a value called <code>asof</code>, which sets the date of the law. Without it, the API uses the law as it stands today. This lets a law MCP server return an article as it stood on a given day.</p>
+<p>The data format is XML following the standard legal XML schema. The API can also return JSON, but the specification marks JSON as a trial version that may change.</p>
+<p>The specification defines no authentication — not even an API key.</p>
+<h2 id="the-law-mcp-servers-on-mcpnavi">The law MCP servers on mcpnavi</h2>
+<p>mcpnavi tags services that work with Japanese law as <code>law</code>. The 24 servers break down as follows.</p>
+<ul>
+<li><strong>Transport</strong>: 22 support stdio only. 2 support Streamable HTTP.</li>
+<li><strong>Hosting</strong>: all 22 stdio servers are "Run it yourself". Of the 2 Streamable HTTP servers, 1 is "Connect by URL" and 1 is "Unknown".</li>
+<li><strong>Authentication</strong>: all 24 are "None".</li>
+<li><strong>Provider type</strong>: 21 individuals, 2 companies and 1 open-source project.</li>
+</ul>
+<p>You run a "Run it yourself" server as a program on your own computer. <a href="/en/blog/technical/remote-and-local-mcp-servers/">Remote and local MCP servers</a> explains the difference.</p>
+<h3 id="servers-for-japanese-law-in-general">Servers for Japanese law in general</h3>
+<p>These 14 servers work with Japanese law in any subject.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Provider</th>
+<th>What it covers</th>
+<th>Hosting</th>
+<th>Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/houki-egov-mcp/">houki-egov MCP</a></td>
+<td>shuji-bonji</td>
+<td>e-Gov Law Search and Law API v2; fetches and quotes articles</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/houki-hub/">houki-hub</a></td>
+<td>shuji-bonji</td>
+<td>Laws, circulars and administrative interpretations, with sources</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/hourei-mcp/">hourei MCP</a></td>
+<td>Laki-private</td>
+<td>Law API v2 search, full text, single articles, related laws, law ID lookup</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/hourei-mcp-server/">hourei MCP Server</a></td>
+<td>groundcobra009</td>
+<td>Searches and fetches laws through the Law API</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/jpn-laws-mcp-server/">jpn-laws MCP Server</a></td>
+<td>michimani</td>
+<td>Searches laws on e-Gov</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/e-gov-mcp/">e-Gov MCP</a></td>
+<td>kuro6061</td>
+<td>Searches laws through the Law API</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/e-gov-law-mcp/">e-Gov Law MCP</a></td>
+<td>takurot</td>
+<td>Searches laws and fetches articles through the Law API</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/egov-mcp/">egov MCP</a></td>
+<td>yukisakuna</td>
+<td>Uses the Law API</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/japan-law-mcp/">Japan Law MCP</a></td>
+<td>COREkin</td>
+<td>API v2 search, articles, citation checks</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/jp-eli-mcp/">JP ELI MCP</a></td>
+<td>matematicsolutions</td>
+<td>Acts of the Diet on e-Gov</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/jp-law-citation-graph/">JP Law Citation Graph</a></td>
+<td>yabooung</td>
+<td>8,980 laws and 1.2 million citations between them</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/japan-legal-mcp-server/">Japan Legal MCP Server</a></td>
+<td>omusubiman5</td>
+<td>Laws, court cases and work-injury criteria</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/japan-law-search-mcp/">Japan Law Search MCP</a></td>
+<td>easakura</td>
+<td>Full-text search of current laws, returned by article</td>
+<td>Unknown</td>
+<td>Streamable HTTP</td>
+</tr>
+<tr>
+<td><a href="/en/servers/japan-data-mcp-yurukusa/">Japan Data MCP (yurukusa)</a></td>
+<td>yurukusa</td>
+<td>Laws, companies and statistics, with English metadata</td>
+<td>Connect by URL</td>
+<td>Streamable HTTP</td>
+</tr>
+</tbody>
+</table>
+<p>Servers that use the same API still return different things. One that returns a single article keeps the text it hands the AI short. JP Law Citation Graph returns which laws cite which. houki-hub adds circulars and administrative interpretations.</p>
+<p>The hosting of Japan Law Search MCP is "Unknown" because its public pages give no endpoint URL.</p>
+<h3 id="servers-for-a-single-subject">Servers for a single subject</h3>
+<p>These 10 servers focus on one subject, such as tax or labour law.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Provider</th>
+<th>Subject and coverage</th>
+<th>Hosting</th>
+<th>Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/tax-law-mcp/">Tax Law MCP</a></td>
+<td>kentaroajisaka</td>
+<td>Tax law; the Law API and National Tax Agency circulars</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/open-zeimu-mcp/">open-zeimu MCP</a></td>
+<td>zeimu-ai</td>
+<td>Tax; laws, circulars, Tax Answer and Q&amp;A cases</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/labor-law-mcp/">Labor Law MCP</a></td>
+<td>kentaroajisaka</td>
+<td>Labour law and social insurance; the Law API and MHLW circulars</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/labor-law-mcp-2/">labor-law MCP</a></td>
+<td>chotchy-inc</td>
+<td>Labour law and social insurance; the e-Gov API, MHLW circulars and JAISH safety circulars</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/jp-payroll-mcp/">JP Payroll MCP</a></td>
+<td>kishida-devil</td>
+<td>Payroll; calculates premiums, withholding tax, minimum wage and more, with the article each rests on</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/financial-law-mcp/">financial-law MCP</a></td>
+<td>fcukoksan</td>
+<td>Finance; the Financial Instruments and Exchange Act, the Banking Act and others</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/building-standards-act-mcp/">Building Standards Act MCP</a></td>
+<td>Sora-bluesky</td>
+<td>Articles of the Building Standards Act</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/real-estate-brokerage-act-mcp/">Real Estate Brokerage Act MCP</a></td>
+<td>Sora-bluesky</td>
+<td>Articles of the Real Estate Brokerage Act</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/road-traffic-law-mcp/">Road Traffic Law MCP</a></td>
+<td>bonsai</td>
+<td>Articles of the Road Traffic Act</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/en/servers/keihyo-cases/">景品表示法 事例 MCP</a></td>
+<td>eoylab</td>
+<td>361 cease-and-desist and surcharge orders under the Act against Unjustifiable Premiums and Misleading Representations, with source URLs</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+</tr>
+</tbody>
+</table>
+<p>Many single-subject servers also work with data from outside e-Gov. The tax and labour servers add circulars from the National Tax Agency or the Ministry of Health, Labour and Welfare. 景品表示法 事例 MCP returns enforcement cases, not articles.</p>
+<p>mcpnavi groups more services about law and e-Gov by tag. See the <a href="/en/servers/tag/law/">services tagged law</a> and the <a href="/en/servers/tag/egov/">services tagged egov</a>.</p>
+<h2 id="what-to-check-when-you-choose-a-server">What to check when you choose a server</h2>
+<h3 id="hosting-and-transport">Hosting and transport</h3>
+<p>22 of the 24 servers are stdio servers that you run yourself. You set up the program by following the provider's steps and register the command that starts it in your client's settings. A client that cannot start a program cannot use such a server.</p>
+<p>To connect by URL only, look for a service whose hosting includes "Connect by URL". The list of <a href="/en/servers/filter/remote/">services you can connect to by URL</a> shows them.</p>
+<h3 id="what-the-server-returns-and-how-much">What the server returns, and how much</h3>
+<p>Check whether the server returns one article at a time or a whole law. Servers also differ in whether they return amendment history or the text as of a given date. Check whether the server works with data other than laws, such as circulars, court cases or enforcement cases. Each service's description is on its mcpnavi page and in its repository's README.</p>
+<h3 id="last-checked">Last checked</h3>
+<p>Every value on mcpnavi was read from a public page. Each service's page shows the date its values were checked as "Last checked". <a href="/en/criteria/">About the data</a> explains what each value means and how it is checked.</p>
+<h2 id="before-you-rely-on-the-answers">Before you rely on the answers</h2>
+<p>Compare any article in the AI's answer with the original text on e-Gov Law Search. Even when the server fetches the right article, the AI may change the wording when it summarises or quotes it.</p>
+<p>The JSON format of the e-Gov Law API is a trial version. If its specification changes, a server that uses JSON can stop working. Check the date of the last update in the server's repository.</p>
+<p>A server whose authentication is "None" still does not change where your question goes: the AI application you use receives it. Before you ask a question that contains business information, check how the AI application handles it. <a href="/en/blog/technical/mcp-authorization-basics/">Authentication for MCP servers</a> explains how servers and authentication fit together.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>A Japanese law MCP server is a plugin that lets an AI agent search Japanese laws and fetch their articles.</li>
+<li>Most of them use the Digital Agency's e-Gov Law API. Version 2 was released on 14 March 2025, returns articles as of a given date, and defines no authentication.</li>
+<li>mcpnavi lists 24 such servers. 22 are stdio servers that you run yourself, and all 24 have the authentication "None".</li>
+<li>14 servers cover law in general. 10 focus on one subject, such as tax, labour, finance or building. Many of the single-subject servers also return data from outside e-Gov, such as circulars.</li>
+<li>Check every article against the original text on e-Gov Law Search before you use it.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://laws.e-gov.go.jp/file/%E6%B3%95%E4%BB%A4API%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B32%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B.pdf" rel="nofollow noopener">法令API Version2 リリースのお知らせ (Law API Version 2 release notice)</a> (Digital Agency, March 2025)</li>
+<li><a href="https://laws.e-gov.go.jp/api/2/swagger-ui/" rel="nofollow noopener">Law API Version 2 specification (Swagger UI)</a> (e-Gov Law Search, Version 2.1.139, checked on 2026-10-02)</li>
+<li>The values for each service were read from its repository's README or its npm page. Each service's page on mcpnavi shows the source URL and the date it was last checked.</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">Last updated: <time datetime="2026-10-02">2026-10-02</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="Adjacent posts">
+    <div></div>
+    <div class="sm:text-right"><a href="/en/blog/technical/remote-and-local-mcp-servers/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">Older post</span><br><span class="font-medium">Remote and local MCP servers: what the difference is</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">Related posts</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/remote-and-local-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/remote-and-local-mcp-servers/">Remote and local MCP servers: what the difference is</a></h3>
+        <p class="post-card-intro">A provider runs a remote MCP server, and you connect to it by URL. You run a local MCP server on your own computer. This article covers hosting versus transport, what the user does, and how credentials are handled.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/mcp-authorization-basics/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-authorization-basics/">Authentication for MCP servers: the basics of OAuth and API keys</a></h3>
+        <p class="post-card-intro">An MCP server checks who is connecting before it returns data. This article covers the kinds of authentication, how specification 2026-07-28 uses OAuth 2.1, the flow of a connection, and what to check before you connect.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/introduction-to-mcp/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-20">2026-09-20</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/introduction-to-mcp/">Introduction to MCP: the history of the Model Context Protocol and how it works</a></h3>
+        <p class="post-card-intro">MCP (Model Context Protocol) is a common standard that connects AI applications to outside data and tools. This article covers why it was created, its history from 2024 to specification 2026-07-28, and how it works.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=List%20your%20MCP" class="nav-link">List your MCP</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by <a href="https://kafkai.com/en/the-company/" class="nav-link">株式会社Kafkai Giken</a></span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

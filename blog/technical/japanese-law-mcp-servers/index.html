@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>法令MCPサーバー一覧：e-Gov 法令APIを使う24件の違い | mcpnavi</title>
+    <meta name="description" content="法令MCPサーバーの解説です。デジタル庁のe-Gov 法令API Version 2の機能を説明します。mcpnaviに掲載している24件を、法令全般と分野別に分けて紹介します。">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/">
+    
+    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:title" content="法令MCPサーバー一覧：e-Gov 法令APIを使う24件の違い">
+    <meta property="og:description" content="法令MCPサーバーの解説です。デジタル庁のe-Gov 法令API Version 2の機能を説明します。mcpnaviに掲載している24件を、法令全般と分野別に分けて紹介します。">
+    <meta property="og:url" content="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/japanese-law-mcp-servers/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/">
+    
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "mcpnavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/",
+      "url": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/",
+      "name": "法令MCPサーバー一覧：e-Gov 法令APIを使う24件の違い",
+      "description": "法令MCPサーバーの解説です。デジタル庁のe-Gov 法令API Version 2の機能を説明します。mcpnaviに掲載している24件を、法令全般と分野別に分けて紹介します。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/#article"
+      },
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ブログ",
+          "item": "https://mcpnavi.jp/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "技術解説",
+          "item": "https://mcpnavi.jp/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "法令MCPサーバー：e-Gov 法令APIで条文を取得する24件"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "法令MCPサーバー一覧：e-Gov 法令APIを使う24件の違い",
+      "description": "法令MCPサーバーの解説です。デジタル庁のe-Gov 法令API Version 2の機能を説明します。mcpnaviに掲載している24件を、法令全般と分野別に分けて紹介します。",
+      "url": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/",
+      "inLanguage": "ja",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "author": {
+        "@type": "Person",
+        "name": "イクバル・アバドゥラ",
+        "url": "https://mcpnavi.jp/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "image": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/cover.webp",
+      "@id": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/blog/technical/japanese-law-mcp-servers/"
+      }
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">本文へ移動</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+        </a>
+        <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="ダークモード">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">ja</span><span class="sr-only">言語</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><span class="nav-link" aria-current="true">日本語</span></li>
+        
+        <li><a href="/en/blog/technical/japanese-law-mcp-servers/" lang="en" hreflang="en" class="nav-link">英語</a></li>
+        
+    </ul>
+</details>
+
+            <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">mcpnaviに掲載する
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="メニュー">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="サイト内" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="btn btn-dark btn-sm w-full">mcpnaviに掲載する</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">法令MCPサーバー：e-Gov 法令APIで条文を取得する24件</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/en/blog/technical/japanese-law-mcp-servers/" hreflang="en" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Englishで読む</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-10-02">2026年10月02日</time></p>
+        <h1 class="page-title mt-3">法令MCPサーバー：e-Gov 法令APIで条文を取得する24件</h1>
+        <p class="page-lead">法令MCPサーバーは、AIエージェントが日本の法令の条文を取得するためのプラグインです。多くはデジタル庁のe-Gov 法令APIを使います。APIの仕組みと、mcpnaviに掲載している24件の提供形態、接続方式、扱う分野を説明します。</p>
+        <p class="post-byline"><a href="/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+<span>イクバル・アバドゥラ</span></a></p>
+    </header>
+    <img src="/blog/technical/japanese-law-mcp-servers/cover.webp" alt="" width="1200" height="675" class="mt-8 w-full rounded-2xl border border-rule">
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">目次</h2>
+                <ol class="mt-3">
+                    <li><a href="#法令mcpサーバーでできること" class="outline-link">法令MCPサーバーでできること</a></li>
+                    <li><a href="#e-gov-法令apiの基本" class="outline-link">e-Gov 法令APIの基本</a></li>
+                    <li><a href="#mcpnaviに掲載している法令mcpサーバー" class="outline-link">mcpnaviに掲載している法令MCPサーバー</a></li>
+                    <li><a href="#法令mcpサーバーを選ぶときに見る点" class="outline-link">法令MCPサーバーを選ぶときに見る点</a></li>
+                    <li><a href="#法令mcpサーバーを使うときの注意" class="outline-link">法令MCPサーバーを使うときの注意</a></li>
+                    <li><a href="#まとめ" class="outline-link">まとめ</a></li>
+                    <li><a href="#出典" class="outline-link">出典</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><p>法令MCPサーバーは、AIエージェントが日本の法令を検索し、条文を取得するためのプラグインです。多くはデジタル庁が公開しているe-Gov 法令APIを呼び出します。AIは記憶から書くのではなく、公式のデータから条文を取得して答えに使います。</p>
+<p>mcpnaviには、2026年10月2日時点で法令MCPサーバーが24件掲載されています。この記事では、まずe-Gov 法令APIの仕組みを説明します。そのうえで24件を「法令全般」と「特定の分野」に分け、提供形態、接続方式、扱うデータを紹介します。MCPそのものの説明は、<a href="/blog/technical/introduction-to-mcp/">MCP入門</a>にあります。</p>
+<h2 id="法令mcpサーバーでできること">法令MCPサーバーでできること</h2>
+<p>法令MCPサーバーをAIアプリケーションにつなぐと、AIは会話の途中で法令データを取得できます。たとえば「労働基準法第32条を表示して」と頼むと、AIはサーバーのツールを呼び出します。サーバーはe-Gov 法令APIに問い合わせ、その条文を返します。</p>
+<p>サーバーによって返すデータは異なります。法令名で検索するもの、条文を1条ずつ返すもの、法令全体を返すものがあります。改正の履歴や、ある時点の条文を返すものもあります。国税庁や厚生労働省の通達など、e-Gov以外のデータも合わせて返すサーバーもあります。</p>
+<h2 id="e-gov-法令apiの基本">e-Gov 法令APIの基本</h2>
+<p>e-Gov 法令APIは、e-Gov法令検索が公開している法令データを、プログラムから取得するための窓口です。デジタル庁が提供しています。</p>
+<h3 id="version-2で加わった機能">Version 2で加わった機能</h3>
+<p>デジタル庁は、2025年3月14日に法令API Version 2をリリースしました。お知らせによると、Version 1の機能に加えて、特定の時点での検索と、その時点の条文取得ができます。廃止された法令の検索や、法令本文ファイルのダウンロードも加わりました。Version 1も当面の間は利用できます。</p>
+<p>取得できるデータは、平成29年（2017年）4月1日以降のものです。</p>
+<h3 id="6つのapi">6つのAPI</h3>
+<p>仕様書（Version 2.1.139）は、次の6つのAPIを定めています。</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>法令一覧取得API</td>
+<td>条件に合う法令の一覧を返す</td>
+</tr>
+<tr>
+<td>法令履歴一覧取得API</td>
+<td>1つの法令の改正履歴を返す</td>
+</tr>
+<tr>
+<td>法令本文取得API</td>
+<td>法令の本文を返す</td>
+</tr>
+<tr>
+<td>添付ファイル取得API</td>
+<td>法令に添付された画像などのファイルを返す</td>
+</tr>
+<tr>
+<td>キーワード検索API</td>
+<td>条文の中の語句で検索する</td>
+</tr>
+<tr>
+<td>法令本文ファイル取得API</td>
+<td>法令本文をファイルとして返す</td>
+</tr>
+</tbody>
+</table>
+<p>APIの多くは、<code>asof</code>という値で「法令の時点」を指定できます。省略すると、現時点の法令を対象にします。この機能により、法令MCPサーバーは「ある日の条文」を返せます。</p>
+<p>データの形式は、法令標準XMLスキーマに沿ったXMLです。JSON形式も選べます。ただし、仕様書はこれを試行版としており、仕様が変わる場合があります。</p>
+<p>仕様書には、APIキーなどの認証の定義がありません。</p>
+<h2 id="mcpnaviに掲載している法令mcpサーバー">mcpnaviに掲載している法令MCPサーバー</h2>
+<p>mcpnaviは、法令を扱うサービスに<code>law</code>のタグを付けています。24件の内訳は次のとおりです。</p>
+<ul>
+<li><strong>接続方式</strong>：22件がstdioだけに対応しています。2件がStreamable HTTPに対応しています。</li>
+<li><strong>提供形態</strong>：stdioの22件は、すべて「自分で動かす」です。Streamable HTTPの2件は、「URLで接続」が1件、「不明」が1件です。</li>
+<li><strong>認証方式</strong>：24件すべてが「なし」です。</li>
+<li><strong>種別</strong>：個人が21件、法人が2件、OSSプロジェクトが1件です。</li>
+</ul>
+<p>「自分で動かす」のサービスは、利用者が手元のPCでプログラムを動かします。提供形態と接続方式の違いは、<a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a>で説明しています。</p>
+<h3 id="法令全般を扱うサーバー">法令全般を扱うサーバー</h3>
+<p>次の14件は、分野を限らず日本の法令を扱います。</p>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>主な内容</th>
+<th>提供形態</th>
+<th>接続方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/houki-egov-mcp/">houki-egov MCP</a></td>
+<td>shuji-bonji</td>
+<td>e-Gov 法令検索と法令API v2。条文の取得と引用</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/houki-hub/">houki-hub</a></td>
+<td>shuji-bonji</td>
+<td>法令、通達、行政解釈を出典付きで返す</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/hourei-mcp/">hourei MCP</a></td>
+<td>Laki-private</td>
+<td>法令API v2の検索、全文取得、条文取得、関連法令、法令IDの解決</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/hourei-mcp-server/">hourei MCP Server</a></td>
+<td>groundcobra009</td>
+<td>法令APIで法令を検索、取得</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/jpn-laws-mcp-server/">jpn-laws MCP Server</a></td>
+<td>michimani</td>
+<td>e-Govから法令を検索</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/e-gov-mcp/">e-Gov MCP</a></td>
+<td>kuro6061</td>
+<td>法令APIで法令を検索</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/e-gov-law-mcp/">e-Gov Law MCP</a></td>
+<td>takurot</td>
+<td>法令APIで法令を検索し、条文を取得</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/egov-mcp/">egov MCP</a></td>
+<td>yukisakuna</td>
+<td>法令APIを使う</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/japan-law-mcp/">Japan Law MCP</a></td>
+<td>COREkin</td>
+<td>API v2で検索、条文の取得、引用の確認</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/jp-eli-mcp/">JP ELI MCP</a></td>
+<td>matematicsolutions</td>
+<td>e-Govの国会制定法</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/jp-law-citation-graph/">JP Law Citation Graph</a></td>
+<td>yabooung</td>
+<td>法令8,980件と120万件の引用関係</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/japan-legal-mcp-server/">Japan Legal MCP Server</a></td>
+<td>omusubiman5</td>
+<td>法律、判例、労災認定基準</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/japan-law-search-mcp/">Japan Law Search MCP</a></td>
+<td>easakura</td>
+<td>現行法令の全文検索。条文単位で返す</td>
+<td>不明</td>
+<td>Streamable HTTP</td>
+</tr>
+<tr>
+<td><a href="/servers/japan-data-mcp-yurukusa/">Japan Data MCP (yurukusa)</a></td>
+<td>yurukusa</td>
+<td>法令、法人、統計を英語のメタデータ付きで返す</td>
+<td>URLで接続</td>
+<td>Streamable HTTP</td>
+</tr>
+</tbody>
+</table>
+<p>同じe-Gov 法令APIを使うサーバーでも、返すものは異なります。条文を1条ずつ返すサーバーは、AIに渡す文章を短くできます。JP Law Citation Graphは、法令がほかの法令を引用している関係を返します。houki-hubは、法令に加えて通達と行政解釈を扱います。</p>
+<p>Japan Law Search MCPの提供形態が「不明」なのは、公開ページに接続先URLが記載されていないためです。</p>
+<h3 id="特定の分野を扱うサーバー">特定の分野を扱うサーバー</h3>
+<p>次の10件は、税法や労働法など、1つの分野に絞っています。</p>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>分野と主な内容</th>
+<th>提供形態</th>
+<th>接続方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/tax-law-mcp/">Tax Law MCP</a></td>
+<td>kentaroajisaka</td>
+<td>税法。法令APIと国税庁の通達</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/open-zeimu-mcp/">open-zeimu MCP</a></td>
+<td>zeimu-ai</td>
+<td>税務。法令、通達、タックスアンサー、質疑応答事例</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/labor-law-mcp/">Labor Law MCP</a></td>
+<td>kentaroajisaka</td>
+<td>労働法と社会保険。法令APIと厚生労働省の通達</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/labor-law-mcp-2/">labor-law MCP</a></td>
+<td>chotchy-inc</td>
+<td>労働法と社会保険。e-Gov API、厚生労働省の通達、JAISHの安衛通達</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/jp-payroll-mcp/">JP Payroll MCP</a></td>
+<td>kishida-devil</td>
+<td>給与計算。保険料率、源泉所得税、最低賃金などを計算し、根拠の条文を返す</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/financial-law-mcp/">financial-law MCP</a></td>
+<td>fcukoksan</td>
+<td>金融。金商法、資金決済法、貸金業法、銀行法、保険業法など</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/building-standards-act-mcp/">Building Standards Act MCP</a></td>
+<td>Sora-bluesky</td>
+<td>建築基準法の条文</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/real-estate-brokerage-act-mcp/">Real Estate Brokerage Act MCP</a></td>
+<td>Sora-bluesky</td>
+<td>宅地建物取引業法の条文</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/road-traffic-law-mcp/">Road Traffic Law MCP</a></td>
+<td>bonsai</td>
+<td>道路交通法の条文</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td><a href="/servers/keihyo-cases/">景品表示法 事例 MCP</a></td>
+<td>eoylab</td>
+<td>景品表示法の措置命令と課徴金納付命令361件。出典URL付き</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+</tr>
+</tbody>
+</table>
+<p>分野を絞ったサーバーの多くは、e-Gov以外のデータも扱います。税務と労務のサーバーは、国税庁や厚生労働省の通達を合わせて返します。景品表示法 事例 MCPは、条文ではなく、行政処分の事例を返します。</p>
+<p>mcpnaviは、このほかにも法令とe-Govに関するサービスをタグでまとめています。一覧は、<a href="/servers/tag/law/">lawタグのサービス</a>と<a href="/servers/tag/egov/">egovタグのサービス</a>で見られます。</p>
+<h2 id="法令mcpサーバーを選ぶときに見る点">法令MCPサーバーを選ぶときに見る点</h2>
+<h3 id="提供形態と接続方式">提供形態と接続方式</h3>
+<p>24件のうち22件は、「自分で動かす」のstdioサーバーです。利用者は、提供元の手順に沿ってプログラムを用意し、起動コマンドをクライアントの設定に登録します。プログラムを起動できないクライアントでは、このようなサーバーを使えません。</p>
+<p>URLだけで接続したい場合は、提供形態に「URLで接続」を含むサービスを探します。<a href="/servers/filter/remote/">URLだけで接続できるサービス</a>の一覧で絞り込めます。</p>
+<h3 id="返すデータの単位と範囲">返すデータの単位と範囲</h3>
+<p>条文を1条ずつ返すのか、法令全体を返すのかを確認します。改正の履歴や、ある時点の条文を返すかどうかはサーバーによって異なります。通達、判例、行政処分の事例など、法令以外のデータを扱うかどうかも確認します。各サービスの説明は、mcpnaviの詳細ページとリポジトリのREADMEにあります。</p>
+<h3 id="情報確認日">情報確認日</h3>
+<p>mcpnaviの値は、公開ページから読み取ったものです。各サービスの詳細ページに、値を確認した日を「情報確認日」として表示しています。値の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
+<h2 id="法令mcpサーバーを使うときの注意">法令MCPサーバーを使うときの注意</h2>
+<p>AIの答えに含まれる条文は、e-Gov法令検索の原文と照らし合わせてください。サーバーが正しく条文を取得しても、AIは要約や引用の段階で文を変える場合があります。</p>
+<p>e-Gov 法令APIのJSON形式は、試行版です。仕様が変わると、JSONを使うサーバーが動かなくなる場合があります。サーバーのリポジトリで、最後に更新された日を確認してください。</p>
+<p>認証方式が「なし」のサーバーでも、質問の内容はAIアプリケーション側に送られます。業務の情報を含む質問をする場合は、AIアプリケーション側の取り扱いを確認してください。サーバーと認証の関係は、<a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式</a>で説明しています。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li>法令MCPサーバーは、AIエージェントが日本の法令を検索し、条文を取得するためのプラグインです。</li>
+<li>多くはデジタル庁のe-Gov 法令API（Version 2は2025年3月14日リリース）を使います。APIは時点を指定した条文の取得に対応し、仕様書に認証の定義はありません。</li>
+<li>mcpnaviには24件を掲載しています。22件が「自分で動かす」のstdioサーバーで、認証方式は24件すべて「なし」です。</li>
+<li>法令全般を扱うサーバーが14件、税法・労働法・金融・建築などの分野に絞ったサーバーが10件です。分野別のサーバーの多くは、通達などe-Gov以外のデータも返します。</li>
+<li>条文は、e-Gov法令検索の原文で確かめてから使ってください。</li>
+</ul>
+<h2 id="出典">出典</h2>
+<ul>
+<li><a href="https://laws.e-gov.go.jp/file/%E6%B3%95%E4%BB%A4API%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B32%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B.pdf" rel="nofollow noopener">法令API Version2 リリースのお知らせ</a>（デジタル庁、2025年3月）</li>
+<li><a href="https://laws.e-gov.go.jp/api/2/swagger-ui/" rel="nofollow noopener">法令API Version 2 仕様書（Swagger UI）</a>（e-Gov法令検索、Version 2.1.139、2026-10-02に確認）</li>
+<li>各サービスの値は、それぞれのリポジトリのREADMEとnpmのページから読み取りました。出典のURLと情報確認日は、各サービスの詳細ページに表示しています。</li>
+</ul></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">最終更新: <time datetime="2026-10-02">2026年10月02日</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="前後の記事">
+    <div></div>
+    <div class="sm:text-right"><a href="/blog/technical/remote-and-local-mcp-servers/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">古い記事</span><br><span class="font-medium">リモートMCPサーバーとローカルMCPサーバーの違い</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">関連記事</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/remote-and-local-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-25">2026年09月25日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a></h3>
+        <p class="post-card-intro">リモートMCPサーバーは提供元が動かし、URLで接続します。ローカルMCPサーバーは利用者が手元のPCで動かします。提供形態と接続方式の違い、利用者がすること、認証情報の扱いを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/mcp-authorization-basics/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-23">2026年09月23日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式：OAuthとAPIキーの基本</a></h3>
+        <p class="post-card-intro">MCPサーバーは、接続してきた相手を確かめてからデータを返します。認証方式の種類、MCP仕様（2026-07-28版）が定めるOAuth 2.1の使い方、接続の流れ、接続前に確認することを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/introduction-to-mcp/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-20">2026年09月20日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/introduction-to-mcp/">MCP入門：Model Context Protocolの歴史と仕組み</a></h3>
+        <p class="post-card-intro">MCP（Model Context Protocol）は、AIアプリケーションを外部のデータやツールにつなぐ共通規格です。生まれた理由、2024年の公開から2026-07-28版までの経緯、基本の仕組みを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+mcpnavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">ディレクトリ</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+<a href="/criteria/" class="nav-link">掲載されているデータについて</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="mailto:info@mcpnavi.jp?subject=mcpnavi%E3%81%AB%E6%8E%B2%E8%BC%89%E3%81%99%E3%82%8B" class="nav-link">mcpnaviに掲載する</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/legal/terms-of-service/" class="nav-link">利用規約</a>
+                <span>【運営】 <a href="https://kafkai.com/ja/the-company/" class="nav-link">株式会社Kafkai Giken</a></span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>
