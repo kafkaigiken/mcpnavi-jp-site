@@ -67,7 +67,7 @@
         "@id": "https://mcpnavi.jp/servers/docker-mcp-gateway/#breadcrumb"
       },
       "mainEntity": {
-        "@id": "https://mcpnavi.jp/servers/docker-mcp-gateway/#product"
+        "@id": "https://mcpnavi.jp/servers/docker-mcp-gateway/#service"
       }
     },
     {
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "@type": "Product",
+      "@type": "Service",
       "name": "Docker MCP Gateway",
       "description": "コンテナで MCP サーバーを実行・管理する Docker のゲートウェイ。",
       "url": "https://mcpnavi.jp/servers/docker-mcp-gateway/",
@@ -108,54 +108,15 @@
         "クラウド基盤",
         "インフラ・IaC"
       ],
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "提供形態",
-          "value": "自分で動かす"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "接続方式",
-          "value": "stdio"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "認証方式",
-          "value": "なし"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "HTTPS必須",
-          "value": "対象外（stdio のみ）"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "料金体系",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "無料枠",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語ドキュメント",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語サポート",
-          "value": "不明"
-        }
-      ],
-      "brand": {
+      "provider": {
         "@type": "Organization",
         "name": "Docker",
-        "url": "https://mcpnavi.jp/providers/docker/"
+        "url": "https://mcpnavi.jp/providers/docker/",
+        "sameAs": [
+          "https://www.docker.com/"
+        ]
       },
-      "@id": "https://mcpnavi.jp/servers/docker-mcp-gateway/#product",
+      "@id": "https://mcpnavi.jp/servers/docker-mcp-gateway/#service",
       "mainEntityOfPage": {
         "@id": "https://mcpnavi.jp/servers/docker-mcp-gateway/"
       }

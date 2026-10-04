@@ -67,7 +67,7 @@
         "@id": "https://mcpnavi.jp/en/servers/memory/#breadcrumb"
       },
       "mainEntity": {
-        "@id": "https://mcpnavi.jp/en/servers/memory/#product"
+        "@id": "https://mcpnavi.jp/en/servers/memory/#service"
       }
     },
     {
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "@type": "Product",
+      "@type": "Service",
       "name": "Memory MCP Server",
       "description": "Reference server that persists agent memory as a knowledge graph in a local JSON file.",
       "url": "https://mcpnavi.jp/en/servers/memory/",
@@ -108,54 +108,15 @@
         "Documents and knowledge",
         "AI and machine learning"
       ],
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Hosting",
-          "value": "Run it yourself"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Transport",
-          "value": "stdio"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Authentication",
-          "value": "None"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "HTTPS required",
-          "value": "Not applicable (stdio only)"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pricing model",
-          "value": "Unknown"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Free tier",
-          "value": "Unknown"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Japanese documentation",
-          "value": "Unknown"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Japanese support",
-          "value": "Unknown"
-        }
-      ],
-      "brand": {
+      "provider": {
         "@type": "Organization",
         "name": "Anthropic (Model Context Protocol)",
-        "url": "https://mcpnavi.jp/en/providers/anthropic-model-context-protocol/"
+        "url": "https://mcpnavi.jp/en/providers/anthropic-model-context-protocol/",
+        "sameAs": [
+          "https://modelcontextprotocol.io"
+        ]
       },
-      "@id": "https://mcpnavi.jp/en/servers/memory/#product",
+      "@id": "https://mcpnavi.jp/en/servers/memory/#service",
       "mainEntityOfPage": {
         "@id": "https://mcpnavi.jp/en/servers/memory/"
       }

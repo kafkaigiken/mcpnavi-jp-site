@@ -67,7 +67,7 @@
         "@id": "https://mcpnavi.jp/servers/pagerduty-mcp-server/#breadcrumb"
       },
       "mainEntity": {
-        "@id": "https://mcpnavi.jp/servers/pagerduty-mcp-server/#product"
+        "@id": "https://mcpnavi.jp/servers/pagerduty-mcp-server/#service"
       }
     },
     {
@@ -94,61 +94,22 @@
       ]
     },
     {
-      "@type": "Product",
+      "@type": "Service",
       "name": "PagerDuty MCP Server",
       "description": "PagerDuty のインシデントとオンコールを扱う公式サーバー。",
       "url": "https://mcpnavi.jp/servers/pagerduty-mcp-server/",
       "category": [
         "監視・可観測性"
       ],
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "提供形態",
-          "value": "自分で動かす"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "接続方式",
-          "value": "stdio"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "認証方式",
-          "value": "APIキー"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "HTTPS必須",
-          "value": "対象外（stdio のみ）"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "料金体系",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "無料枠",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語ドキュメント",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語サポート",
-          "value": "あり"
-        }
-      ],
-      "brand": {
+      "provider": {
         "@type": "Organization",
         "name": "PagerDuty",
-        "url": "https://mcpnavi.jp/providers/pagerduty/"
+        "url": "https://mcpnavi.jp/providers/pagerduty/",
+        "sameAs": [
+          "https://www.pagerduty.com/"
+        ]
       },
-      "@id": "https://mcpnavi.jp/servers/pagerduty-mcp-server/#product",
+      "@id": "https://mcpnavi.jp/servers/pagerduty-mcp-server/#service",
       "mainEntityOfPage": {
         "@id": "https://mcpnavi.jp/servers/pagerduty-mcp-server/"
       }

@@ -67,7 +67,7 @@
         "@id": "https://mcpnavi.jp/servers/pagoda-mcp-server/#breadcrumb"
       },
       "mainEntity": {
-        "@id": "https://mcpnavi.jp/servers/pagoda-mcp-server/#product"
+        "@id": "https://mcpnavi.jp/servers/pagoda-mcp-server/#service"
       }
     },
     {
@@ -94,61 +94,22 @@
       ]
     },
     {
-      "@type": "Product",
+      "@type": "Service",
       "name": "Pagoda MCP Server",
       "description": "DMM の Pagoda 基盤を AI エージェントから操作する DMM のサーバー。",
       "url": "https://mcpnavi.jp/servers/pagoda-mcp-server/",
       "category": [
         "インフラ・IaC"
       ],
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "提供形態",
-          "value": "自分で動かす"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "接続方式",
-          "value": "stdio"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "認証方式",
-          "value": "APIキー"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "HTTPS必須",
-          "value": "対象外（stdio のみ）"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "料金体系",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "無料枠",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語ドキュメント",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語サポート",
-          "value": "あり"
-        }
-      ],
-      "brand": {
+      "provider": {
         "@type": "Organization",
         "name": "合同会社DMM.com",
-        "url": "https://mcpnavi.jp/providers/dmm-com/"
+        "url": "https://mcpnavi.jp/providers/dmm-com/",
+        "sameAs": [
+          "https://dmm-corp.com"
+        ]
       },
-      "@id": "https://mcpnavi.jp/servers/pagoda-mcp-server/#product",
+      "@id": "https://mcpnavi.jp/servers/pagoda-mcp-server/#service",
       "mainEntityOfPage": {
         "@id": "https://mcpnavi.jp/servers/pagoda-mcp-server/"
       }

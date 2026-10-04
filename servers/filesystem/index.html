@@ -67,7 +67,7 @@
         "@id": "https://mcpnavi.jp/servers/filesystem/#breadcrumb"
       },
       "mainEntity": {
-        "@id": "https://mcpnavi.jp/servers/filesystem/#product"
+        "@id": "https://mcpnavi.jp/servers/filesystem/#service"
       }
     },
     {
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "@type": "Product",
+      "@type": "Service",
       "name": "Filesystem MCP Server",
       "description": "許可したディレクトリ内のファイルを読み書きする参照実装。手元のPCで動き、データは外部へ送られない。",
       "url": "https://mcpnavi.jp/servers/filesystem/",
@@ -108,54 +108,15 @@
         "開発ツール",
         "ファイル・ストレージ"
       ],
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "提供形態",
-          "value": "自分で動かす"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "接続方式",
-          "value": "stdio"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "認証方式",
-          "value": "なし"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "HTTPS必須",
-          "value": "対象外（stdio のみ）"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "料金体系",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "無料枠",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語ドキュメント",
-          "value": "不明"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "日本語サポート",
-          "value": "不明"
-        }
-      ],
-      "brand": {
+      "provider": {
         "@type": "Organization",
         "name": "Anthropic (Model Context Protocol)",
-        "url": "https://mcpnavi.jp/providers/anthropic-model-context-protocol/"
+        "url": "https://mcpnavi.jp/providers/anthropic-model-context-protocol/",
+        "sameAs": [
+          "https://modelcontextprotocol.io"
+        ]
       },
-      "@id": "https://mcpnavi.jp/servers/filesystem/#product",
+      "@id": "https://mcpnavi.jp/servers/filesystem/#service",
       "mainEntityOfPage": {
         "@id": "https://mcpnavi.jp/servers/filesystem/"
       }
