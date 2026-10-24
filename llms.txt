@@ -3,7 +3,7 @@
 > AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。掲載する情報は公開情報から取得したもので、サービスごとに情報確認日を付けます。
 
 - 運営: 株式会社Kafkai Giken
-- 掲載: 242件
+- 掲載: 249件
 - 原文は日本語です。英語版は https://mcpnavi.jp/en/ にあります。
 
 ## 内容の取得方法
@@ -37,22 +37,24 @@
 - [ブラウザ自動化](https://mcpnavi.jp/categories/browser-automation/): 5件
 - [監視・可観測性](https://mcpnavi.jp/categories/observability/): 4件
 - [セキュリティ](https://mcpnavi.jp/categories/security/): 8件
-- [決済・金融](https://mcpnavi.jp/categories/payments/): 13件
+- [決済・金融](https://mcpnavi.jp/categories/payments/): 14件
 - [CRM・営業](https://mcpnavi.jp/categories/crm-sales/): 4件
-- [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 5件
+- [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 6件
 - [デザイン](https://mcpnavi.jp/categories/design/): 6件
-- [データ分析](https://mcpnavi.jp/categories/data-analytics/): 46件
+- [データ分析](https://mcpnavi.jp/categories/data-analytics/): 49件
 - [AI・機械学習](https://mcpnavi.jp/categories/ai-ml/): 23件
-- [生産性](https://mcpnavi.jp/categories/productivity/): 17件
+- [生産性](https://mcpnavi.jp/categories/productivity/): 20件
 - [地図・位置情報](https://mcpnavi.jp/categories/maps-location/): 27件
 - [メディア](https://mcpnavi.jp/categories/media/): 9件
 - [インフラ・IaC](https://mcpnavi.jp/categories/infrastructure/): 5件
 
 ## MCPサービス
 
+- [AIData.Broker](https://mcpnavi.jp/servers/aidata-broker/): AI 学習データの公開価格、市場相場、買い手とその条件、ライセンス契約、訴訟と判決を、出典付きで AI エージェントから読むリモートサーバー。 — 提供元: [O-mega Enterprise, Inc.](https://mcpnavi.jp/providers/o-mega-enterprise-inc/) / カテゴリ: データ分析 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 無料 / 日本語ドキュメント: 不明 / 情報確認日: 2026-10-24
 - [AMED Research DB](https://mcpnavi.jp/servers/amed-research-db/): AMED の研究開発プロジェクト約 3,800 件を REST API と MCP で提供。 — 提供元: [inutano](https://mcpnavi.jp/providers/inutano/) / カテゴリ: 開発ツール、データベース、データ分析 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [AWS Documentation MCP Server](https://mcpnavi.jp/servers/aws-documentation/): AWS 公式ドキュメントの検索と取得を行う AWS Labs のサーバー。認証不要。 — 提供元: [Amazon Web Services](https://mcpnavi.jp/providers/amazon-web-services/) / カテゴリ: クラウド基盤、ドキュメント・ナレッジ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-19
 - [AWS MCP Servers](https://mcpnavi.jp/servers/aws-mcp-servers/): AWS のサービス、ドキュメント、コストを扱う AWS Labs のサーバー群。 — 提供元: [Amazon Web Services](https://mcpnavi.jp/providers/amazon-web-services/) / カテゴリ: クラウド基盤 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-19
+- [Aident Loadout](https://mcpnavi.jp/servers/aident-loadout/): 連携したアプリの操作（Action）と Skill を、1 つのリモートサーバーから AI エージェントに提供するサービス。認証情報は Aident Vault が管理し、実行した操作は Audit に記録される。 — 提供元: [Aident AI, LLC](https://mcpnavi.jp/providers/aident-ai-llc/) / カテゴリ: 生産性 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-10-24
 - [AirLogicPro MCP](https://mcpnavi.jp/servers/airlogicpro-mcp/): App Store のカテゴリ機会スコアを 22 カテゴリで算出する airlogicpro のサーバー。 — 提供元: [Shown06](https://mcpnavi.jp/providers/shown06/) / カテゴリ: マーケティング・SEO / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [Airtable MCP Server](https://mcpnavi.jp/servers/airtable-mcp-server/): Airtable のベース、テーブル、レコードを扱うサーバー。 — 提供元: [domdomegg](https://mcpnavi.jp/providers/domdomegg/) / カテゴリ: データベース / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [AivisSpeech MCP](https://mcpnavi.jp/servers/aivisspeech-mcp/): 日本語音声合成エンジン AivisSpeech を AI エージェントから使うサーバー。 — 提供元: [shinshin86](https://mcpnavi.jp/providers/shinshin86/) / カテゴリ: メディア / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
@@ -187,12 +189,14 @@
 - [MongoDB MCP Server](https://mcpnavi.jp/servers/mongodb-mcp-server/): MongoDB のデータベースと Atlas を扱う公式サーバー。 — 提供元: [MongoDB](https://mcpnavi.jp/providers/mongodb/) / カテゴリ: データベース / 提供形態: 自分で動かす / 接続方式: stdio、Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
 - [MotherDuck MCP](https://mcpnavi.jp/servers/motherduck-mcp/): DuckDB と MotherDuck に対して SQL を実行するサーバー。 — 提供元: [MotherDuck](https://mcpnavi.jp/providers/motherduck/) / カテゴリ: データベース / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Neon MCP Server](https://mcpnavi.jp/servers/neon-mcp-server/): Neon の Postgres プロジェクト、ブランチ、SQL を扱う公式サーバー。 — 提供元: [Neon](https://mcpnavi.jp/providers/neon/) / カテゴリ: データベース、クラウド基盤 / 提供形態: URLで接続、自分で動かす / 接続方式: Streamable HTTP、stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
+- [NeverApply](https://mcpnavi.jp/servers/neverapply/): 求人の検索とマッチング、応募状況の確認、履歴書の調整、面接の準備、利用者が承認した求人への応募を AI エージェントから行うリモートサーバー。 — 提供元: [Kasovy LLC](https://mcpnavi.jp/providers/kasovy-llc/) / カテゴリ: 生産性 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: サブスクリプション / 日本語ドキュメント: 不明 / 情報確認日: 2026-10-24
 - [Nightlife MCP](https://mcpnavi.jp/servers/nightlife-mcp/): 東京を中心に、イベント、会場、出演者を検索するナイトライフのサーバー。 — 提供元: [alcylu](https://mcpnavi.jp/providers/alcylu/) / カテゴリ: 開発ツール / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-19
 - [Norikae MCP](https://mcpnavi.jp/servers/norikae-mcp/): Yahoo! 乗換案内を使った日本語の経路検索サーバー。 — 提供元: [tysonwu](https://mcpnavi.jp/providers/tysonwu/) / カテゴリ: 検索・Web取得、地図・位置情報 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [Notion MCP](https://mcpnavi.jp/servers/notion-mcp/): Notion のページ、データベース、コメントを扱う公式サーバー。リモートは OAuth、ローカルは連携トークンを使う。 — 提供元: [Notion Labs](https://mcpnavi.jp/providers/notion-labs/) / カテゴリ: ドキュメント・ナレッジ、生産性 / 提供形態: URLで接続、自分で動かす / 接続方式: Streamable HTTP、stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
 - [Oboyu](https://mcpnavi.jp/servers/oboyu/): 日本語テキストの索引と検索を自前で運用するサーバー。BM25 とベクトル検索を組み合わせる。 — 提供元: [sonesuke](https://mcpnavi.jp/providers/sonesuke/) / カテゴリ: ドキュメント・ナレッジ、AI・機械学習 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Obsidian MCP](https://mcpnavi.jp/servers/obsidian-mcp/): Obsidian の Vault を読み書きするサーバー。 — 提供元: [MarkusPfundstein](https://mcpnavi.jp/providers/markuspfundstein/) / カテゴリ: ドキュメント・ナレッジ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [OpenFisca Japan MCP](https://mcpnavi.jp/servers/openfisca-japan-mcp/): 日本の税と社会保障のシミュレーション (OpenFisca-Japan) をツールとして提供するサーバー。 — 提供元: [project-inclusive](https://mcpnavi.jp/providers/project-inclusive/) / カテゴリ: ドキュメント・ナレッジ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
+- [OwlChart](https://mcpnavi.jp/servers/owlchart/): 暗号資産と株式の建玉、清算、資金調達率、板の厚み、現物 ETF の資金流出入、チャートパターンなどの市場データを AI エージェントから読むリモートサーバー。 — 提供元: [OwlChart](https://mcpnavi.jp/providers/owlchart/) / カテゴリ: 決済・金融、データ分析 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: サブスクリプション / 日本語ドキュメント: 不明 / 情報確認日: 2026-10-24
 - [PagerDuty MCP Server](https://mcpnavi.jp/servers/pagerduty-mcp-server/): PagerDuty のインシデントとオンコールを扱う公式サーバー。 — 提供元: [PagerDuty](https://mcpnavi.jp/providers/pagerduty/) / カテゴリ: 監視・可観測性 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
 - [Pagoda MCP Server](https://mcpnavi.jp/servers/pagoda-mcp-server/): DMM の Pagoda 基盤を AI エージェントから操作する DMM のサーバー。 — 提供元: [合同会社DMM.com](https://mcpnavi.jp/providers/dmm-com/) / カテゴリ: インフラ・IaC / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-19
 - [PaperBot AI MCP](https://mcpnavi.jp/servers/paperbot-ai-mcp/): 社内マニュアルの RAG 質問応答を LINE、Web、Chatwork、Slack で提供するサーバー。 — 提供元: [Shown06](https://mcpnavi.jp/providers/shown06/) / カテゴリ: ドキュメント・ナレッジ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-19
@@ -211,6 +215,7 @@
 - [Remote kintone MCP Server](https://mcpnavi.jp/servers/remote-kintone-mcp-server/): kintone 公式サーバーをリモート接続に変えたサーバー。 — 提供元: [macrat](https://mcpnavi.jp/providers/macrat/) / カテゴリ: プロジェクト管理 / 提供形態: 不明 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [Resend MCP](https://mcpnavi.jp/servers/resend-mcp/): Resend でメールを送る公式サーバー。 — 提供元: [Resend](https://mcpnavi.jp/providers/resend/) / カテゴリ: コミュニケーション / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Road Traffic Law MCP](https://mcpnavi.jp/servers/road-traffic-law-mcp/): 道路交通法を e-Gov API v2 から取得するサーバー。 — 提供元: [bonsai](https://mcpnavi.jp/providers/bonsai/) / カテゴリ: ドキュメント・ナレッジ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
+- [RobotTraining.jobs](https://mcpnavi.jp/servers/robottraining-jobs/): ロボットの遠隔操作、デモンストレーションのデータ収集、自動運転車やドローンの試験など、ロボット訓練の求人と時給を検索するリモートサーバー。 — 提供元: [O-mega Enterprise, Inc.](https://mcpnavi.jp/providers/o-mega-enterprise-inc/) / カテゴリ: データ分析 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-10-24
 - [SSW Compass](https://mcpnavi.jp/servers/ssw-compass/): 特定技能の在留手続を一次資料に基づいて案内する MCP アプリ。10 言語に対応。 — 提供元: [sugukuru co., ltd.](https://mcpnavi.jp/providers/sugukuru-co-ltd/) / カテゴリ: データ分析 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [SSW Workforce Intel MCP](https://mcpnavi.jp/servers/ssw-workforce-intel-mcp/): e-Stat の公開データを使い、特定技能の外国人労働者に関する情報を返すサーバー。 — 提供元: [sugukuru co., ltd.](https://mcpnavi.jp/providers/sugukuru-co-ltd/) / カテゴリ: データ分析 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [Sakenowa MCP](https://mcpnavi.jp/servers/sakenowa-mcp/): 日本酒の味空間を Sakenowa のオープンデータで検索するサーバー。 — 提供元: [mame0001](https://mcpnavi.jp/providers/mame0001/) / カテゴリ: ファイル・ストレージ、データ分析、AI・機械学習 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
@@ -218,6 +223,7 @@
 - [Sansan MCP](https://mcpnavi.jp/servers/sansan-mcp/): Sansan の名刺、人物、営業レポートを扱うサーバー。 — 提供元: [Supernova Tokyo Inc.](https://mcpnavi.jp/providers/supernova-tokyo-inc/) / カテゴリ: CRM・営業 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
 - [Semgrep MCP](https://mcpnavi.jp/servers/semgrep-mcp/): Semgrep の静的解析をエージェントから実行する公式サーバー。 — 提供元: [Semgrep](https://mcpnavi.jp/providers/semgrep/) / カテゴリ: セキュリティ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Sentry MCP](https://mcpnavi.jp/servers/sentry-mcp/): Sentry のエラー、Issue、プロジェクトを扱う公式リモートサーバー。 — 提供元: [Sentry](https://mcpnavi.jp/providers/sentry/) / カテゴリ: 監視・可観測性 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
+- [Seonix MCP](https://mcpnavi.jp/servers/seonix-mcp/): SEO 自動化サービス Seonix に登録したサイトのサイトヘルス、修正プラン、Search Console のデータ、キーワードクラスター、記事を AI エージェントから読むリモートサーバー。Seonix の有料プランで使える。 — 提供元: [Pavlo Fedotov](https://mcpnavi.jp/providers/pavlo-fedotov/) / カテゴリ: マーケティング・SEO / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: サブスクリプション / 日本語ドキュメント: 不明 / 情報確認日: 2026-10-24
 - [Sequential Thinking MCP Server](https://mcpnavi.jp/servers/sequential-thinking/): 段階的な思考をツールとして提供する参照実装。外部サービスには接続しない。 — 提供元: [Anthropic (Model Context Protocol)](https://mcpnavi.jp/providers/anthropic-model-context-protocol/) / カテゴリ: AI・機械学習、生産性 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
 - [Sequential Thinking MCP Server](https://mcpnavi.jp/servers/sequential-thinking-mcp-server/): 段階的な思考をツールとして提供する参照実装。外部サービスには接続しない。 — 提供元: [Anthropic (Model Context Protocol)](https://mcpnavi.jp/providers/anthropic-model-context-protocol/) / カテゴリ: 開発ツール / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
 - [Serena](https://mcpnavi.jp/servers/serena/): コードの意味検索と編集を提供する MCP ツールキット。言語サーバーを裏で使う。 — 提供元: [oraios](https://mcpnavi.jp/providers/oraios/) / カテゴリ: 開発ツール、AI・機械学習 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
@@ -244,12 +250,6 @@
 - [Trello MCP Server](https://mcpnavi.jp/servers/trello-mcp-server/): Trello のボード、リスト、カードを扱うサーバー。 — 提供元: [delorenj](https://mcpnavi.jp/providers/delorenj/) / カテゴリ: プロジェクト管理 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Unity MCP](https://mcpnavi.jp/servers/unity-mcp/): Unity エディタをエージェントから操作するサーバー。 — 提供元: [CoplayDev](https://mcpnavi.jp/providers/coplaydev/) / カテゴリ: デザイン、AI・機械学習 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 - [Vercel MCP](https://mcpnavi.jp/servers/vercel-mcp/): Vercel のプロジェクト、デプロイ、ログを扱う公式リモートサーバー。 — 提供元: [Vercel](https://mcpnavi.jp/providers/vercel/) / カテゴリ: 開発ツール、クラウド基盤 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
-- [Vercel MCP Adapter](https://mcpnavi.jp/servers/vercel-mcp-adapter/): Vercel のデプロイ、プロジェクト、ログを扱う MCP を Next.js で公開するためのアダプタ。 — 提供元: [Vercel](https://mcpnavi.jp/providers/vercel/) / カテゴリ: クラウド基盤 / 提供形態: 不明 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
-- [Wikipedia MCP](https://mcpnavi.jp/servers/wikipedia-mcp/): Wikipedia の検索と記事取得を行うサーバー。 — 提供元: [Rudra-ravi](https://mcpnavi.jp/providers/rudra-ravi/) / カテゴリ: 検索・Web取得、ドキュメント・ナレッジ / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-20
-- [Yahoo Furigana MCP](https://mcpnavi.jp/servers/yahoo-furigana-mcp/): Yahoo! JAPAN のふりがな API を使うサーバー。 — 提供元: [analekt](https://mcpnavi.jp/providers/analekt/) / カテゴリ: 検索・Web取得 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
-- [Yahoo Japan Search MCP](https://mcpnavi.jp/servers/yahoo-japan-search-mcp/): Yahoo! JAPAN の Web、画像、動画、ニュース、リアルタイム投稿、知恵袋を検索するサーバー。 — 提供元: [mouseos](https://mcpnavi.jp/providers/mouseos/) / カテゴリ: 検索・Web取得、メディア / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: あり / 情報確認日: 2026-09-19
-- [Zapier MCP](https://mcpnavi.jp/servers/zapier-mcp/): Zapier 経由で数千のアプリの操作を提供するリモートサーバー。 — 提供元: [Zapier](https://mcpnavi.jp/providers/zapier/) / カテゴリ: 生産性 / 提供形態: URLで接続 / 接続方式: Streamable HTTP / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
-- [Zendesk MCP Server](https://mcpnavi.jp/servers/zendesk-mcp-server/): Zendesk のチケットとヘルプセンター記事を扱うサーバー。 — 提供元: [reminia](https://mcpnavi.jp/providers/reminia/) / カテゴリ: CRM・営業 / 提供形態: 自分で動かす / 接続方式: stdio / 料金体系: 不明 / 日本語ドキュメント: 不明 / 情報確認日: 2026-09-13
 
 ここには200件だけを載せています。すべての掲載サービスは https://mcpnavi.jp/servers/ にあります。
 
