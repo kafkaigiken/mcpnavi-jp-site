@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="株式会社Kafkai Giken">
     
-    <title>Remote vs local MCP servers: hosting, transport and credentials | mcpnavi</title>
+    <title>Remote vs local MCP servers: hosting, transport and credentials | MCPNavi</title>
     <meta name="description" content="The difference between a remote and a local MCP server: who runs the server (hosting), the wire format (stdio or Streamable HTTP), what the user does in each case, how credentials are handled, and the transports in specification 2026-07-28.">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/">
     
-    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:site_name" content="MCPNavi">
     <meta property="og:title" content="Remote vs local MCP servers: hosting, transport and credentials">
     <meta property="og:description" content="The difference between a remote and a local MCP server: who runs the server (hosting), the wire format (stdio or Streamable HTTP), what the user does in each case, how credentials are handled, and the transports in specification 2026-07-28.">
     <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/remote-and-local-mcp-servers/">
@@ -38,7 +38,7 @@
     {
       "@type": "WebSite",
       "@id": "https://mcpnavi.jp/#website",
-      "name": "mcpnavi",
+      "name": "MCPNavi",
       "url": "https://mcpnavi.jp/",
       "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
       "publisher": {
@@ -168,7 +168,7 @@
 <header class="sticky top-0 z-50">
     <div class="site-header-glass" aria-hidden="true"></div>
     <div class="container-site flex h-16 items-center gap-4 md:gap-8">
-        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="MCPNavi">
             
 <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
     
@@ -176,7 +176,7 @@
 
 </span>
 
-            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+            <span>MCPNavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
         </a>
         <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
             
@@ -293,7 +293,7 @@ Read in 日本語</a>
                     <li><a href="#what-the-user-does" class="outline-link">What the user does</a></li>
                     <li><a href="#how-credentials-are-handled" class="outline-link">How credentials are handled</a></li>
                     <li><a href="#the-transports-in-specification-2026-07-28" class="outline-link">The transports in specification 2026-07-28</a></li>
-                    <li><a href="#how-to-read-these-fields-on-mcpnavi" class="outline-link">How to read these fields on mcpnavi</a></li>
+                    <li><a href="#how-to-read-these-fields-on-mcpnavi" class="outline-link">How to read these fields on MCPNavi</a></li>
                     <li><a href="#summary" class="outline-link">Summary</a></li>
                     <li><a href="#sources" class="outline-link">Sources</a></li>
                     
@@ -317,7 +317,7 @@ Read in 日本語</a>
 <li><strong>Who runs the server</strong>: the provider, or the user</li>
 <li><strong>How the client and the server communicate</strong>: stdio, or Streamable HTTP</li>
 </ol>
-<p>mcpnavi lists them separately. The first is "Hosting". The second is "Transport".</p>
+<p>MCPNavi lists them separately. The first is "Hosting". The second is "Transport".</p>
 <table>
 <thead>
 <tr>
@@ -367,7 +367,7 @@ Read in 日本語</a>
 </tbody>
 </table>
 <p>Because of the third row, "Streamable HTTP" does not mean "the provider runs it". The specification also has text that assumes this case. It is a note about running a Streamable HTTP server locally. It asks the server to bind only to localhost (127.0.0.1).</p>
-<p>Some providers offer both forms. For those services, mcpnavi shows both "Connect by URL" and "Run it yourself".</p>
+<p>Some providers offer both forms. For those services, MCPNavi shows both "Connect by URL" and "Run it yourself".</p>
 <h2 id="what-the-user-does">What the user does</h2>
 <h3 id="when-hosting-is-connect-by-url">When Hosting is "Connect by URL"</h3>
 <p>The provider runs the server. You register the server's URL in the client. You install no program.</p>
@@ -394,7 +394,7 @@ Read in 日本語</a>
 </ol>
 <p>The specification says a token must not be placed in the URL query string. According to the documentation, Streamable HTTP also supports standard HTTP authentication methods: bearer tokens, API keys and custom headers. It then recommends OAuth as the way to obtain tokens.</p>
 <p><strong>With stdio</strong>, the recommendation is not to follow that authorization flow, and to retrieve credentials from the environment instead. There is no approval step in a browser. The server program reads the credentials placed in the environment it runs in.</p>
-<p>mcpnavi lists each service's method as "Authentication" (OAuth 2.1, API key, None, Unknown).</p>
+<p>MCPNavi lists each service's method as "Authentication" (OAuth 2.1, API key, None, Unknown).</p>
 <h2 id="the-transports-in-specification-2026-07-28">The transports in specification 2026-07-28</h2>
 <p>The current specification, 2026-07-28, defines two standard transports.</p>
 <ul>
@@ -403,16 +403,16 @@ Read in 日本語</a>
 </ul>
 <p>According to the specification, the meaning of the messages is identical on every transport. A transport defines how messages are framed and delivered. Custom transports are also allowed.</p>
 <p>Specification 2026-07-28 also changed how Streamable HTTP behaves. The stream opened with GET and the protocol-level sessions were removed.</p>
-<p>HTTP+SSE is the transport from specification 2024-11-05. Specification 2025-03-26 replaced it with Streamable HTTP, and it has been "deprecated" since then. The specification says new implementations should not adopt it and existing ones should migrate to Streamable HTTP. It is eligible for removal in a future revision. mcpnavi shows this transport as "SSE (legacy)".</p>
-<h2 id="how-to-read-these-fields-on-mcpnavi">How to read these fields on mcpnavi</h2>
-<p>mcpnavi lists these facts for each service.</p>
+<p>HTTP+SSE is the transport from specification 2024-11-05. Specification 2025-03-26 replaced it with Streamable HTTP, and it has been "deprecated" since then. The specification says new implementations should not adopt it and existing ones should migrate to Streamable HTTP. It is eligible for removal in a future revision. MCPNavi shows this transport as "SSE (legacy)".</p>
+<h2 id="how-to-read-these-fields-on-mcpnavi">How to read these fields on MCPNavi</h2>
+<p>MCPNavi lists these facts for each service.</p>
 <ul>
-<li><strong>Hosting</strong>: mcpnavi reads the official documentation and the repository README. A connection URL that the provider runs means "Connect by URL". Instructions for running the program mean "Run it yourself". A connection URL that points at your own computer (localhost) also means "Run it yourself".</li>
+<li><strong>Hosting</strong>: MCPNavi reads the official documentation and the repository README. A connection URL that the provider runs means "Connect by URL". Instructions for running the program mean "Run it yourself". A connection URL that points at your own computer (localhost) also means "Run it yourself".</li>
 <li><strong>Transport</strong>: every transport the service supports, out of stdio, Streamable HTTP and SSE (legacy).</li>
 <li><strong>Connection URL</strong>: the URL that the provider publishes for connections. It appears under "Setup" on the service's detail page.</li>
 <li><strong>HTTPS required</strong>: a service whose only transport is stdio shows "Not applicable (stdio only)".</li>
 </ul>
-<p>A field that no public page states is shown as "Unknown". mcpnavi does not fill in a value by guessing. <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
+<p>A field that no public page states is shown as "Unknown". MCPNavi does not fill in a value by guessing. <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
 <p>The <a href="/en/servers/">list of MCP services</a> has a filter named "Connects with a URL alone". It shows only <a href="/en/servers/filter/remote/">the services whose Hosting includes "Connect by URL"</a>.</p>
 <h2 id="summary">Summary</h2>
 <ul>
@@ -449,6 +449,25 @@ Read in 日本語</a>
 
 <article class="card post-card">
     <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/mcp-services-first-half-2026/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-10-28">2026-10-28</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-services-first-half-2026/">MCP services announced in the first half of 2026: sorting 365 PR TIMES releases into 22 categories</a></h3>
+        <p class="post-card-intro">206 companies announced 225 MCP services on PR TIMES from January to June 2026. We sorted them into MCPNavi&#x27;s 22 categories: business SaaS is about a fifth, and data owners are joining fast.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
         <img src="/en/blog/technical/new-mcp-servers-2026-10-24/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
         
     </div>
@@ -474,26 +493,7 @@ Iqbal Abdullah</p>
     <div class="post-card-body">
         <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-10-02">2026-10-02</time></p>
         <h3 class="post-card-title"><a href="/en/blog/technical/japanese-law-mcp-servers/">Japanese law MCP servers: 24 services that fetch statutes from the e-Gov Law API</a></h3>
-        <p class="post-card-intro">A Japanese law MCP server lets an AI agent fetch the text of Japanese laws. Most call the Digital Agency&#x27;s e-Gov Law API. This article explains the API and the 24 servers listed on mcpnavi.</p>
-        <p class="post-card-author">
-<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
-Iqbal Abdullah</p>
-        <p class="post-card-more" aria-hidden="true">Read the post
-<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-</p>
-    </div>
-</article>
-
-
-<article class="card post-card">
-    <div class="post-cover" aria-hidden="true">
-        <img src="/en/blog/technical/mcp-authorization-basics/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
-        
-    </div>
-    <div class="post-card-body">
-        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-23">2026-09-23</time></p>
-        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-authorization-basics/">Authentication for MCP servers: the basics of OAuth and API keys</a></h3>
-        <p class="post-card-intro">An MCP server checks who is connecting before it returns data. This article covers the kinds of authentication, how specification 2026-07-28 uses OAuth 2.1, the flow of a connection, and what to check before you connect.</p>
+        <p class="post-card-intro">A Japanese law MCP server lets an AI agent fetch the text of Japanese laws. Most call the Digital Agency&#x27;s e-Gov Law API. This article explains the API and the 24 servers listed on MCPNavi.</p>
         <p class="post-card-author">
 <span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
 Iqbal Abdullah</p>
@@ -521,7 +521,7 @@ Iqbal Abdullah</p>
 <svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
 
 </span>
-mcpnavi
+MCPNavi
                 </a>
                 <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
             </div>

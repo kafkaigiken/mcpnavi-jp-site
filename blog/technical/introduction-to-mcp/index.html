@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="株式会社Kafkai Giken">
     
-    <title>MCPとは？Model Context Protocolの歴史と仕組み（入門） | mcpnavi</title>
+    <title>MCPとは？Model Context Protocolの歴史と仕組み（入門） | MCPNavi</title>
     <meta name="description" content="MCP（Model Context Protocol）の入門記事です。MCPが生まれた理由、2024年11月の公開から2026-07-28版までの歴史、ホスト・クライアント・サーバーの仕組みと2つの接続方式を説明します。">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
     
-    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:site_name" content="MCPNavi">
     <meta property="og:title" content="MCPとは？Model Context Protocolの歴史と仕組み（入門）">
     <meta property="og:description" content="MCP（Model Context Protocol）の入門記事です。MCPが生まれた理由、2024年11月の公開から2026-07-28版までの歴史、ホスト・クライアント・サーバーの仕組みと2つの接続方式を説明します。">
     <meta property="og:url" content="https://mcpnavi.jp/blog/technical/introduction-to-mcp/">
@@ -38,7 +38,7 @@
     {
       "@type": "WebSite",
       "@id": "https://mcpnavi.jp/#website",
-      "name": "mcpnavi",
+      "name": "MCPNavi",
       "url": "https://mcpnavi.jp/",
       "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
       "publisher": {
@@ -168,7 +168,7 @@
 <header class="sticky top-0 z-50">
     <div class="site-header-glass" aria-hidden="true"></div>
     <div class="container-site flex h-16 items-center gap-4 md:gap-8">
-        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="MCPNavi">
             
 <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
     
@@ -176,7 +176,7 @@
 
 </span>
 
-            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+            <span>MCPNavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
         </a>
         <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
             
@@ -222,7 +222,7 @@
     </ul>
 </details>
 
-            <a href="/forms/listing-request/" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">mcpnaviに掲載する
+            <a href="/forms/listing-request/" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">MCPNaviに掲載する
 <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
 </a>
             <details class="relative xl:hidden" data-menu>
@@ -245,7 +245,7 @@
 
 
                     <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
-                        <a href="/forms/listing-request/" class="btn btn-dark btn-sm w-full">mcpnaviに掲載する</a>
+                        <a href="/forms/listing-request/" class="btn btn-dark btn-sm w-full">MCPNaviに掲載する</a>
                     </div>
                 </nav>
             </details>
@@ -318,7 +318,7 @@ Englishで読む</a>
 <p>MCPの公開前は、この接続をアプリケーションごと、サービスごとに個別に開発していました。AIアプリケーションが5種類、つなぎたいサービスが20種類あれば、最大で100通りの接続を開発することになります。片方の仕様が変わるたびに、接続の修正も必要でした。</p>
 <p>Anthropicは公開時の発表で、この状況を次のように説明しています。</p>
 <blockquote>
-<p>どれほど高度なモデルも、データから切り離されているという制約を受けています。データは、情報のサイロや古いシステムの中に閉じ込められています。新しいデータソースをつなぐたびに個別の実装が必要になり、つながったシステムを広げていくことが難しくなっています。（mcpnaviによる訳）</p>
+<p>どれほど高度なモデルも、データから切り離されているという制約を受けています。データは、情報のサイロや古いシステムの中に閉じ込められています。新しいデータソースをつなぐたびに個別の実装が必要になり、つながったシステムを広げていくことが難しくなっています。（MCPNaviによる訳）</p>
 </blockquote>
 <p>MCPは、この接続を1つの規格にまとめます。サービスの提供元はMCPサーバーを1つ公開します。AIアプリケーションの開発元はMCPクライアントを1つ実装します。それだけで、どの組み合わせでも接続できます。先ほどの例なら、開発するものは100通りの接続から、5つのクライアントと20のサーバーに減ります。</p>
 <p>この考え方には手本があります。MCPの仕様書は、Language Server Protocol（LSP）から着想を得たと書いています。LSPは、プログラミング言語の対応をエディタごとに開発しなくて済むようにした規格です。MCPは同じ方法を、AIアプリケーションとツールの接続に当てはめました。</p>
@@ -440,14 +440,14 @@ Englishで読む</a>
 </tr>
 </tbody>
 </table>
-<p>mcpnaviは、このうちツールを「提供ツール」の項目として、サービスごとに掲載しています。</p>
+<p>MCPNaviは、このうちツールを「提供ツール」の項目として、サービスごとに掲載しています。</p>
 <h3 id="2つの接続方式">2つの接続方式</h3>
 <p>クライアントとサーバーのつなぎ方は、2つあります。</p>
 <ul>
 <li><strong>stdio</strong>：サーバーを手元のPCで動かし、標準入出力でやり取りします。ネットワークを通りません。利用者がサーバーを自分でインストールします。</li>
 <li><strong>Streamable HTTP</strong>：HTTPでやり取りします。提供元が運用するサーバーに、インターネット越しに接続できます。認可にはOAuthを使うことが推奨されています。</li>
 </ul>
-<p>接続方式は、通信の形式を決めるだけです。Streamable HTTPのサーバーを、利用者が自分の環境で動かすこともできます。「サーバーを誰が運用するか」は別の情報です。mcpnaviは、前者を「接続方式」、後者を「提供形態」として、分けて掲載しています。</p>
+<p>接続方式は、通信の形式を決めるだけです。Streamable HTTPのサーバーを、利用者が自分の環境で動かすこともできます。「サーバーを誰が運用するか」は別の情報です。MCPNaviは、前者を「接続方式」、後者を「提供形態」として、分けて掲載しています。</p>
 <h3 id="やり取りの中身">やり取りの中身</h3>
 <p>クライアントとサーバーは、JSON-RPC 2.0という形式のメッセージをやり取りします。流れは単純です。</p>
 <ol>
@@ -502,7 +502,7 @@ Englishで読む</a>
 <li>どのツールを提供しているか（提供ツール）</li>
 <li>最後にいつ更新されたか（最終更新日）</li>
 </ul>
-<p>mcpnaviは、これらの項目をサービスごとに公開ページから読み取り、情報確認日とともに掲載しています。読み取れなかった項目は「不明」と表示します。各項目の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
+<p>MCPNaviは、これらの項目をサービスごとに公開ページから読み取り、情報確認日とともに掲載しています。読み取れなかった項目は「不明」と表示します。各項目の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
 <h2 id="まとめ">まとめ</h2>
 <ul>
 <li>MCPは、AIアプリケーションと外部のデータやツールをつなぐ共通規格です。</li>
@@ -545,6 +545,25 @@ Englishで読む</a>
 
 <article class="card post-card">
     <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/mcp-services-first-half-2026/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-10-28">2026年10月28日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/mcp-services-first-half-2026/">2026年上半期に発表されたMCPサービス：PR TIMESの365件を22カテゴリに分類する</a></h3>
+        <p class="post-card-intro">2026年1月から6月に、PR TIMESで自社のMCPサーバーを発表した206社・225サービスを、MCPNaviの22カテゴリに分類しました。業務SaaSが約2割を占め、データを持つ会社の参入も目立ちます。カテゴリごとの例も紹介します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
         <img src="/blog/technical/new-mcp-servers-2026-10-24/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
         
     </div>
@@ -570,26 +589,7 @@ Englishで読む</a>
     <div class="post-card-body">
         <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-10-02">2026年10月02日</time></p>
         <h3 class="post-card-title"><a href="/blog/technical/japanese-law-mcp-servers/">法令MCPサーバー：e-Gov 法令APIで条文を取得する24件</a></h3>
-        <p class="post-card-intro">法令MCPサーバーは、AIエージェントが日本の法令の条文を取得するためのプラグインです。多くはデジタル庁のe-Gov 法令APIを使います。APIの仕組みと、mcpnaviに掲載している24件の提供形態、接続方式、扱う分野を説明します。</p>
-        <p class="post-card-author">
-<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
-イクバル・アバドゥラ</p>
-        <p class="post-card-more" aria-hidden="true">記事を読む
-<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-</p>
-    </div>
-</article>
-
-
-<article class="card post-card">
-    <div class="post-cover" aria-hidden="true">
-        <img src="/blog/technical/remote-and-local-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
-        
-    </div>
-    <div class="post-card-body">
-        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-25">2026年09月25日</time></p>
-        <h3 class="post-card-title"><a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a></h3>
-        <p class="post-card-intro">リモートMCPサーバーは提供元が動かし、URLで接続します。ローカルMCPサーバーは利用者が手元のPCで動かします。提供形態と接続方式の違い、利用者がすること、認証情報の扱いを説明します。</p>
+        <p class="post-card-intro">法令MCPサーバーは、AIエージェントが日本の法令の条文を取得するためのプラグインです。多くはデジタル庁のe-Gov 法令APIを使います。APIの仕組みと、MCPNaviに掲載している24件の提供形態、接続方式、扱う分野を説明します。</p>
         <p class="post-card-author">
 <span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
 イクバル・アバドゥラ</p>
@@ -617,7 +617,7 @@ Englishで読む</a>
 <svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
 
 </span>
-mcpnavi
+MCPNavi
                 </a>
                 <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
             </div>
@@ -642,7 +642,7 @@ mcpnavi
             <div class="md:col-span-3">
                 <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
                 <div class="flex flex-col items-start gap-3">
-                    <a href="/forms/listing-request/" class="nav-link">mcpnaviに掲載する</a>
+                    <a href="/forms/listing-request/" class="nav-link">MCPNaviに掲載する</a>
                     <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
                 </div>
             </div>

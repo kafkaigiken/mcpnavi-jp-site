@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="株式会社Kafkai Giken">
     
-    <title>What is MCP? The history of the Model Context Protocol and how it works | mcpnavi</title>
+    <title>What is MCP? The history of the Model Context Protocol and how it works | MCPNavi</title>
     <meta name="description" content="An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
     
-    <meta property="og:site_name" content="mcpnavi">
+    <meta property="og:site_name" content="MCPNavi">
     <meta property="og:title" content="What is MCP? The history of the Model Context Protocol and how it works">
     <meta property="og:description" content="An introduction to MCP (Model Context Protocol): why it was created, its history from the November 2024 release to specification 2026-07-28, and how hosts, clients, servers and the two transports work.">
     <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/introduction-to-mcp/">
@@ -38,7 +38,7 @@
     {
       "@type": "WebSite",
       "@id": "https://mcpnavi.jp/#website",
-      "name": "mcpnavi",
+      "name": "MCPNavi",
       "url": "https://mcpnavi.jp/",
       "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
       "publisher": {
@@ -168,7 +168,7 @@
 <header class="sticky top-0 z-50">
     <div class="site-header-glass" aria-hidden="true"></div>
     <div class="container-site flex h-16 items-center gap-4 md:gap-8">
-        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="mcpnavi">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="MCPNavi">
             
 <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
     
@@ -176,7 +176,7 @@
 
 </span>
 
-            <span>mcpnavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+            <span>MCPNavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
         </a>
         <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
             
@@ -440,14 +440,14 @@ Read in 日本語</a>
 </tr>
 </tbody>
 </table>
-<p>Of the three, mcpnavi lists the tools of each service, in the "Tools" field.</p>
+<p>Of the three, MCPNavi lists the tools of each service, in the "Tools" field.</p>
 <h3 id="the-two-transports">The two transports</h3>
 <p>A client and a server connect in one of two ways.</p>
 <ul>
 <li><strong>stdio</strong>: The server runs on the user's own computer and communicates over standard input and output. Nothing crosses the network. The user installs the server.</li>
 <li><strong>Streamable HTTP</strong>: The two sides communicate over HTTP. A user can connect over the internet to a server that the provider runs. OAuth is the recommended way to authorize.</li>
 </ul>
-<p>The transport only decides the wire format. A user can also run a Streamable HTTP server in their own environment. Who runs the server is a separate fact. mcpnavi lists the two separately: the first as "Transport", the second as "Hosting".</p>
+<p>The transport only decides the wire format. A user can also run a Streamable HTTP server in their own environment. Who runs the server is a separate fact. MCPNavi lists the two separately: the first as "Transport", the second as "Hosting".</p>
 <h3 id="what-the-messages-look-like">What the messages look like</h3>
 <p>The client and the server exchange messages in a format called JSON-RPC 2.0. The flow is short.</p>
 <ol>
@@ -502,7 +502,7 @@ Read in 日本語</a>
 <li>Which tools it provides (Tools)</li>
 <li>When it was last updated (Last updated)</li>
 </ul>
-<p>mcpnavi reads these fields for each service from public pages and lists them with the date they were last checked. A field that no public page states is shown as "Unknown". <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
+<p>MCPNavi reads these fields for each service from public pages and lists them with the date they were last checked. A field that no public page states is shown as "Unknown". <a href="/en/criteria/">About the data</a> explains what each field means and how it is checked.</p>
 <h2 id="summary">Summary</h2>
 <ul>
 <li>MCP is a common standard that connects AI applications to outside data and tools.</li>
@@ -545,6 +545,25 @@ Read in 日本語</a>
 
 <article class="card post-card">
     <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/mcp-services-first-half-2026/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-10-28">2026-10-28</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-services-first-half-2026/">MCP services announced in the first half of 2026: sorting 365 PR TIMES releases into 22 categories</a></h3>
+        <p class="post-card-intro">206 companies announced 225 MCP services on PR TIMES from January to June 2026. We sorted them into MCPNavi&#x27;s 22 categories: business SaaS is about a fifth, and data owners are joining fast.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
         <img src="/en/blog/technical/new-mcp-servers-2026-10-24/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
         
     </div>
@@ -570,26 +589,7 @@ Iqbal Abdullah</p>
     <div class="post-card-body">
         <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-10-02">2026-10-02</time></p>
         <h3 class="post-card-title"><a href="/en/blog/technical/japanese-law-mcp-servers/">Japanese law MCP servers: 24 services that fetch statutes from the e-Gov Law API</a></h3>
-        <p class="post-card-intro">A Japanese law MCP server lets an AI agent fetch the text of Japanese laws. Most call the Digital Agency&#x27;s e-Gov Law API. This article explains the API and the 24 servers listed on mcpnavi.</p>
-        <p class="post-card-author">
-<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
-Iqbal Abdullah</p>
-        <p class="post-card-more" aria-hidden="true">Read the post
-<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-</p>
-    </div>
-</article>
-
-
-<article class="card post-card">
-    <div class="post-cover" aria-hidden="true">
-        <img src="/en/blog/technical/remote-and-local-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
-        
-    </div>
-    <div class="post-card-body">
-        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-25">2026-09-25</time></p>
-        <h3 class="post-card-title"><a href="/en/blog/technical/remote-and-local-mcp-servers/">Remote and local MCP servers: what the difference is</a></h3>
-        <p class="post-card-intro">A provider runs a remote MCP server, and you connect to it by URL. You run a local MCP server on your own computer. This article covers hosting versus transport, what the user does, and how credentials are handled.</p>
+        <p class="post-card-intro">A Japanese law MCP server lets an AI agent fetch the text of Japanese laws. Most call the Digital Agency&#x27;s e-Gov Law API. This article explains the API and the 24 servers listed on MCPNavi.</p>
         <p class="post-card-author">
 <span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
 Iqbal Abdullah</p>
@@ -617,7 +617,7 @@ Iqbal Abdullah</p>
 <svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
 
 </span>
-mcpnavi
+MCPNavi
                 </a>
                 <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
             </div>
