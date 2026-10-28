@@ -308,4 +308,5 @@
 ## Optional
 
 - [掲載されているデータについて](https://mcpnavi.jp/criteria/)
+- [よくある質問](https://mcpnavi.jp/faq/): MCPNaviへの掲載の費用、契約、掲載までの流れ、掲載情報の修正方法など、よく寄せられる質問への回答です。
 - [サイトマップ](https://mcpnavi.jp/sitemap.xml)

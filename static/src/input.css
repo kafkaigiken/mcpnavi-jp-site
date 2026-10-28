@@ -366,6 +366,21 @@
   .outline-link:hover {
     @apply border-brand-500 text-ink;
   }
+
+  /* The FAQ: each question carries its number (Q1, Q2 …) in a column of its own, so a long question wraps
+     under its text and the number stays easy to find. A rule between two questions closes the answer above. */
+  .faq-item + .faq-item {
+    @apply mt-8 border-t border-rule;
+  }
+  .prose-content .faq-question {
+    @apply flex gap-2;
+  }
+  .faq-outline-link {
+    @apply flex gap-1.5;
+  }
+  .faq-number {
+    @apply shrink-0 font-semibold tabular-nums text-link;
+  }
   /* A heading reached from the 目次 stops below the sticky header, not under it. */
   .prose-content :is(h2, h3) {
     @apply scroll-mt-24;
