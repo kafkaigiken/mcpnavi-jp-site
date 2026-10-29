@@ -47,6 +47,11 @@
   html {
     font-feature-settings: "palt";
   }
+  /* The hidden attribute always hides: a class that sets display (.card-grid is a grid) would otherwise
+     keep an element on screen that search.js hid. */
+  [hidden] {
+    display: none !important;
+  }
   body {
     @apply bg-canvas text-ink leading-ja antialiased;
     /* Figures line up in columns: tabular numerals everywhere. */
@@ -161,6 +166,14 @@
   }
   .empty-state {
     @apply rounded-2xl border border-dashed border-muted/30 px-6 py-8 text-center text-sm text-muted;
+  }
+  /* The hits of a search sit in one tinted frame with their own heading and a way back, so they cannot
+     be read as part of the listing. */
+  .search-results {
+    @apply rounded-2xl border border-rule bg-band/60 p-4 md:p-6;
+  }
+  .search-results-header {
+    @apply mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-rule pb-4;
   }
   .notice {
     @apply rounded-xl border border-rule bg-band px-4 py-3 text-sm;

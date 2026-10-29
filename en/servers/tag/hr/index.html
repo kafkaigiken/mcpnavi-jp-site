@@ -281,7 +281,7 @@
 
 
 
-<nav aria-label="Filters">
+<nav aria-label="Filters" data-search-hide>
     
 
 <ul class="mt-6 flex flex-wrap gap-2">
@@ -294,7 +294,7 @@
 
 
 
-<nav aria-label="Tag">
+<nav aria-label="Tag" data-search-hide>
     
 
 
@@ -651,7 +651,24 @@
 
 
 
-<div data-search-results hidden></div>
+
+
+
+<section class="search-results mt-8" aria-labelledby="search-results-title" data-search-results hidden>
+    <div class="search-results-header">
+        <div>
+            <h2 id="search-results-title" class="section-title">Search results</h2>
+            <p class="mt-1 text-sm text-muted" data-search-count></p>
+        </div>
+        <a href="/en/servers/" class="btn btn-sm">
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+Clear search</a>
+    </div>
+    <div data-search-list>
+        
+    </div>
+</section>
+
 
 <div class="card-grid mt-8" data-search-hide>
     
@@ -793,6 +810,7 @@
 
 
 </div>
+
 
 
     </main>
