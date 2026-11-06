@@ -97,7 +97,7 @@
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "MCP入門：Model Context Protocolの歴史と仕組み"
+          "name": "MCP入門　Model Context Protocolの歴史と仕組み"
         }
       ]
     },
@@ -260,7 +260,7 @@
 
 <nav aria-label="パンくず" class="breadcrumb">
     <a href="/">ホーム</a>
-     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">MCP入門：Model Context Protocolの歴史と仕組み</span>
+     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">MCP入門　Model Context Protocolの歴史と仕組み</span>
 </nav>
 
 <article class="mt-4">
@@ -274,7 +274,7 @@ Englishで読む</a>
 
 
         <p class="post-card-meta mt-5"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-20">2026年09月20日</time></p>
-        <h1 class="page-title mt-3">MCP入門：Model Context Protocolの歴史と仕組み</h1>
+        <h1 class="page-title mt-3">MCP入門　Model Context Protocolの歴史と仕組み</h1>
         <p class="page-lead">MCP（Model Context Protocol）は、AIアプリケーションを外部のデータやツールにつなぐ共通規格です。生まれた理由、2024年の公開から2026-07-28版までの経緯、基本の仕組みを説明します。</p>
         <p class="post-byline"><a href="/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
 <span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
@@ -370,16 +370,16 @@ Englishで読む</a>
 </tr>
 </tbody>
 </table>
-<h3 id="2024年公開">2024年：公開</h3>
+<h3 id="2024年-公開">2024年　公開</h3>
 <p>2024年11月25日、AnthropicがMCPをオープンソースとして公開しました。公開したものは、仕様とSDK、Claude Desktopのローカルサーバー対応、サーバーの実装を集めたリポジトリの3つです。Google Drive、Slack、GitHub、Git、Postgres、Puppeteerのサーバーが最初から用意されていました。初期の導入企業としてBlockとApolloが、開発ツールではZed、Replit、Codeium、Sourcegraphが名前を連ねています。</p>
 <p>このときClaude Desktopが対応したのは、手元のPCで動かすローカルのサーバーでした。</p>
-<h3 id="2025年各社の対応とリモート接続">2025年：各社の対応と、リモート接続</h3>
+<h3 id="2025年-各社の対応とリモート接続">2025年　各社の対応と、リモート接続</h3>
 <p>2025年3月26日の仕様改定で、2つの大きな機能が入りました。1つは、インターネット越しの接続に使うStreamable HTTPです。もう1つは、OAuth 2.1にもとづく認可の枠組みです。この2つによって、提供元が運用するサーバーにURLだけで接続する「リモートMCPサーバー」が現実的になりました。</p>
 <p>同じ3月26日、OpenAIがMCPへの対応を発表しました。まずAgents SDKが対応し、ChatGPTのデスクトップアプリとResponses APIが続くという内容です。競合する会社が作った規格を採用したことで、MCPは1社の規格から業界の共通規格へと位置づけが変わりました。4月9日にはGoogle DeepMindのCEOが、GeminiのモデルとSDKをMCPに対応させると表明しました。5月19日にはMicrosoftとGitHubが、開発者会議BuildでMCPの運営委員会への参加を発表しました。</p>
 <p>6月18日の仕様改定では、ツールが構造化データを返せるようになりました。サーバーが利用者に追加の入力を求める機能（エリシテーション）も加わりました。9月には公式のMCP Registryが発表されました。公開されているMCPサーバーを登録し、探すための台帳です。11月の時点で、2,000件近くが登録されています。</p>
 <p>11月25日、公開1周年に合わせて仕様2025-11-25版が公開されました。時間のかかる処理を扱うタスク機能が実験的に入り、核となる仕様の外に機能を足す「拡張」の枠組みもできました。</p>
 <p>12月9日、AnthropicはMCPをAgentic AI Foundation（AAIF）に寄贈しました。AAIFはLinux Foundationの傘下に新設された財団で、Anthropic、Block、OpenAIの3社が共同で設立しました。Google、Microsoft、AWS、Cloudflare、Bloombergも支援しています。Anthropicはこのとき、2つの数字を発表しています。公開されているMCPサーバーは1万以上です。PythonとTypeScriptのSDKは、月に9,700万回以上ダウンロードされています。MCPは特定の会社のものではなく、中立な団体が管理する規格になりました。</p>
-<h3 id="2026年ステートレス化">2026年：ステートレス化</h3>
+<h3 id="2026年-ステートレス化">2026年　ステートレス化</h3>
 <p>2026年7月28日に公開された2026-07-28版は、リモート接続が入って以来もっとも大きな改定です。プロトコルが「ステートレス」になりました。内容は「2026-07-28版で変わったこと」の節で説明します。</p>
 <p>公式ブログによると、主要なSDKのダウンロード数は月に5億回近くに達しています。</p>
 <h2 id="基本の仕組み">基本の仕組み</h2>
@@ -533,7 +533,7 @@ Englishで読む</a>
 </article>
 
 <nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="前後の記事">
-    <div><a href="/blog/technical/mcp-authorization-basics/" rel="prev" class="card-link block h-full px-6 py-5"><span class="text-muted">新しい記事</span><br><span class="font-medium">MCPサーバーの認証方式：OAuthとAPIキーの基本</span></a></div>
+    <div><a href="/blog/technical/mcp-authorization-basics/" rel="prev" class="card-link block h-full px-6 py-5"><span class="text-muted">新しい記事</span><br><span class="font-medium">MCPサーバーの認証方式　OAuthとAPIキーの基本</span></a></div>
     <div class="sm:text-right"></div>
 </nav>
 
@@ -550,7 +550,7 @@ Englishで読む</a>
     </div>
     <div class="post-card-body">
         <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-10-02">2026年10月02日</time></p>
-        <h3 class="post-card-title"><a href="/blog/technical/japanese-law-mcp-servers/">法令MCPサーバー：e-Gov 法令APIで条文を取得する24件</a></h3>
+        <h3 class="post-card-title"><a href="/blog/technical/japanese-law-mcp-servers/">法令MCPサーバー　e-Gov 法令APIで条文を取得する24件</a></h3>
         <p class="post-card-intro">法令MCPサーバーは、AIエージェントが日本の法令の条文を取得するためのプラグインです。多くはデジタル庁のe-Gov 法令APIを使います。APIの仕組みと、MCPNaviに掲載している24件の提供形態、接続方式、扱う分野を説明します。</p>
         <p class="post-card-author">
 <span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
@@ -588,7 +588,7 @@ Englishで読む</a>
     </div>
     <div class="post-card-body">
         <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-23">2026年09月23日</time></p>
-        <h3 class="post-card-title"><a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式：OAuthとAPIキーの基本</a></h3>
+        <h3 class="post-card-title"><a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式　OAuthとAPIキーの基本</a></h3>
         <p class="post-card-intro">MCPサーバーは、接続してきた相手を確かめてからデータを返します。認証方式の種類、MCP仕様（2026-07-28版）が定めるOAuth 2.1の使い方、接続の流れ、接続前に確認することを説明します。</p>
         <p class="post-card-author">
 <span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
