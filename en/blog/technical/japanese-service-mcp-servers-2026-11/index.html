@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>MCP servers for Japanese services (November 2026): official vs unofficial | MCPNavi</title>
+    <meta name="description" content="A list of MCP servers for Japanese services (November 2026 edition). Ten services, including freee, Money Forward, Backlog, kintone, Chatwork, LINE and Sansan, sorted into official and unofficial, with hosting, transport, authentication and how to tell by the provider.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/">
+    
+    <meta property="og:site_name" content="MCPNavi">
+    <meta property="og:title" content="MCP servers for Japanese services (November 2026): official vs unofficial">
+    <meta property="og:description" content="A list of MCP servers for Japanese services (November 2026 edition). Ten services, including freee, Money Forward, Backlog, kintone, Chatwork, LINE and Sansan, sorted into official and unofficial, with hosting, transport, authentication and how to tell by the provider.">
+    <meta property="og:url" content="https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/">
+    
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/en/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "MCPNavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/",
+      "url": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/",
+      "name": "MCP servers for Japanese services (November 2026): official vs unofficial",
+      "description": "A list of MCP servers for Japanese services (November 2026 edition). Ten services, including freee, Money Forward, Backlog, kintone, Chatwork, LINE and Sansan, sorted into official and unofficial, with hosting, transport, authentication and how to tell by the provider.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/#article"
+      },
+      "datePublished": "2026-11-09",
+      "dateModified": "2026-11-09"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mcpnavi.jp/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://mcpnavi.jp/en/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Technical",
+          "item": "https://mcpnavi.jp/en/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "MCP servers for Japanese services (November 2026 edition): telling official from unofficial by provider"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "MCP servers for Japanese services (November 2026): official vs unofficial",
+      "description": "A list of MCP servers for Japanese services (November 2026 edition). Ten services, including freee, Money Forward, Backlog, kintone, Chatwork, LINE and Sansan, sorted into official and unofficial, with hosting, transport, authentication and how to tell by the provider.",
+      "url": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/",
+      "inLanguage": "en",
+      "datePublished": "2026-11-09",
+      "dateModified": "2026-11-09",
+      "author": {
+        "@type": "Person",
+        "name": "Iqbal Abdullah",
+        "url": "https://mcpnavi.jp/en/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "image": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/cover.webp",
+      "@id": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/"
+      }
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">Skip to content</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/en/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="MCPNavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>MCPNavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCP directory</span></span>
+        </a>
+        <nav aria-label="Site" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="Dark mode">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">en</span><span class="sr-only">Language</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><a href="/blog/technical/japanese-service-mcp-servers-2026-11/" lang="ja" hreflang="ja" class="nav-link">Japanese</a></li>
+        
+        <li><span class="nav-link" aria-current="true">English</span></li>
+        
+    </ul>
+</details>
+
+            <a href="/forms/en/listing-request/" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">List your MCP
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="Menu">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="Site" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="/forms/en/listing-request/" class="btn btn-dark btn-sm w-full">List your MCP</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <a href="/en/">Home</a>
+     › <a href="/en/blog/">Blog</a> › <a href="/en/blog/technical/">Technical</a> › <span class="text-ink">MCP servers for Japanese services (November 2026 edition): telling official from unofficial by provider</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/blog/technical/japanese-service-mcp-servers-2026-11/" hreflang="ja" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Read in 日本語</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-11-09">2026-11-09</time></p>
+        <h1 class="page-title mt-3">MCP servers for Japanese services (November 2026 edition): telling official from unofficial by provider</h1>
+        <p class="page-lead">A November 2026 list of MCP servers for Japanese services, sorted into official and unofficial. A server named after a service is not always published by the company that runs it. This article shows how to tell by the provider.</p>
+        <p class="post-byline"><a href="/en/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+<span>Iqbal Abdullah</span></a></p>
+    </header>
+    <img src="/en/blog/technical/japanese-service-mcp-servers-2026-11/cover.webp" alt="" width="1200" height="675" class="mt-8 w-full rounded-2xl border border-rule">
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">Contents</h2>
+                <ol class="mt-3">
+                    <li><a href="#official-and-unofficial" class="outline-link">Official and unofficial</a></li>
+                    <li><a href="#three-things-to-check-about-the-provider" class="outline-link">Three things to check about the provider</a></li>
+                    <li><a href="#the-list-as-of-november-2026" class="outline-link">The list as of November 2026</a></li>
+                    <li><a href="#what-to-check-before-you-use-an-unofficial-server" class="outline-link">What to check before you use an unofficial server</a></li>
+                    <li><a href="#about-the-information-in-this-list" class="outline-link">About the information in this list</a></li>
+                    <li><a href="#summary" class="outline-link">Summary</a></li>
+                    <li><a href="#sources" class="outline-link">Sources</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><blockquote>
+<p>This is the November 2026 edition. The availability of MCP servers changes, so read this list as a record of 9 November. The values on each service's detail page and on the page of <a href="/en/servers/tag/official/">services tagged official</a> are kept up to date. When a new edition is published, a link to it appears here. A listing is not a recommendation or a guarantee that a service works. For details, read <a href="#about-the-information-in-this-list">About the information in this list</a>.</p>
+</blockquote>
+<p>An MCP server is a plugin that connects an AI agent to an outside service. More servers connect to Japanese services such as freee and kintone. However, a server named after a service is not always published by the company that runs the service.</p>
+<p>This article covers ten Japanese services and sorts the MCP servers we could confirm on 9 November 2026 into official and unofficial. It also explains how to tell from the provider whether a server is official. For MCP itself, read the <a href="/en/blog/technical/introduction-to-mcp/">introduction to MCP</a>.</p>
+<h2 id="official-and-unofficial">Official and unofficial</h2>
+<p>In this article, "official" means an MCP server that the company running the service publishes under its own name. Every other server is "unofficial". The words only separate who publishes a server. They do not mean that an unofficial server is of lower quality.</p>
+<p>A server from the company that runs the service has a clear owner for updates and a clear place to ask questions. An unofficial server comes from an individual or another company. Its updates can stop whenever the author chooses.</p>
+<h2 id="three-things-to-check-about-the-provider">Three things to check about the provider</h2>
+<h3 id="the-providers-name">The provider's name</h3>
+<p>Check Provider on the MCPNavi detail page, and see whether it is the company that runs the service. A service name alone does not tell you that a server is official.</p>
+<p>A Type of Company does not mean that the provider runs the service. For example, the Type of <a href="/en/servers/sansan-mcp/">Sansan MCP (Supernova Tokyo)</a> is Company, but its README states that it is not affiliated with Sansan, Inc.</p>
+<h3 id="where-the-repository-lives">Where the repository lives</h3>
+<p>For a server on GitHub, check who owns the repository. A repository under the company's own organization account, such as <code>github.com/freee</code> or <code>github.com/nulab</code>, can be treated as official. For a repository under a personal account, look in the README for a statement about whether the server is official.</p>
+<h3 id="the-companys-own-announcements">The company's own announcements</h3>
+<p>Look for the server in the company's news releases, support pages and developer site. For a server you connect to by URL, the domain of the endpoint URL is another clue. freee's README warns readers not to enter any URL other than the official one.</p>
+<h2 id="the-list-as-of-november-2026">The list as of November 2026</h2>
+<p>The values for official servers were read again from each company's public pages on 9 November 2026. The values for unofficial servers are what MCPNavi lists, and each detail page shows its Last checked date. Unknown marks a value that could not be read from a public page.</p>
+<ul>
+<li><strong>Official</strong>: 8 servers across 7 services (Contract One is counted with Sansan, because Sansan, Inc. runs both). For hosting, 2 include Connect by URL, 4 are Run it yourself only, and 2 are Unknown.</li>
+<li><strong>Unofficial</strong>: 15 servers across 8 services.</li>
+<li><strong>Services with no official server found</strong>: SmartHR and PayPay. Mercari is a different case, explained below.</li>
+</ul>
+<p>Every service on MCPNavi is in the <a href="/en/servers/">list of MCP servers</a>.</p>
+<h3 id="accounting-and-expenses">Accounting and expenses</h3>
+<table>
+<thead>
+<tr>
+<th>Service name</th>
+<th>Provider</th>
+<th>Status</th>
+<th>Hosting</th>
+<th>Transport</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/freee-mcp-server/">freee MCP Server</a></td>
+<td>freee</td>
+<td>Official</td>
+<td>Connect by URL, Run it yourself</td>
+<td>stdio, Streamable HTTP</td>
+<td>OAuth 2.0</td>
+</tr>
+<tr>
+<td><a href="/en/servers/money-forward-cloud-accounting-mcp/">Money Forward Cloud Accounting MCP Server</a></td>
+<td>Money Forward</td>
+<td>Official</td>
+<td>Connect by URL</td>
+<td>Streamable HTTP</td>
+<td>OAuth 2.0, API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/freee-mcp-server-wengbin21/">freee MCP Server (wengbin21)</a></td>
+<td>wengbin21</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/freee-chat-mcp-server/">freee Chat MCP Server</a></td>
+<td>RyutoYoda (CyberAgent)</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/money-forward-mcp/">Money Forward MCP (jp-mcp)</a></td>
+<td>jp-mcp</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/moneyforward-me-mcp/">MoneyForward ME MCP</a></td>
+<td>utanutan</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+</tbody>
+</table>
+<p>Money Forward announced a remote MCP server for its Cloud Accounting product on 26 March 2026. According to its support page, customers who have started using Cloud Accounting or Cloud Tax Return can use the server at no extra charge. There are alpha and beta endpoint URLs. The alpha endpoint needs re-authentication every hour and is due to be retired. Before you connect, use the beta URL in the company's guide.</p>
+<h3 id="project-management-and-business-apps">Project management and business apps</h3>
+<table>
+<thead>
+<tr>
+<th>Service name</th>
+<th>Provider</th>
+<th>Status</th>
+<th>Hosting</th>
+<th>Transport</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/backlog-mcp-server/">Backlog MCP Server</a></td>
+<td>Nulab Inc.</td>
+<td>Official</td>
+<td>Run it yourself</td>
+<td>stdio, Streamable HTTP</td>
+<td>API key, OAuth 2.0</td>
+</tr>
+<tr>
+<td><a href="/en/servers/kintone-mcp-server/">kintone MCP Server</a></td>
+<td>Cybozu</td>
+<td>Official</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/backlog-mcp-server-rust/">Backlog MCP Server (Rust)</a></td>
+<td>safx</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/backlog-mcp-server-tominaga-h/">Backlog MCP Server (tominaga-h)</a></td>
+<td>tominaga-h</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/kintone-mcp-server-2/">kintone MCP Server (unofficial)</a></td>
+<td>R3 institute (r3-yamauchi)</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/kintone-oauth-mcp-cloudflare/">kintone OAuth MCP (Cloudflare)</a></td>
+<td>R3 institute (r3-yamauchi)</td>
+<td>Unofficial</td>
+<td>Unknown</td>
+<td>Streamable HTTP</td>
+<td>OAuth 2.1</td>
+</tr>
+<tr>
+<td><a href="/en/servers/kintone-mcp-server-macrat/">kintone MCP Server (macrat)</a></td>
+<td>macrat</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/remote-kintone-mcp-server/">Remote kintone MCP Server</a></td>
+<td>macrat</td>
+<td>Unofficial</td>
+<td>Unknown</td>
+<td>Streamable HTTP</td>
+<td>API key</td>
+</tr>
+</tbody>
+</table>
+<p>Backlog's Streamable HTTP and OAuth are for users who start the server themselves and expose it. The README gives no endpoint URL run by Nulab. The official kintone server authenticates with an API token. Its README also documents connecting with a user name and password.</p>
+<h3 id="chat-and-messaging">Chat and messaging</h3>
+<table>
+<thead>
+<tr>
+<th>Service name</th>
+<th>Provider</th>
+<th>Status</th>
+<th>Hosting</th>
+<th>Transport</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/chatwork-mcp-server/">Chatwork MCP Server</a></td>
+<td>Chatwork (kubell)</td>
+<td>Official</td>
+<td>Run it yourself</td>
+<td>stdio, Streamable HTTP</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/line-bot-mcp-server/">LINE Bot MCP Server</a></td>
+<td>LY Corporation</td>
+<td>Official</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+</tbody>
+</table>
+<p>Both are Run it yourself servers, so you start the program on your own machine. They authenticate with a Chatwork API token and a LINE channel access token. You also start Chatwork's HTTP mode yourself.</p>
+<h3 id="sales-and-contracts">Sales and contracts</h3>
+<table>
+<thead>
+<tr>
+<th>Service name</th>
+<th>Provider</th>
+<th>Status</th>
+<th>Hosting</th>
+<th>Transport</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/sansan-mcp-server/">Sansan MCP Server</a></td>
+<td>Sansan, Inc.</td>
+<td>Official</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><a href="/en/servers/contract-one-mcp-server/">Contract One MCP Server</a></td>
+<td>Sansan, Inc.</td>
+<td>Official</td>
+<td>Unknown</td>
+<td>Unknown</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><a href="/en/servers/sansan-mcp/">Sansan MCP (Supernova Tokyo)</a></td>
+<td>Supernova Tokyo Inc.</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+</tbody>
+</table>
+<p>In an announcement on 21 November 2025, Sansan, Inc. said that a trial of the Sansan MCP Server began on 10 November. For pricing and other details, the announcement points readers to a sales contact or the enquiry desk. The Contract One MCP server was announced on 20 April 2026. Neither announcement states the transport or the authentication.</p>
+<h3 id="services-with-no-official-server-found">Services with no official server found</h3>
+<table>
+<thead>
+<tr>
+<th>Service name</th>
+<th>Provider</th>
+<th>Status</th>
+<th>Hosting</th>
+<th>Transport</th>
+<th>Authentication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en/servers/smarthr-mcp-server/">SmartHR MCP Server</a></td>
+<td>Shiita999</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/smarthr-ui-mcp-server/">SmartHR UI MCP Server</a></td>
+<td>kgsi</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="/en/servers/paypay-mcp/">PayPay MCP</a></td>
+<td>mrslbt</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><a href="/en/servers/mercari-jp-mcp/">Mercari JP MCP</a></td>
+<td>msr2903</td>
+<td>Unofficial</td>
+<td>Run it yourself</td>
+<td>stdio</td>
+<td>Unknown</td>
+</tr>
+</tbody>
+</table>
+<p>For SmartHR and PayPay, a search of public information found no MCP server announcement from the companies that run them. The README of PayPay MCP says that it is an unofficial, community-built server.</p>
+<p>Mercari says that it released "Mercari MCP" in January 2026. Its ChatGPT app is built on that connection layer. However, the announcement does not say how an outside party can connect. MCPNavi therefore does not list it. Mercari JP MCP is published by an individual and is a different server from Mercari MCP. Separately, <a href="/en/servers/kotlin-psi-mcp-server/">Kotlin PSI MCP Server</a> from Mercari, Inc. is a server for analysing Kotlin code.</p>
+<h2 id="what-to-check-before-you-use-an-unofficial-server">What to check before you use an unofficial server</h2>
+<p>An unofficial server is published by someone other than the company that runs the service. Before you use one, check four things.</p>
+<h3 id="when-it-was-last-updated">When it was last updated</h3>
+<p>Check the repository's history. When the API of the connected service changes, a server that is not updated can stop working.</p>
+<h3 id="what-the-api-key-can-do">What the API key can do</h3>
+<p>For a server that handles accounting, HR or payment data, limit the key to the permissions it needs. The API key has to be available where the server program runs. For the authentication methods, read <a href="/en/blog/technical/mcp-authorization-basics/">how MCP servers authenticate</a>.</p>
+<h3 id="the-services-terms-of-use">The service's terms of use</h3>
+<p>Read the README to see how an unofficial server uses the service's API or web pages. Then check that this use follows the service's terms of use.</p>
+<h3 id="hosting-and-transport">Hosting and transport</h3>
+<p>A Run it yourself server starts as a program on your own machine. Whether a client can connect depends on the hosting, the transport and the authentication together. Read <a href="/en/blog/technical/remote-and-local-mcp-servers/">the difference between remote and local MCP servers</a> for details. To connect with only a URL, look in the list of <a href="/en/servers/filter/remote/">services you can connect to with a URL alone</a>.</p>
+<h2 id="about-the-information-in-this-list">About the information in this list</h2>
+<p>The information on MCPNavi was read from each service's public pages. We read and update it on a best-effort basis, and we do not guarantee that it is accurate or current (<a href="/en/legal/terms-of-service/#article-4-no-warranty-for-listed-information">Terms of Service, Article 4</a>). <a href="/en/criteria/">About the data</a> explains what each value means and how it is checked.</p>
+<p>A listing does not mean that MCPNavi recommends a service or guarantees that it works or its quality (<a href="/en/legal/terms-of-service/#article-3-the-service">Terms of Service, Article 3</a>). "Official" in this article also shows only one fact: the company that runs the service publishes the server.</p>
+<p>MCPNavi does not control the content, operation, security or data handling of the services it lists. Whether you connect a server, and what permissions you give it, is your own judgment and at your own risk (<a href="/en/legal/terms-of-service/#article-5-use-of-listed-services">Terms of Service, Article 5</a>). <a href="/en/legal/terms-of-service/#article-10-disclaimer-and-limitation-of-liability">Terms of Service, Article 10</a> sets out the extent of MCPNavi's liability.</p>
+<p>Do not rely on this list alone. Before you adopt a service, check the details on its provider's official site and in other primary sources.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>A server named after a service is not always published by the company that runs it. Check three things: the provider, the owner of the repository and the company's own announcements.</li>
+<li>On 9 November 2026, we could confirm 8 official servers across 7 services, and 15 unofficial servers across 8 services.</li>
+<li>The official servers you can connect to by URL are the 2 from freee and Money Forward. For the 2 from Sansan, the transport and authentication could not be read from public pages.</li>
+<li>For SmartHR and PayPay, we found no announcement from the companies that run them.</li>
+<li>Availability changes. Before you connect, check each service's detail page and the company's own guide.</li>
+<li>A listing on MCPNavi is not a recommendation or a guarantee. If you use a service, you do so at your own judgment and risk.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="company-announcements-and-documentation">Company announcements and documentation</h3>
+<ul>
+<li><a href="https://biz.moneyforward.com/support/account/guide/others/ot10.html" rel="nofollow noopener">マネーフォワード クラウド会計MCPサーバーについて (About the Money Forward Cloud Accounting MCP server)</a> (Money Forward, updated 21 October 2026, checked 9 November 2026, in Japanese)</li>
+<li><a href="https://prtimes.jp/main/html/rd/p/000001605.000008962.html" rel="nofollow noopener">『マネーフォワード クラウド会計』、リモートMCPサーバーを全プランで提供開始 (Money Forward Cloud Accounting remote MCP server now available on all plans)</a> (Money Forward, 26 March 2026, in Japanese)</li>
+<li><a href="https://jp.corp-sansan.com/news/2025/1121_01.html" rel="nofollow noopener">AI活用を加速させる新ソリューション「Sansan AIエージェント」「Sansan MCPサーバー」を提供開始 (Sansan launches Sansan AI Agent and Sansan MCP Server)</a> (Sansan, Inc., 21 November 2025, in Japanese)</li>
+<li><a href="https://prtimes.jp/main/html/rd/p/000000821.000049627.html" rel="nofollow noopener">Contract One、MCPサーバーの提供を開始 (Contract One launches an MCP server)</a> (Sansan, Inc., 20 April 2026, in Japanese)</li>
+<li><a href="https://about.mercari.com/press/news/articles/20260623chatgpt/" rel="nofollow noopener">メルカリ、OpenAI「ChatGPT」上で「メルカリ」の商品検索・出品準備が可能に (Mercari enables product search and listing preparation on ChatGPT)</a> (Mercari, Inc., 24 June 2026, in Japanese)</li>
+</ul>
+<h3 id="repositories">Repositories</h3>
+<ul>
+<li><a href="https://github.com/freee/freee-mcp" rel="nofollow noopener">freee/freee-mcp</a> (GitHub, checked 9 November 2026, in Japanese)</li>
+<li><a href="https://github.com/nulab/backlog-mcp-server" rel="nofollow noopener">nulab/backlog-mcp-server</a> (GitHub, checked 9 November 2026)</li>
+<li><a href="https://github.com/kintone/mcp-server" rel="nofollow noopener">kintone/mcp-server</a> (GitHub, checked 9 November 2026, in Japanese)</li>
+<li><a href="https://github.com/chatwork/chatwork-mcp-server" rel="nofollow noopener">chatwork/chatwork-mcp-server</a> (GitHub, checked 9 November 2026, in Japanese)</li>
+<li><a href="https://github.com/line/line-bot-mcp-server" rel="nofollow noopener">line/line-bot-mcp-server</a> (GitHub, checked 9 November 2026)</li>
+<li><a href="https://github.com/sewon-supernova/sansan-mcp" rel="nofollow noopener">sewon-supernova/sansan-mcp</a> (GitHub, checked 9 November 2026)</li>
+<li><a href="https://github.com/mrslbt/paypay-mcp" rel="nofollow noopener">mrslbt/paypay-mcp</a> (GitHub, checked 9 November 2026)</li>
+</ul>
+<p>The values for unofficial servers were read from each repository's README. Each detail page shows the source URL and the Last checked date.</p></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">Last updated: <time datetime="2026-11-09">2026-11-09</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="Adjacent posts">
+    <div></div>
+    <div class="sm:text-right"><a href="/en/blog/market-trends/companies-adopting-mcp/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">Older post</span><br><span class="font-medium">More companies adopt MCP: Upwork and examples from Japan</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">Related posts</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/japanese-law-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-10-02">2026-10-02</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/japanese-law-mcp-servers/">Japanese law MCP servers: 24 services that fetch statutes from the e-Gov Law API</a></h3>
+        <p class="post-card-intro">A Japanese law MCP server lets an AI agent fetch the text of Japanese laws. Most call the Digital Agency&#x27;s e-Gov Law API. This article explains the API and the 24 servers listed on MCPNavi.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/remote-and-local-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-25">2026-09-25</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/remote-and-local-mcp-servers/">Remote and local MCP servers: what the difference is</a></h3>
+        <p class="post-card-intro">A provider runs a remote MCP server, and you connect to it by URL. You run a local MCP server on your own computer. This article covers hosting versus transport, what the user does, and how credentials are handled.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/en/blog/technical/mcp-authorization-basics/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/en/blog/technical/" class="chip">Technical</a><time datetime="2026-09-23">2026-09-23</time></p>
+        <h3 class="post-card-title"><a href="/en/blog/technical/mcp-authorization-basics/">Authentication for MCP servers: the basics of OAuth and API keys</a></h3>
+        <p class="post-card-intro">An MCP server checks who is connecting before it returns data. This article covers the kinds of authentication, how specification 2026-07-28 uses OAuth 2.1, the flow of a connection, and what to check before you connect.</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">I</span>
+Iqbal Abdullah</p>
+        <p class="post-card-more" aria-hidden="true">Read the post
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/en/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+MCPNavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">A directory for finding MCP services that connect AI agents to data and tools, by what you need them for.</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">Directory</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/en/servers/" class="nav-link">MCP services</a>
+<a href="/en/#categories" class="nav-link">Categories</a>
+<a href="/en/providers/" class="nav-link">Providers</a>
+
+<a href="/en/blog/" class="nav-link" aria-current="page">Blog</a>
+<a href="/en/criteria/" class="nav-link">About the data</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">Listings and corrections</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="/forms/en/listing-request/" class="nav-link">List your MCP</a>
+                    <a href="/en/faq/" class="nav-link">FAQ</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">Listing and corrections: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/en/legal/terms-of-service/" class="nav-link">Terms of Service</a>
+                <span>Operated by <a href="https://kafkai.com/en/the-company/" class="nav-link">株式会社Kafkai Giken</a></span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

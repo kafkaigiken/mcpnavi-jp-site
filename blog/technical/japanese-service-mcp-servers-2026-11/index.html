@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="株式会社Kafkai Giken">
+    
+    <title>国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式の違いと見分け方 | MCPNavi</title>
+    <meta name="description" content="国内サービスのMCPサーバーの一覧です（2026年11月版）。freee、マネーフォワード、Backlog、kintone、Chatwork、LINE、Sansanなど10サービスを公式と非公式に分け、提供形態、接続方式、認証方式と、提供元で見分ける方法をまとめました。">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/">
+    
+    <meta property="og:site_name" content="MCPNavi">
+    <meta property="og:title" content="国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式の違いと見分け方">
+    <meta property="og:description" content="国内サービスのMCPサーバーの一覧です（2026年11月版）。freee、マネーフォワード、Backlog、kintone、Chatwork、LINE、Sansanなど10サービスを公式と非公式に分け、提供形態、接続方式、認証方式と、提供元で見分ける方法をまとめました。">
+    <meta property="og:url" content="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/cover.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/">
+    <link rel="alternate" hreflang="en" href="https://mcpnavi.jp/en/blog/technical/japanese-service-mcp-servers-2026-11/">
+    <link rel="alternate" hreflang="x-default" href="https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/">
+    
+    
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mcpnavi.jp/#organization",
+      "name": "株式会社Kafkai Giken",
+      "url": "https://kafkai.com/ja/the-company/",
+      "logo": "https://mcpnavi.jp/static/images/favicon.svg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mcpnavi.jp/#website",
+      "name": "MCPNavi",
+      "url": "https://mcpnavi.jp/",
+      "description": "AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。",
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mcpnavi.jp/servers/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/",
+      "url": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/",
+      "name": "国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式の違いと見分け方",
+      "description": "国内サービスのMCPサーバーの一覧です（2026年11月版）。freee、マネーフォワード、Backlog、kintone、Chatwork、LINE、Sansanなど10サービスを公式と非公式に分け、提供形態、接続方式、認証方式と、提供元で見分ける方法をまとめました。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://mcpnavi.jp/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/#article"
+      },
+      "datePublished": "2026-11-09",
+      "dateModified": "2026-11-09"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://mcpnavi.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ブログ",
+          "item": "https://mcpnavi.jp/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "技術解説",
+          "item": "https://mcpnavi.jp/blog/technical/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式を提供元で見分ける"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式の違いと見分け方",
+      "description": "国内サービスのMCPサーバーの一覧です（2026年11月版）。freee、マネーフォワード、Backlog、kintone、Chatwork、LINE、Sansanなど10サービスを公式と非公式に分け、提供形態、接続方式、認証方式と、提供元で見分ける方法をまとめました。",
+      "url": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/",
+      "inLanguage": "ja",
+      "datePublished": "2026-11-09",
+      "dateModified": "2026-11-09",
+      "author": {
+        "@type": "Person",
+        "name": "イクバル・アバドゥラ",
+        "url": "https://mcpnavi.jp/authors/iqbal-abdullah/"
+      },
+      "publisher": {
+        "@id": "https://mcpnavi.jp/#organization"
+      },
+      "image": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/cover.webp",
+      "@id": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/#article",
+      "mainEntityOfPage": {
+        "@id": "https://mcpnavi.jp/blog/technical/japanese-service-mcp-servers-2026-11/"
+      }
+    }
+  ]
+}</script>
+    
+<script data-theme-bootstrap>
+(function () {
+    var root = document.documentElement;
+    var storedTheme = null;
+    try {
+        storedTheme = window.localStorage.getItem("theme");
+    } catch (error) {
+        // Storage can be blocked; the system preference still applies.
+    }
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", storedTheme === "dark" || (storedTheme !== "light" && prefersDark));
+})();
+</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    
+    
+<!-- Matomo Tag Manager -->
+<script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  (function() {
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://analytics.kafkai.com/js/container_KFuzUBuG.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Tag Manager -->
+
+</head>
+<body class="relative flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-paper focus:px-4 focus:py-2 focus:text-ink focus:shadow-lg">本文へ移動</a>
+
+    <div class="site-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+    
+<header class="sticky top-0 z-50">
+    <div class="site-header-glass" aria-hidden="true"></div>
+    <div class="container-site flex h-16 items-center gap-4 md:gap-8">
+        <a href="/" class="mr-auto flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline" aria-label="MCPNavi">
+            
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+
+            <span>MCPNavi<span class="text-muted font-normal text-sm ml-2 hidden sm:inline">MCPディレクトリ</span></span>
+        </a>
+        <nav aria-label="サイト内" class="hidden items-center gap-7 text-sm xl:flex">
+            
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+        </nav>
+        <div class="flex items-center gap-1">
+            <span data-requires-js hidden>
+                <button type="button" class="icon-button" data-theme-toggle aria-pressed="false" aria-label="ダークモード">
+                    
+<svg class="h-5 w-5 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+                    
+<svg class="hidden h-5 w-5 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+                </button>
+            </span>
+            
+<details class="relative" data-menu>
+    <summary class="icon-button w-auto gap-1 px-2 text-sm font-medium uppercase">
+        <span aria-hidden="true">ja</span><span class="sr-only">言語</span>
+        
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+
+    </summary>
+    <ul class="menu-panel">
+        
+        <li><span class="nav-link" aria-current="true">日本語</span></li>
+        
+        <li><a href="/en/blog/technical/japanese-service-mcp-servers-2026-11/" lang="en" hreflang="en" class="nav-link">英語</a></li>
+        
+    </ul>
+</details>
+
+            <a href="/forms/listing-request/" class="btn btn-dark btn-sm ml-2 hidden md:inline-flex">MCPNaviに掲載する
+<svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+</a>
+            <details class="relative xl:hidden" data-menu>
+                <summary class="icon-button" aria-label="メニュー">
+<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+</summary>
+                <nav aria-label="サイト内" class="menu-panel w-64">
+                    
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+
+
+                    <div class="mt-1 border-t border-rule px-4 pb-2 pt-3">
+                        <a href="/forms/listing-request/" class="btn btn-dark btn-sm w-full">MCPNaviに掲載する</a>
+                    </div>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>
+
+
+    <main id="main" class="container-site relative z-10 flex-1 py-8 md:py-12">
+        
+
+
+<nav aria-label="パンくず" class="breadcrumb">
+    <a href="/">ホーム</a>
+     › <a href="/blog/">ブログ</a> › <a href="/blog/technical/">技術解説</a> › <span class="text-ink">国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式を提供元で見分ける</span>
+</nav>
+
+<article class="mt-4">
+    <header class="border-b border-rule pb-8">
+        
+
+
+<a href="/en/blog/technical/japanese-service-mcp-servers-2026-11/" hreflang="en" class="btn btn-sm">
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+Englishで読む</a>
+
+
+        <p class="post-card-meta mt-5"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-11-09">2026年11月09日</time></p>
+        <h1 class="page-title mt-3">国内サービスのMCPサーバー一覧（2026年11月版）　公式と非公式を提供元で見分ける</h1>
+        <p class="page-lead">freee、kintone、Sansanなど、国内サービスのMCPサーバーを公式と非公式に分けてまとめた2026年11月版の一覧です。サービス名が付いていても、運営会社が公開しているとは限りません。提供元で見分ける方法と、各サーバーの提供形態、接続方式、認証方式を説明します。</p>
+        <p class="post-byline"><a href="/authors/iqbal-abdullah/" rel="author" class="post-byline-link">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+<span>イクバル・アバドゥラ</span></a></p>
+    </header>
+    <img src="/blog/technical/japanese-service-mcp-servers-2026-11/cover.webp" alt="" width="1200" height="675" class="mt-8 w-full rounded-2xl border border-rule">
+    
+    <div class="post-layout">
+        
+        <aside class="post-aside">
+            <nav class="card post-outline" aria-labelledby="outline-heading">
+                <h2 id="outline-heading" class="post-outline-title">目次</h2>
+                <ol class="mt-3">
+                    <li><a href="#公式と非公式の違い" class="outline-link">公式と非公式の違い</a></li>
+                    <li><a href="#提供元で見分ける3つの点" class="outline-link">提供元で見分ける3つの点</a></li>
+                    <li><a href="#2026年11月時点の一覧" class="outline-link">2026年11月時点の一覧</a></li>
+                    <li><a href="#非公式のサーバーを使う前に確認すること" class="outline-link">非公式のサーバーを使う前に確認すること</a></li>
+                    <li><a href="#この一覧の情報について" class="outline-link">この一覧の情報について</a></li>
+                    <li><a href="#まとめ" class="outline-link">まとめ</a></li>
+                    <li><a href="#出典" class="outline-link">出典</a></li>
+                    
+                </ol>
+            </nav>
+        </aside>
+        
+        <div class="post-body text-measure">
+            <div class="prose-content"><blockquote>
+<p>この記事は2026年11月版です。MCPサーバーの提供状況は変わるため、一覧は11月9日時点の記録として読んでください。最新の値は、各サービスの詳細ページと<a href="/servers/tag/official/">officialタグのサービス</a>で確認できます。新しい版を公開したときは、ここにリンクを追加します。掲載は推奨や動作の保証を意味しません。詳しくは<a href="#この一覧の情報について">この一覧の情報について</a>をご覧ください。</p>
+</blockquote>
+<p>MCPサーバーは、AIエージェントを外部のサービスにつなぐプラグインです。freeeやkintoneなど、国内のサービスにつなぐサーバーも増えてきました。ただし、サービス名が付いていても、そのサービスの運営会社が公開しているとは限りません。</p>
+<p>この記事では、国内の10サービスを取り上げます。2026年11月9日時点で確認できたMCPサーバーを公式と非公式に分けて紹介し、提供元で見分ける方法も説明します。MCPそのものの説明は、<a href="/blog/technical/introduction-to-mcp/">MCP入門</a>にあります。</p>
+<h2 id="公式と非公式の違い">公式と非公式の違い</h2>
+<p>この記事では、サービスの運営会社が、その会社の名前で公開しているMCPサーバーを「公式」、それ以外を「非公式」と呼びます。公開している主体の区別であり、非公式のサーバーの品質が低いという意味ではありません。</p>
+<p>運営会社が公開するサーバーは、更新の主体と問い合わせ先がはっきりしています。一方、非公式のサーバーは個人や別の会社が公開しています。作者の都合で、更新が止まることもあります。</p>
+<h2 id="提供元で見分ける3つの点">提供元で見分ける3つの点</h2>
+<h3 id="提供元の名前">提供元の名前</h3>
+<p>MCPNaviの詳細ページで「提供元」を確認し、サービスの運営会社と同じかどうかを確かめます。サービス名が付いていても、それだけで公式とは判断できません。</p>
+<p>種別が「法人」でも、運営会社とは限りません。たとえば<a href="/servers/sansan-mcp/">Sansan MCP (Supernova Tokyo)</a>の種別は法人です。しかし、READMEにはSansan株式会社とは提携していないと英語で書かれています。</p>
+<h3 id="リポジトリの場所">リポジトリの場所</h3>
+<p>GitHubで公開されている場合は、リポジトリの持ち主を確認します。<code>github.com/freee</code>や<code>github.com/nulab</code>のように、運営会社の組織アカウントにあるリポジトリは公式と判断できます。個人のアカウントにある場合は、READMEに公式かどうかの記載を探します。</p>
+<h3 id="運営会社自身の発表">運営会社自身の発表</h3>
+<p>ニュースリリース、サポートページ、開発者向けサイトに記載があるかを確認します。URLで接続するサーバーの場合は、接続先URLのドメインも手がかりになります。freeeのREADMEは、公式以外のURLを入力しないよう注意を促しています。</p>
+<h2 id="2026年11月時点の一覧">2026年11月時点の一覧</h2>
+<p>公式のサーバーの値は、2026年11月9日に各社の公開ページを読み直したものです。非公式のサーバーの値はMCPNaviの掲載内容で、それぞれの情報確認日は詳細ページに表示しています。「不明」は、公開ページから読み取れなかった項目です。</p>
+<ul>
+<li><strong>公式</strong>：7サービスの8件です（Contract OneはSansan株式会社のサービスなので、Sansanに含めて数えています）。提供形態は、「URLで接続」を含むものが2件、「自分で動かす」だけのものが4件、「不明」が2件です。</li>
+<li><strong>非公式</strong>：8サービスの15件です。</li>
+<li><strong>公式のサーバーが見つからなかったサービス</strong>：SmartHRとPayPayの2つです。メルカリは、後述するとおり事情が異なります。</li>
+</ul>
+<p>MCPNaviに掲載している全サービスは、<a href="/servers/">MCPサーバーの一覧</a>で見られます。</p>
+<h3 id="会計経費">会計・経費</h3>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>区分</th>
+<th>提供形態</th>
+<th>接続方式</th>
+<th>認証方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/freee-mcp-server/">freee MCP Server</a></td>
+<td>freee株式会社</td>
+<td>公式</td>
+<td>URLで接続、自分で動かす</td>
+<td>stdio、Streamable HTTP</td>
+<td>OAuth 2.0</td>
+</tr>
+<tr>
+<td><a href="/servers/money-forward-cloud-accounting-mcp/">マネーフォワード クラウド会計 MCPサーバー</a></td>
+<td>株式会社マネーフォワード</td>
+<td>公式</td>
+<td>URLで接続</td>
+<td>Streamable HTTP</td>
+<td>OAuth 2.0、APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/freee-mcp-server-wengbin21/">freee MCP Server (wengbin21)</a></td>
+<td>wengbin21</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/freee-chat-mcp-server/">freee Chat MCP Server</a></td>
+<td>RyutoYoda（CyberAgent）</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/money-forward-mcp/">Money Forward MCP (jp-mcp)</a></td>
+<td>jp-mcp</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/moneyforward-me-mcp/">MoneyForward ME MCP</a></td>
+<td>utanutan</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+</tbody>
+</table>
+<p>マネーフォワードは、2026年3月26日にクラウド会計のリモートMCPサーバーを発表しました。サポートページによると、クラウド会計・確定申告を使い始めていれば、追加料金なしで使えます。接続先にはアルファ版とベータ版のURLがあります。アルファ版は1時間ごとに再認証が必要で、廃止される予定です。接続するときは、同社の案内にあるベータ版のURLを使ってください。</p>
+<h3 id="プロジェクト管理業務アプリ">プロジェクト管理・業務アプリ</h3>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>区分</th>
+<th>提供形態</th>
+<th>接続方式</th>
+<th>認証方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/backlog-mcp-server/">Backlog MCP Server</a></td>
+<td>Nulab Inc.</td>
+<td>公式</td>
+<td>自分で動かす</td>
+<td>stdio、Streamable HTTP</td>
+<td>APIキー、OAuth 2.0</td>
+</tr>
+<tr>
+<td><a href="/servers/kintone-mcp-server/">kintone MCP Server</a></td>
+<td>サイボウズ株式会社</td>
+<td>公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/backlog-mcp-server-rust/">Backlog MCP Server (Rust)</a></td>
+<td>safx</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/backlog-mcp-server-tominaga-h/">Backlog MCP Server (tominaga-h)</a></td>
+<td>tominaga-h</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/kintone-mcp-server-2/">kintone MCP Server (非公式)</a></td>
+<td>R3 institute（r3-yamauchi）</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/kintone-oauth-mcp-cloudflare/">kintone OAuth MCP (Cloudflare)</a></td>
+<td>R3 institute（r3-yamauchi）</td>
+<td>非公式</td>
+<td>不明</td>
+<td>Streamable HTTP</td>
+<td>OAuth 2.1</td>
+</tr>
+<tr>
+<td><a href="/servers/kintone-mcp-server-macrat/">kintone MCP Server (macrat)</a></td>
+<td>macrat</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/remote-kintone-mcp-server/">Remote kintone MCP Server</a></td>
+<td>macrat</td>
+<td>非公式</td>
+<td>不明</td>
+<td>Streamable HTTP</td>
+<td>APIキー</td>
+</tr>
+</tbody>
+</table>
+<p>BacklogのStreamable HTTPとOAuthは、利用者が自分でサーバーを起動して公開するための機能です。ヌーラボが運用する接続先URLは、READMEに記載されていません。kintoneの公式サーバーは、APIトークンで接続します。READMEには、ユーザー名とパスワードで接続する手順も書かれています。</p>
+<h3 id="チャットメッセージ">チャット・メッセージ</h3>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>区分</th>
+<th>提供形態</th>
+<th>接続方式</th>
+<th>認証方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/chatwork-mcp-server/">Chatwork MCP Server</a></td>
+<td>Chatwork株式会社（kubell）</td>
+<td>公式</td>
+<td>自分で動かす</td>
+<td>stdio、Streamable HTTP</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/line-bot-mcp-server/">LINE Bot MCP Server</a></td>
+<td>LINEヤフー株式会社</td>
+<td>公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+</tbody>
+</table>
+<p>2件とも「自分で動かす」で、利用者の手元でプログラムを起動します。認証には、ChatworkのAPIトークンとLINEのチャネルアクセストークンを使います。ChatworkのHTTPモードも、利用者が自分で起動します。</p>
+<h3 id="営業契約">営業・契約</h3>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>区分</th>
+<th>提供形態</th>
+<th>接続方式</th>
+<th>認証方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/sansan-mcp-server/">Sansan MCPサーバー</a></td>
+<td>Sansan株式会社</td>
+<td>公式</td>
+<td>不明</td>
+<td>不明</td>
+<td>不明</td>
+</tr>
+<tr>
+<td><a href="/servers/contract-one-mcp-server/">Contract One MCPサーバー</a></td>
+<td>Sansan株式会社</td>
+<td>公式</td>
+<td>不明</td>
+<td>不明</td>
+<td>不明</td>
+</tr>
+<tr>
+<td><a href="/servers/sansan-mcp/">Sansan MCP (Supernova Tokyo)</a></td>
+<td>Supernova Tokyo Inc.</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+</tbody>
+</table>
+<p>Sansan株式会社は、2025年11月21日の発表で、Sansan MCPサーバーのトライアル提供を同年11月10日に始めたと説明しています。料金などの詳細は、営業担当者か問い合わせ窓口に確認するよう案内しています。Contract OneのMCPサーバーは、2026年4月20日に発表されました。どちらの発表にも、接続方式と認証方式の記載はありません。</p>
+<h3 id="公式のサーバーが見つからなかったサービス">公式のサーバーが見つからなかったサービス</h3>
+<table>
+<thead>
+<tr>
+<th>サービス名</th>
+<th>提供元</th>
+<th>区分</th>
+<th>提供形態</th>
+<th>接続方式</th>
+<th>認証方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/servers/smarthr-mcp-server/">SmartHR MCP Server</a></td>
+<td>Shiita999</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/smarthr-ui-mcp-server/">SmartHR UI MCP Server</a></td>
+<td>kgsi</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>なし</td>
+</tr>
+<tr>
+<td><a href="/servers/paypay-mcp/">PayPay MCP</a></td>
+<td>mrslbt</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>APIキー</td>
+</tr>
+<tr>
+<td><a href="/servers/mercari-jp-mcp/">Mercari JP MCP</a></td>
+<td>msr2903</td>
+<td>非公式</td>
+<td>自分で動かす</td>
+<td>stdio</td>
+<td>不明</td>
+</tr>
+</tbody>
+</table>
+<p>公開情報を検索した範囲では、SmartHRとPayPayの運営会社によるMCPサーバーの発表は見つかりませんでした。PayPay MCPのREADMEには、非公式のコミュニティ製サーバーであると書かれています。</p>
+<p>メルカリは、2026年1月に接続基盤「Mercari MCP」を公開したと説明しています。ChatGPT上のアプリも、この接続基盤を使っています。ただし、発表文には外部から接続する方法の記載がありません。そのため、MCPNaviには掲載していません。Mercari JP MCPは個人が公開しているサーバーで、Mercari MCPとは別のものです。なお、株式会社メルカリの<a href="/servers/kotlin-psi-mcp-server/">Kotlin PSI MCP Server</a>は、Kotlinのコード解析に使うサーバーです。</p>
+<h2 id="非公式のサーバーを使う前に確認すること">非公式のサーバーを使う前に確認すること</h2>
+<p>非公式のサーバーは、運営会社以外の個人や会社が公開しています。使う前に、次の4点を確認してください。</p>
+<h3 id="最後に更新された日">最後に更新された日</h3>
+<p>リポジトリの更新履歴を確認してください。接続先のサービスのAPIが変わると、更新されていないサーバーは動かなくなる場合があります。</p>
+<h3 id="apiキーの権限">APIキーの権限</h3>
+<p>会計、人事、決済のデータを扱うサーバーでは、キーに与える権限を必要な範囲に絞ってください。APIキーは、サーバーのプログラムを動かす環境に置く必要があります。認証方式の違いは、<a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式</a>で説明しています。</p>
+<h3 id="サービスの利用規約">サービスの利用規約</h3>
+<p>非公式のサーバーが、サービスのAPIやWebページをどのように使っているかをREADMEで確認してください。そのうえで、サービスの利用規約に沿った使い方かどうかを確認してください。</p>
+<h3 id="提供形態と接続方式">提供形態と接続方式</h3>
+<p>「自分で動かす」のサーバーは、利用者の手元でプログラムを起動します。クライアントから接続できるかどうかは、提供形態、接続方式、認証方式の組み合わせで決まります。違いは<a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a>で説明しています。URLだけで接続したい場合は、<a href="/servers/filter/remote/">URLだけで接続できるサービス</a>の一覧から探してください。</p>
+<h2 id="この一覧の情報について">この一覧の情報について</h2>
+<p>MCPNaviの情報は、各サービスの公開ページから読み取ったものです。可能な範囲で読み取り、更新していますが、内容が正確であることや最新であることは保証していません（<a href="/legal/terms-of-service/#第4条掲載情報の無保証">利用規約 第4条</a>）。値の意味と確認方法は、<a href="/criteria/">掲載されているデータについて</a>で説明しています。</p>
+<p>掲載は、MCPNaviがそのサービスを推奨することや、動作や品質を保証することを意味しません（<a href="/legal/terms-of-service/#第3条本サービスの内容">利用規約 第3条</a>）。この記事の「公式」も、運営会社が公開しているという事実を示すだけの区分です。</p>
+<p>MCPNaviは、掲載しているサービスの内容、動作、セキュリティ、データの取り扱いを管理していません。サーバーを接続するかどうか、どの権限を与えるかは、利用者自身の判断と責任で行ってください（<a href="/legal/terms-of-service/#第5条掲載サービスの利用">利用規約 第5条</a>）。MCPNaviの責任の範囲は、<a href="/legal/terms-of-service/#第10条免責事項および責任の制限">利用規約 第10条</a>に定めています。</p>
+<p>この一覧だけで判断しないでください。導入する前に、提供元の公式サイトなどで内容を確認してください。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li>サービス名が付いたMCPサーバーでも、運営会社が公開しているとは限りません。提供元、リポジトリの持ち主、運営会社の発表の3点で見分けます。</li>
+<li>2026年11月9日時点で、公式のサーバーが確認できたのは7サービスの8件で、非公式のサーバーは8サービスの15件です。</li>
+<li>URLで接続できる公式のサーバーは、freeeとマネーフォワードの2件です。Sansanの2件は、接続方式と認証方式を公開ページから読み取れませんでした。</li>
+<li>SmartHRとPayPayについては、運営会社による発表は見つかりませんでした。</li>
+<li>提供状況は変わります。接続する前に、各サービスの詳細ページと運営会社の案内を確認してください。</li>
+<li>MCPNaviの掲載は、推奨や保証ではありません。サービスの利用は、利用者自身の判断と責任で行ってください。</li>
+</ul>
+<h2 id="出典">出典</h2>
+<h3 id="運営会社の発表とドキュメント">運営会社の発表とドキュメント</h3>
+<ul>
+<li><a href="https://biz.moneyforward.com/support/account/guide/others/ot10.html" rel="nofollow noopener">マネーフォワード クラウド会計MCPサーバーについて</a>（株式会社マネーフォワード、2026年10月21日更新、2026年11月9日に確認）</li>
+<li><a href="https://prtimes.jp/main/html/rd/p/000001605.000008962.html" rel="nofollow noopener">『マネーフォワード クラウド会計』、リモートMCPサーバーを全プランで提供開始</a>（株式会社マネーフォワード、2026年3月26日）</li>
+<li><a href="https://jp.corp-sansan.com/news/2025/1121_01.html" rel="nofollow noopener">AI活用を加速させる新ソリューション「Sansan AIエージェント」「Sansan MCPサーバー」を提供開始</a>（Sansan株式会社、2025年11月21日）</li>
+<li><a href="https://prtimes.jp/main/html/rd/p/000000821.000049627.html" rel="nofollow noopener">Contract One、MCPサーバーの提供を開始</a>（Sansan株式会社、2026年4月20日）</li>
+<li><a href="https://about.mercari.com/press/news/articles/20260623chatgpt/" rel="nofollow noopener">メルカリ、OpenAI「ChatGPT」上で「メルカリ」の商品検索・出品準備が可能に</a>（株式会社メルカリ、2026年6月24日）</li>
+</ul>
+<h3 id="リポジトリ">リポジトリ</h3>
+<ul>
+<li><a href="https://github.com/freee/freee-mcp" rel="nofollow noopener">freee/freee-mcp</a>（GitHub、2026年11月9日に確認）</li>
+<li><a href="https://github.com/nulab/backlog-mcp-server" rel="nofollow noopener">nulab/backlog-mcp-server</a>（GitHub、英語、2026年11月9日に確認）</li>
+<li><a href="https://github.com/kintone/mcp-server" rel="nofollow noopener">kintone/mcp-server</a>（GitHub、2026年11月9日に確認）</li>
+<li><a href="https://github.com/chatwork/chatwork-mcp-server" rel="nofollow noopener">chatwork/chatwork-mcp-server</a>（GitHub、2026年11月9日に確認）</li>
+<li><a href="https://github.com/line/line-bot-mcp-server" rel="nofollow noopener">line/line-bot-mcp-server</a>（GitHub、英語、2026年11月9日に確認）</li>
+<li><a href="https://github.com/sewon-supernova/sansan-mcp" rel="nofollow noopener">sewon-supernova/sansan-mcp</a>（GitHub、英語、2026年11月9日に確認）</li>
+<li><a href="https://github.com/mrslbt/paypay-mcp" rel="nofollow noopener">mrslbt/paypay-mcp</a>（GitHub、英語、2026年11月9日に確認）</li>
+</ul>
+<p>非公式のサーバーの値は、それぞれのリポジトリのREADMEから読み取りました。出典のURLと情報確認日は、各サービスの詳細ページに表示しています。</p></div>
+            <p class="mt-10 border-t border-rule pt-6 text-xs text-muted">最終更新: <time datetime="2026-11-09">2026年11月09日</time></p>
+        </div>
+    </div>
+</article>
+
+<nav class="mt-12 grid gap-6 text-sm sm:grid-cols-2" aria-label="前後の記事">
+    <div></div>
+    <div class="sm:text-right"><a href="/blog/market-trends/companies-adopting-mcp/" rel="next" class="card-link block h-full px-6 py-5"><span class="text-muted">古い記事</span><br><span class="font-medium">広がる企業のMCP対応　Upworkと国内企業の事例</span></a></div>
+</nav>
+
+
+<section class="mt-16" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="section-title">関連記事</h2>
+    <div class="blog-grid mt-6">
+        
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/japanese-law-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-10-02">2026年10月02日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/japanese-law-mcp-servers/">法令MCPサーバー　e-Gov 法令APIで条文を取得する24件</a></h3>
+        <p class="post-card-intro">法令MCPサーバーは、AIエージェントが日本の法令の条文を取得するためのプラグインです。多くはデジタル庁のe-Gov 法令APIを使います。APIの仕組みと、MCPNaviに掲載している24件の提供形態、接続方式、扱う分野を説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/remote-and-local-mcp-servers/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-25">2026年09月25日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/remote-and-local-mcp-servers/">リモートMCPサーバーとローカルMCPサーバーの違い</a></h3>
+        <p class="post-card-intro">リモートMCPサーバーは提供元が動かし、URLで接続します。ローカルMCPサーバーは利用者が手元のPCで動かします。提供形態と接続方式の違い、利用者がすること、認証情報の扱いを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+
+<article class="card post-card">
+    <div class="post-cover" aria-hidden="true">
+        <img src="/blog/technical/mcp-authorization-basics/cover.webp" alt="" width="1200" height="675" loading="lazy" class="post-cover-image">
+        
+    </div>
+    <div class="post-card-body">
+        <p class="post-card-meta"><a href="/blog/technical/" class="chip">技術解説</a><time datetime="2026-09-23">2026年09月23日</time></p>
+        <h3 class="post-card-title"><a href="/blog/technical/mcp-authorization-basics/">MCPサーバーの認証方式　OAuthとAPIキーの基本</a></h3>
+        <p class="post-card-intro">MCPサーバーは、接続してきた相手を確かめてからデータを返します。認証方式の種類、MCP仕様（2026-07-28版）が定めるOAuth 2.1の使い方、接続の流れ、接続前に確認することを説明します。</p>
+        <p class="post-card-author">
+<span class="author-avatar author-avatar-sm" aria-hidden="true">イ</span>
+イクバル・アバドゥラ</p>
+        <p class="post-card-more" aria-hidden="true">記事を読む
+<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</p>
+    </div>
+</article>
+
+    </div>
+</section>
+
+
+    </main>
+
+    
+<footer class="relative z-10 mt-16 border-t border-rule bg-chrome text-sm">
+    <div class="container-site pb-8 pt-14">
+        <div class="grid gap-10 md:grid-cols-12">
+            <div class="space-y-4 md:col-span-5">
+                <a href="/" class="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink no-underline">
+                    
+<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white" aria-hidden="true">
+    
+<svg class="h-5 w-5 stroke-[3]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+
+</span>
+MCPNavi
+                </a>
+                <p class="max-w-sm leading-relaxed text-muted">AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。</p>
+            </div>
+            <nav class="md:col-span-3 md:col-start-7" aria-labelledby="footer-directory">
+                <h2 id="footer-directory" class="mb-4 text-sm font-semibold text-ink">ディレクトリ</h2>
+                <div class="flex flex-col items-start gap-3">
+
+
+
+
+
+
+<a href="/servers/" class="nav-link">MCPサービス一覧</a>
+<a href="/#categories" class="nav-link">カテゴリ一覧</a>
+<a href="/providers/" class="nav-link">提供元一覧</a>
+
+<a href="/blog/" class="nav-link" aria-current="page">ブログ</a>
+<a href="/criteria/" class="nav-link">掲載されているデータについて</a>
+
+</div>
+            </nav>
+            <div class="md:col-span-3">
+                <h2 class="mb-4 text-sm font-semibold text-ink">掲載と訂正</h2>
+                <div class="flex flex-col items-start gap-3">
+                    <a href="/forms/listing-request/" class="nav-link">MCPNaviに掲載する</a>
+                    <a href="/faq/" class="nav-link">よくある質問</a>
+                    <a href="mailto:info@mcpnavi.jp" class="nav-link">掲載・誤りの報告: info@mcpnavi.jp</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t border-rule pt-6 text-muted md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 株式会社Kafkai Giken</p>
+            <p class="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <a href="/legal/terms-of-service/" class="nav-link">利用規約</a>
+                <span>【運営】 <a href="https://kafkai.com/ja/the-company/" class="nav-link">株式会社Kafkai Giken</a></span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/static/js/site.js" defer></script>
+    
+</body>
+</html>

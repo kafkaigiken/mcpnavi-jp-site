@@ -3,7 +3,7 @@
 > AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。掲載する情報は公開情報から取得したもので、サービスごとに情報確認日を付けます。
 
 - 運営: 株式会社Kafkai Giken
-- 掲載: 249件
+- 掲載: 252件
 - 原文は日本語です。英語版は https://mcpnavi.jp/en/ にあります。
 
 掲載しているすべての情報は、サーバー本体、GitHub、npm、PyPI、公式サイトの公開ページから取得したものです。各サービスに情報確認日を付けます。情報確認日より後に提供者が仕様や料金を変えている場合があります。
@@ -35,12 +35,12 @@
 - [ファイル・ストレージ](https://mcpnavi.jp/categories/files-storage/): 7件
 - [コミュニケーション](https://mcpnavi.jp/categories/communication/): 6件
 - [プロジェクト管理](https://mcpnavi.jp/categories/project-management/): 14件
-- [ドキュメント・ナレッジ](https://mcpnavi.jp/categories/knowledge/): 46件
+- [ドキュメント・ナレッジ](https://mcpnavi.jp/categories/knowledge/): 47件
 - [ブラウザ自動化](https://mcpnavi.jp/categories/browser-automation/): 5件
 - [監視・可観測性](https://mcpnavi.jp/categories/observability/): 4件
 - [セキュリティ](https://mcpnavi.jp/categories/security/): 8件
-- [決済・金融](https://mcpnavi.jp/categories/payments/): 14件
-- [CRM・営業](https://mcpnavi.jp/categories/crm-sales/): 4件
+- [決済・金融](https://mcpnavi.jp/categories/payments/): 15件
+- [CRM・営業](https://mcpnavi.jp/categories/crm-sales/): 5件
 - [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 6件
 - [デザイン](https://mcpnavi.jp/categories/design/): 6件
 - [データ分析](https://mcpnavi.jp/categories/data-analytics/): 49件
