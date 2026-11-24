@@ -591,7 +591,35 @@ Read in 日本語</a>
 <li>You comply with the MCPNavi <a href="/en/legal/terms-of-service/">terms of service</a>.</li>
 </ul></div>
             <button type="submit" class="btn btn-primary form-submit">Send the request</button>
+            <p id="captcha-error" class="form-error" role="alert" hidden>Before you send the form, slide the slider all the way to the right.</p>
+            <p id="captcha-unavailable" class="form-error" role="alert" hidden>Could not load the slider. Send your request by email to <a href="mailto:info@mcpnavi.jp">info@mcpnavi.jp</a>.</p>
         </form>
+        
+        
+        
+        <script>
+            window.FiraformCaptchaConfig = {
+                primaryColor: "#0369a1",
+                backgroundColor: "rgb(var(--color-band))",
+                borderColor: "rgb(var(--color-rule))",
+                handleColor: "rgb(var(--color-paper))",
+                handleIconColor: "rgb(var(--color-muted))",
+                labelText: "Slide to the right"
+            };
+            document.forms[0].addEventListener("submit", function (submitEvent) {
+                var sliderLoaded = Boolean(window.firaCaptcha);
+                var sliderDone = sliderLoaded && window.firaCaptcha.completed;
+                document.getElementById("captcha-error").hidden = !sliderLoaded || sliderDone;
+                document.getElementById("captcha-unavailable").hidden = sliderLoaded;
+                if (!sliderDone) {
+                    submitEvent.preventDefault();
+                    submitEvent.stopImmediatePropagation();
+                }
+            });
+        </script>
+        <script src="https://a.firaform.com/captcha/X51nofpND5zNmccGoRYJC" defer></script>
+        <noscript><p class="form-help">This form uses JavaScript. If you cannot use JavaScript, send your request by email to <a href="mailto:info@mcpnavi.jp">info@mcpnavi.jp</a>.</p></noscript>
+        
     </section>
 </div>
 

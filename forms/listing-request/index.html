@@ -591,7 +591,35 @@ Englishで読む</a>
 <li>MCPNaviの<a href="/legal/terms-of-service/">利用規約</a>を遵守すること。</li>
 </ul></div>
             <button type="submit" class="btn btn-primary form-submit">掲載を依頼する</button>
+            <p id="captcha-error" class="form-error" role="alert" hidden>送信する前に、スライダーを右端までスライドしてください。</p>
+            <p id="captcha-unavailable" class="form-error" role="alert" hidden>スライダーを読み込めませんでした。<a href="mailto:info@mcpnavi.jp">info@mcpnavi.jp</a> にメールで依頼してください。</p>
         </form>
+        
+        
+        
+        <script>
+            window.FiraformCaptchaConfig = {
+                primaryColor: "#0369a1",
+                backgroundColor: "rgb(var(--color-band))",
+                borderColor: "rgb(var(--color-rule))",
+                handleColor: "rgb(var(--color-paper))",
+                handleIconColor: "rgb(var(--color-muted))",
+                labelText: "右へスライドしてください"
+            };
+            document.forms[0].addEventListener("submit", function (submitEvent) {
+                var sliderLoaded = Boolean(window.firaCaptcha);
+                var sliderDone = sliderLoaded && window.firaCaptcha.completed;
+                document.getElementById("captcha-error").hidden = !sliderLoaded || sliderDone;
+                document.getElementById("captcha-unavailable").hidden = sliderLoaded;
+                if (!sliderDone) {
+                    submitEvent.preventDefault();
+                    submitEvent.stopImmediatePropagation();
+                }
+            });
+        </script>
+        <script src="https://a.firaform.com/captcha/xR4iM5W9_r4BHe35ZZ-kt" defer></script>
+        <noscript><p class="form-help">このフォームは JavaScript を使います。JavaScript が使えない場合は、<a href="mailto:info@mcpnavi.jp">info@mcpnavi.jp</a> にメールで依頼してください。</p></noscript>
+        
     </section>
 </div>
 
