@@ -3,7 +3,7 @@
 > AIエージェントにデータや道具をつなぐMCPサービスを、用途から探せるディレクトリです。掲載する情報は公開情報から取得したもので、サービスごとに情報確認日を付けます。
 
 - 運営: 株式会社Kafkai Giken
-- 掲載: 252件
+- 掲載: 278件
 - 原文は日本語です。英語版は https://mcpnavi.jp/en/ にあります。
 
 掲載しているすべての情報は、サーバー本体、GitHub、npm、PyPI、公式サイトの公開ページから取得したものです。各サービスに情報確認日を付けます。情報確認日より後に提供者が仕様や料金を変えている場合があります。
@@ -27,28 +27,28 @@
 
 ## カテゴリ
 
-- [開発ツール](https://mcpnavi.jp/categories/dev-tools/): 36件
+- [開発ツール](https://mcpnavi.jp/categories/dev-tools/): 40件
 - [バージョン管理](https://mcpnavi.jp/categories/version-control/): 5件
 - [データベース](https://mcpnavi.jp/categories/databases/): 17件
 - [クラウド基盤](https://mcpnavi.jp/categories/cloud/): 16件
-- [検索・Web取得](https://mcpnavi.jp/categories/web-search/): 12件
+- [検索・Web取得](https://mcpnavi.jp/categories/web-search/): 14件
 - [ファイル・ストレージ](https://mcpnavi.jp/categories/files-storage/): 7件
-- [コミュニケーション](https://mcpnavi.jp/categories/communication/): 6件
-- [プロジェクト管理](https://mcpnavi.jp/categories/project-management/): 14件
+- [コミュニケーション](https://mcpnavi.jp/categories/communication/): 7件
+- [プロジェクト管理](https://mcpnavi.jp/categories/project-management/): 15件
 - [ドキュメント・ナレッジ](https://mcpnavi.jp/categories/knowledge/): 47件
 - [ブラウザ自動化](https://mcpnavi.jp/categories/browser-automation/): 5件
 - [監視・可観測性](https://mcpnavi.jp/categories/observability/): 4件
-- [セキュリティ](https://mcpnavi.jp/categories/security/): 8件
-- [決済・金融](https://mcpnavi.jp/categories/payments/): 15件
-- [CRM・営業](https://mcpnavi.jp/categories/crm-sales/): 5件
-- [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 6件
-- [デザイン](https://mcpnavi.jp/categories/design/): 6件
-- [データ分析](https://mcpnavi.jp/categories/data-analytics/): 49件
-- [AI・機械学習](https://mcpnavi.jp/categories/ai-ml/): 23件
+- [セキュリティ](https://mcpnavi.jp/categories/security/): 10件
+- [決済・金融](https://mcpnavi.jp/categories/payments/): 17件
+- [CRM・営業](https://mcpnavi.jp/categories/crm-sales/): 6件
+- [マーケティング・SEO](https://mcpnavi.jp/categories/marketing-seo/): 8件
+- [デザイン](https://mcpnavi.jp/categories/design/): 8件
+- [データ分析](https://mcpnavi.jp/categories/data-analytics/): 54件
+- [AI・機械学習](https://mcpnavi.jp/categories/ai-ml/): 26件
 - [生産性](https://mcpnavi.jp/categories/productivity/): 20件
 - [地図・位置情報](https://mcpnavi.jp/categories/maps-location/): 27件
-- [メディア](https://mcpnavi.jp/categories/media/): 9件
-- [インフラ・IaC](https://mcpnavi.jp/categories/infrastructure/): 5件
+- [メディア](https://mcpnavi.jp/categories/media/): 12件
+- [インフラ・IaC](https://mcpnavi.jp/categories/infrastructure/): 7件
 
 ## そのほか
 

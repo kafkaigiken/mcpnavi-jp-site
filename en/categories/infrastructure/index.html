@@ -6,14 +6,14 @@
     <meta name="author" content="株式会社Kafkai Giken">
     
     <title>MCP services for Infrastructure and IaC | MCPNavi</title>
-    <meta name="description" content="MCP services in the Infrastructure and IaC category on MCPNavi: 5. Listed: Docker MCP Gateway, Kubernetes MCP Server, Pagoda MCP Server and more.">
+    <meta name="description" content="MCP services in the Infrastructure and IaC category on MCPNavi: 7. Listed: Docker MCP Gateway, IceShore, Kubernetes MCP Server and more.">
     <meta name="robots" content="index, follow">
     
     <link rel="canonical" href="https://mcpnavi.jp/en/categories/infrastructure/">
     
     <meta property="og:site_name" content="MCPNavi">
     <meta property="og:title" content="MCP services for Infrastructure and IaC">
-    <meta property="og:description" content="MCP services in the Infrastructure and IaC category on MCPNavi: 5. Listed: Docker MCP Gateway, Kubernetes MCP Server, Pagoda MCP Server and more.">
+    <meta property="og:description" content="MCP services in the Infrastructure and IaC category on MCPNavi: 7. Listed: Docker MCP Gateway, IceShore, Kubernetes MCP Server and more.">
     <meta property="og:url" content="https://mcpnavi.jp/en/categories/infrastructure/">
     <meta property="og:type" content="website">
     
@@ -58,7 +58,7 @@
       "@id": "https://mcpnavi.jp/en/categories/infrastructure/",
       "url": "https://mcpnavi.jp/en/categories/infrastructure/",
       "name": "MCP services for Infrastructure and IaC",
-      "description": "MCP services in the Infrastructure and IaC category on MCPNavi: 5. Listed: Docker MCP Gateway, Kubernetes MCP Server, Pagoda MCP Server and more.",
+      "description": "MCP services in the Infrastructure and IaC category on MCPNavi: 7. Listed: Docker MCP Gateway, IceShore, Kubernetes MCP Server and more.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://mcpnavi.jp/#website"
@@ -90,7 +90,7 @@
     {
       "@type": "ItemList",
       "name": "Infrastructure and IaC",
-      "numberOfItems": 5,
+      "numberOfItems": 7,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -101,24 +101,36 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "IceShore",
+          "url": "https://mcpnavi.jp/en/servers/iceshore/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Kubernetes MCP Server",
           "url": "https://mcpnavi.jp/en/servers/kubernetes-mcp-server/"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "name": "Pagoda MCP Server",
           "url": "https://mcpnavi.jp/en/servers/pagoda-mcp-server/"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 5,
+          "name": "StableDomains",
+          "url": "https://mcpnavi.jp/en/servers/stabledomains/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
           "name": "Terraform MCP Server",
           "url": "https://mcpnavi.jp/en/servers/terraform-mcp-server/"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 7,
           "name": "kintone OAuth MCP (Cloudflare)",
           "url": "https://mcpnavi.jp/en/servers/kintone-oauth-mcp-cloudflare/"
         }
@@ -270,7 +282,7 @@
 
 <h1 class="page-title mt-4">Infrastructure and IaC</h1>
 <p class="page-lead">インフラ構成の記述と適用を扱うサービスです。</p>
-<p class="mt-2 text-sm text-muted">5 servers</p>
+<p class="mt-2 text-sm text-muted">7 servers</p>
 
 
 <div class="card-grid mt-8">
@@ -316,6 +328,50 @@
     </dl>
     <div class="mt-auto border-t border-rule bg-band px-5 py-2.5 text-xs text-muted">
         <p>Last checked: 2026-09-13</p>
+    </div>
+</article>
+
+<article class="card flex flex-col overflow-hidden" aria-labelledby="server-iceshore">
+    <div class="px-5 pb-4 pt-4">
+        <h3 id="server-iceshore" class="text-base font-bold leading-snug">
+            <a href="/en/servers/iceshore/">IceShore</a>
+        </h3>
+        <p class="mt-0.5 text-xs text-muted"><a href="/en/providers/launchers/">株式会社ラウンチャーズ</a>
+</p>
+        <p class="mt-2 text-sm leading-relaxed text-muted">Remote server through which an AI agent that has read IaC such as Terraform and business documents writes system diagrams, with who uses each part for which work, to IceShore and reads them back.</p>
+        
+        <p class="mt-2 text-xs text-muted"><a href="/en/categories/infrastructure/">Infrastructure and IaC</a></p>
+        
+    </div>
+    <dl class="divide-y divide-rule border-t border-rule text-sm">
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="hosting">
+            <dt class="text-muted">Hosting</dt>
+            <dd><span class="value-labels"><span class="value-label">Connect by URL</span></span>
+</dd>
+        </div>
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="transport">
+            <dt class="text-muted">Transport</dt>
+            <dd><span class="value-labels"><span class="value-label">Streamable HTTP</span></span>
+</dd>
+        </div>
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="pricing_model">
+            <dt class="text-muted">Pricing model</dt>
+            <dd>Subscription
+</dd>
+        </div>
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="jp_docs">
+            <dt class="text-muted">Japanese documentation</dt>
+            <dd>Yes
+</dd>
+        </div>
+        
+    </dl>
+    <div class="mt-auto border-t border-rule bg-band px-5 py-2.5 text-xs text-muted">
+        <p>Last checked: 2026-11-26</p>
     </div>
 </article>
 
@@ -404,6 +460,50 @@
     </dl>
     <div class="mt-auto border-t border-rule bg-band px-5 py-2.5 text-xs text-muted">
         <p>Last checked: 2026-09-19</p>
+    </div>
+</article>
+
+<article class="card flex flex-col overflow-hidden" aria-labelledby="server-stabledomains">
+    <div class="px-5 pb-4 pt-4">
+        <h3 id="server-stabledomains" class="text-base font-bold leading-snug">
+            <a href="/en/servers/stabledomains/">StableDomains</a>
+        </h3>
+        <p class="mt-0.5 text-xs text-muted"><a href="/en/providers/tim-johnson/">Tim Johnson</a>
+</p>
+        <p class="mt-2 text-sm leading-relaxed text-muted">Remote server that lets an AI agent search, buy, renew and transfer domains, set DNS records and look into domains that are about to drop. Payment is in USDC, USDT or by card.</p>
+        
+        <p class="mt-2 text-xs text-muted"><a href="/en/categories/infrastructure/">Infrastructure and IaC</a></p>
+        
+    </div>
+    <dl class="divide-y divide-rule border-t border-rule text-sm">
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="hosting">
+            <dt class="text-muted">Hosting</dt>
+            <dd><span class="value-labels"><span class="value-label">Connect by URL</span></span>
+</dd>
+        </div>
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="transport">
+            <dt class="text-muted">Transport</dt>
+            <dd><span class="value-labels"><span class="value-label">Streamable HTTP</span></span>
+</dd>
+        </div>
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="pricing_model">
+            <dt class="text-muted">Pricing model</dt>
+            <dd>Usage-based
+</dd>
+        </div>
+        
+        <div class="grid grid-cols-[7rem_1fr] gap-2 px-5 py-2" data-field="jp_docs">
+            <dt class="text-muted">Japanese documentation</dt>
+            <dd><span class="value-unknown">Unknown</span>
+</dd>
+        </div>
+        
+    </dl>
+    <div class="mt-auto border-t border-rule bg-band px-5 py-2.5 text-xs text-muted">
+        <p>Last checked: 2026-11-26</p>
     </div>
 </article>
 
@@ -508,7 +608,7 @@
     <li>
         <a href="/en/categories/dev-tools/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Developer tools</span>
-            <span class="text-muted">36 servers</span>
+            <span class="text-muted">40 servers</span>
         </a>
     </li>
     
@@ -544,7 +644,7 @@
     <li>
         <a href="/en/categories/web-search/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Search and web fetch</span>
-            <span class="text-muted">12 servers</span>
+            <span class="text-muted">14 servers</span>
         </a>
     </li>
     
@@ -562,7 +662,7 @@
     <li>
         <a href="/en/categories/communication/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Communication</span>
-            <span class="text-muted">6 servers</span>
+            <span class="text-muted">7 servers</span>
         </a>
     </li>
     
@@ -571,7 +671,7 @@
     <li>
         <a href="/en/categories/project-management/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Project management</span>
-            <span class="text-muted">14 servers</span>
+            <span class="text-muted">15 servers</span>
         </a>
     </li>
     
@@ -607,7 +707,7 @@
     <li>
         <a href="/en/categories/security/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Security</span>
-            <span class="text-muted">8 servers</span>
+            <span class="text-muted">10 servers</span>
         </a>
     </li>
     
@@ -616,7 +716,7 @@
     <li>
         <a href="/en/categories/payments/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Payments and finance</span>
-            <span class="text-muted">15 servers</span>
+            <span class="text-muted">17 servers</span>
         </a>
     </li>
     
@@ -625,7 +725,7 @@
     <li>
         <a href="/en/categories/crm-sales/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">CRM and sales</span>
-            <span class="text-muted">5 servers</span>
+            <span class="text-muted">6 servers</span>
         </a>
     </li>
     
@@ -634,7 +734,7 @@
     <li>
         <a href="/en/categories/marketing-seo/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Marketing and SEO</span>
-            <span class="text-muted">6 servers</span>
+            <span class="text-muted">8 servers</span>
         </a>
     </li>
     
@@ -643,7 +743,7 @@
     <li>
         <a href="/en/categories/design/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Design</span>
-            <span class="text-muted">6 servers</span>
+            <span class="text-muted">8 servers</span>
         </a>
     </li>
     
@@ -652,7 +752,7 @@
     <li>
         <a href="/en/categories/data-analytics/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Data analytics</span>
-            <span class="text-muted">49 servers</span>
+            <span class="text-muted">54 servers</span>
         </a>
     </li>
     
@@ -661,7 +761,7 @@
     <li>
         <a href="/en/categories/ai-ml/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">AI and machine learning</span>
-            <span class="text-muted">23 servers</span>
+            <span class="text-muted">26 servers</span>
         </a>
     </li>
     
@@ -688,7 +788,7 @@
     <li>
         <a href="/en/categories/media/" class="card-link flex items-center justify-between gap-3 px-4 py-3">
             <span class="font-medium">Media</span>
-            <span class="text-muted">9 servers</span>
+            <span class="text-muted">12 servers</span>
         </a>
     </li>
     
